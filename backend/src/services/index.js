@@ -1,4 +1,6 @@
 // sample SQL query template
+// use node-postgres library (run "npm install pg")
+// https://node-postgres.com/
 
 import { Client } from "pg";
 
