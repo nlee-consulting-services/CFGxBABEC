@@ -4,21 +4,21 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import Home from './components/pages/HomePage'
 import About from './components/pages/AboutPage'
-import Map from './components/pages/MapPage'
+import MapPage from './components/pages/MapPage'
 import EntryForm from './components/pages/EntryFormPage'
 
 import Navbar from './components/navbar'
 
 function App() {
   return (
-    <BrowserRouter>
+    <Router>
       <Routes>
-        <Route path='/' exact component={Home} /> 
-        <Route path='/about' component={About} /> 
-        <Route path='/map' component={Map} /> 
-        <Route path='/entryform' component={EntryForm} /> 
+        <Route path='/' exact Component={Home} />
+        <Route path='/about' Component={About} />
+        <Route path='/map' Component={MapPage} />
+        <Route path='/entryform' Component={EntryForm} />
       </Routes> 
-    </BrowserRouter>
+    </Router>
     // <div className="App">
     //   <header className="Wolbachia">
        
