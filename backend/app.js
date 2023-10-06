@@ -1,7 +1,8 @@
-// filler to test
+// putting the express app onto a server
 
 const http = require("http");
 
+// TODO: find hosting method & update info
 const hostname = "127.0.0.1";
 const port = 3000;
 
