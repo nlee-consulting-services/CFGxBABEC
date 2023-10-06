@@ -1,4 +1,5 @@
-import "./home.css";
+import "./HomePage.css";
+import Navbar from "../navbar.js";
 import { Link } from "react-router-dom";
 
 
@@ -15,4 +16,4 @@ function HomePage(){
 
 
 }
-export default Home;
+export default HomePage;
