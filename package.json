@@ -1,0 +1,11 @@
+{
+  "name": "cfgxbabec",
+  "version": "1.0.0",
+  "description": "Wolbachia tracking website for BABEC",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
