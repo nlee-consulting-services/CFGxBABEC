@@ -5,7 +5,10 @@ import { Link } from "react-router-dom";
 
 function HomePage(){
     return (
-        <Navbar />
+        <div class='wrapper'>
+            <Navbar />
+            <h1>Home Page</h1>
+        </div>
     )
 
 

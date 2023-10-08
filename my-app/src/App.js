@@ -1,6 +1,7 @@
 import logo from './logo.svg';
+//import React from 'react';
 import './App.css';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'; 
+import { BrowserRouter , Route, Routes } from 'react-router-dom'; 
 
 import Home from './components/pages/HomePage'
 import About from './components/pages/AboutPage'
@@ -11,14 +12,16 @@ import Navbar from './components/navbar'
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path='/' exact Component={Home} />
-        <Route path='/about' Component={About} />
-        <Route path='/map' Component={MapPage} />
-        <Route path='/entryform' Component={EntryForm} />
-      </Routes> 
-    </Router>
+    <div className='wrapper'>
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' exact Component={Home} />
+          <Route path='/about' Component={About} />
+          <Route path='/map' Component={MapPage} />
+          <Route path='/entryform' Component={EntryForm} />
+        </Routes> 
+      </BrowserRouter>
+    </div>
     // <div className="App">
     //   <header className="Wolbachia">
        
