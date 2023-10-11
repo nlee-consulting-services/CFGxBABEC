@@ -1,20 +1,19 @@
 // sample SQL query template
 // use node-postgres library (run "npm install pg")
 // https://node-postgres.com/
-
-import { Client } from "pg";
+import pkg from "pg";
+const { Client } = pkg;
 
 const client = new Client({
-  //   host: 'my.database-server.com',
-  //   port: 5334,
-  //   database: 'database-name',
-  //   user: 'database-user',
-  //   password: 'secretpassword!!',
+  host: "bubble.db.elephantsql.com",
+  database: "uehjppbc",
+  user: "uehjppbc",
+  password: "ZAAtTkX9ge51BxJmzqz1wROzIIoYb4OO",
 });
 
 await client.connect();
 
-const result = await client.query("SELECT NOW()");
+export const result = await client.query("SELECT * FROM INSECT");
 console.log(result);
 
 await client.end();

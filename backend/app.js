@@ -1,5 +1,5 @@
 // putting the express app onto a server
-
+import { result } from "./src/services/index.js";
 const http = require("http");
 
 // TODO: find hosting method & update info
@@ -14,4 +14,5 @@ const server = http.createServer((req, res) => {
 
 server.listen(port, hostname, () => {
   console.log(`Server running at http://${hostname}:${port}/`);
+  console.log(result);
 });
