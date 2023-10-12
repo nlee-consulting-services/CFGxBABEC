@@ -3,12 +3,13 @@
 // https://node-postgres.com/
 import pkg from "pg";
 const { Client } = pkg;
+import secrets from "../../secrets.json" assert { type: "json" };
 
 const client = new Client({
   host: "bubble.db.elephantsql.com",
   database: "uehjppbc",
   user: "uehjppbc",
-  password: "ZAAtTkX9ge51BxJmzqz1wROzIIoYb4OO",
+  password: secrets.dbpw,
 });
 
 await client.connect();
