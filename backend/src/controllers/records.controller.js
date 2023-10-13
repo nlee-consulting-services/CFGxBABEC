@@ -48,9 +48,9 @@ async function get(req, res, next) {
 //   }
 // }
 
-// module.exports = {
-//   get,
-//   create,
-//   update,
-//   remove
-// };
+module.exports = {
+  get,
+  // create,
+  // update,
+  // remove,
+};
