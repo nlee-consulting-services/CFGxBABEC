@@ -14,7 +14,6 @@ const client = new Client({
 
 await client.connect();
 
-export const result = await client.query("SELECT * FROM INSECT");
-console.log(result);
+export const getRecords = await client.query("SELECT * FROM RECORD");
 
 await client.end();

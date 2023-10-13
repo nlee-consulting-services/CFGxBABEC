@@ -1,12 +1,12 @@
 // TODO: route requests
 
 // sample below
-// const express = require("express");
-// const router = express.Router();
-// const programmingLanguagesController = require("../controllers/programmingLanguages.controller");
+import express from "express";
+const router = express.Router();
+const recordsController = require("../controllers/records.controller.js");
 
-// /* GET */
-// router.get("/", programmingLanguagesController.get);
+/* GET */
+router.get("/", recordsController.get);
 
 // /* POST */
 // router.post("/", programmingLanguagesController.create);
@@ -17,4 +17,4 @@
 // /* DELETE programming language */
 // router.delete("/:id", programmingLanguagesController.remove);
 
-// module.exports = router;
+module.exports = router;
