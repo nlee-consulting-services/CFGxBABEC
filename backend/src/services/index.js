@@ -3,7 +3,11 @@
 // https://node-postgres.com/
 import pkg from "pg";
 const { Client } = pkg;
-import secrets from "../../secrets.json" assert { type: "json" };
+import { readFile } from "fs/promises";
+const secrets = JSON.parse(
+  await readFile(new URL("../../secrets.json", import.meta.url))
+);
+// import secrets from "../../secrets.json" assert { type: "json" };
 
 const client = new Client({
   host: "bubble.db.elephantsql.com",
