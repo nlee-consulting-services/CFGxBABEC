@@ -1,5 +1,6 @@
 import "./HomePage.css";
 import Navbar from "../navbar.js";
+import Footer from "../footer.js"
 import { Link } from "react-router-dom";
 
 
@@ -19,7 +20,7 @@ function About(){
     )
 
 
-
+        
 
 
 

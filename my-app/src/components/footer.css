@@ -1,0 +1,41 @@
+
+.row{
+    background-color: #54565A;
+    padding: 20px;
+}
+
+ .item{
+    color: rgb(45, 27, 27);
+    font-size: 24px;
+    text-decoration: none;
+    position: fixed;
+    top: 15px;
+}
+
+li{
+    list-style-type:none ;
+    text-align: right; /*need to find a way to align the list on the right but keep the text itself left aligned*/
+}
+
+
+.footerlogo{
+    max-width: 250px;
+    max-height: 100px;
+    float: left;
+    vertical-align: bottom;
+    padding-right: 30px;
+}
+
+a:link{
+    color: white;
+}
+
+
+a:visited{
+    color: white;
+    
+}
+
+strong{
+    color: white;
+}
