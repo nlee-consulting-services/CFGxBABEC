@@ -1,10 +1,10 @@
 // putting the express app onto a server
-import { result } from "./src/services/index.js";
-const http = require("http");
+import http from "http";
+import { getRecords } from "./src/services/index.js";
 
 // TODO: find hosting method & update info
-const hostname = "127.0.0.1";
-const port = 3000;
+const hostname = process.env.hostname || "127.0.0.1";
+const port = process.env.port || 3000;
 
 const server = http.createServer((req, res) => {
   res.statusCode = 200;
@@ -14,5 +14,5 @@ const server = http.createServer((req, res) => {
 
 server.listen(port, hostname, () => {
   console.log(`Server running at http://${hostname}:${port}/`);
-  console.log(result);
+  // console.log(getRecords);
 });
