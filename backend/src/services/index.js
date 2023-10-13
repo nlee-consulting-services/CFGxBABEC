@@ -18,6 +18,6 @@ const client = new Client({
 
 await client.connect();
 
-export const getRecords = await client.query("SELECT * FROM RECORD");
+export const wolbachiaRecords = await client.query("SELECT * FROM RECORD");
 
 await client.end();

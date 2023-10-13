@@ -1,11 +1,12 @@
 // TODO: async functions for REST API
 
 // sample below
-const wolbachiaRecords = require("../services/index.js");
+import { wolbachiaRecords } from "../services/index.js";
+// const wolbachiaRecords = require("../services/index.js");
 
 async function get(req, res, next) {
   try {
-    res.json(await wolbachiaRecords.getRecords(req.query.page));
+    res.send(await wolbachiaRecords);
   } catch (err) {
     console.error(`Error while getting records`, err.message);
     next(err);
@@ -48,9 +49,4 @@ async function get(req, res, next) {
 //   }
 // }
 
-module.exports = {
-  get,
-  // create,
-  // update,
-  // remove,
-};
+export { get };

@@ -3,10 +3,11 @@
 // sample below
 import express from "express";
 const router = express.Router();
-const recordsController = require("../controllers/records.controller.js");
+import * as recordsController from "../controllers/records.controller.js";
+// const recordsController = require("../controllers/records.controller.js");
 
 /* GET */
-router.get("/", recordsController.get);
+router.get("/records", recordsController.get);
 
 // /* POST */
 // router.post("/", programmingLanguagesController.create);
@@ -17,4 +18,4 @@ router.get("/", recordsController.get);
 // /* DELETE programming language */
 // router.delete("/:id", programmingLanguagesController.remove);
 
-module.exports = router;
+export { router };
