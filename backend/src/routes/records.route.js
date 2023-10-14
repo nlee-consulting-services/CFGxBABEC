@@ -3,13 +3,13 @@
 // sample below
 import express from "express";
 const router = express.Router();
-import * as recordsController from "../controllers/records.controller.js";
+import { get, create } from "../controllers/records.controller.js";
 // const recordsController = require("../controllers/records.controller.js");
 
 /* GET */
-router.get("/records", recordsController.get);
+router.get("/records", get);
 
-router.post("/records", recordsController.post);
+router.post("/records", create);
 
 // /* POST */
 // router.post("/", programmingLanguagesController.create);

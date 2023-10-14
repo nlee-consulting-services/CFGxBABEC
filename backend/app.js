@@ -1,6 +1,4 @@
 // putting the express app onto a server
-import http from "http";
-import { wolbachiaRecords } from "./src/services/index.js";
 import { router } from "./src/routes/records.route.js";
 import express from "express";
 

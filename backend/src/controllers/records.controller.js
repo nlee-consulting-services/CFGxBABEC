@@ -15,7 +15,7 @@ async function get(req, res, next) {
 
 async function create(req, res, next) {
   try {
-    res.json(createRecord(req.body));
+    res.json(createRecord);
   } catch (err) {
     console.error(`Error while creating record`, err.message);
     next(err);

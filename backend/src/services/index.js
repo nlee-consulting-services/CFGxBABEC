@@ -20,9 +20,9 @@ await client.connect();
 
 const getRecords = await client.query("SELECT * FROM RECORD");
 
-const createRecord = async function (values) {
+async function createRecord(values) {
   await client.query("INSERT INTO USERS VALUES RETURNING *");
-};
+}
 
 export { getRecords, createRecord };
 
