@@ -9,6 +9,8 @@ import * as recordsController from "../controllers/records.controller.js";
 /* GET */
 router.get("/records", recordsController.get);
 
+router.post("/records", recordsController.post);
+
 // /* POST */
 // router.post("/", programmingLanguagesController.create);
 

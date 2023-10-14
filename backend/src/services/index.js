@@ -18,6 +18,12 @@ const client = new Client({
 
 await client.connect();
 
-export const wolbachiaRecords = await client.query("SELECT * FROM RECORD");
+const getRecords = await client.query("SELECT * FROM RECORD");
+
+const createRecord = async function (values) {
+  await client.query("INSERT INTO USERS VALUES RETURNING *");
+};
+
+export { getRecords, createRecord };
 
 await client.end();
