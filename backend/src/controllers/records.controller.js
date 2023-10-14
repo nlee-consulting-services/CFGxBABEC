@@ -6,7 +6,8 @@ import { getRecords, createRecord } from "../services/index.js";
 
 async function get(req, res, next) {
   try {
-    res.send(getRecords);
+    const rows = getRecords.rows;
+    res.send(rows);
   } catch (err) {
     console.error(`Error while getting records`, err.message);
     next(err);
@@ -15,7 +16,7 @@ async function get(req, res, next) {
 
 async function create(req, res, next) {
   try {
-    res.json(createRecord);
+    res.json(createRecord(req.body));
   } catch (err) {
     console.error(`Error while creating record`, err.message);
     next(err);
