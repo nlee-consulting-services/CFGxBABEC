@@ -27,9 +27,24 @@ const formatRecord = (values) => {
   });
 };
 
-const textForCreateRecord = `INSERT INTO RECORD VALUES($${Array.from(
-  { length: recordColumns.length },
-  (_, i) => i + 1
-).join(", $")}) RETURNING *`;
+const getTextForGetRecord = (params) => {
+  if (params) {
+    const columns = Object.keys(params);
+    return `SELECT * FROM RECORD WHERE ${columns
+      .map((col) => {
+        return `${col} = ${params[col]}`;
+      })
+      .join(" AND ")}`;
+  } else {
+    return "SELECT * FROM RECORD";
+  }
+};
 
-export { formatRecord, textForCreateRecord };
+const getTextForCreateRecord = () => {
+  return `INSERT INTO RECORD VALUES($${Array.from(
+    { length: recordColumns.length },
+    (_, i) => i + 1
+  ).join(", $")}) RETURNING *`;
+};
+
+export { formatRecord, getTextForCreateRecord, getTextForGetRecord };
