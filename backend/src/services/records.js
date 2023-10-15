@@ -4,6 +4,7 @@
 import pkg from "pg";
 const { Client } = pkg;
 import { readFile } from "fs/promises";
+import { textForCreateRecord, formatRecord } from "../utils/formatRecord.js";
 const secrets = JSON.parse(
   await readFile(new URL("../../secrets.json", import.meta.url))
 );
@@ -21,14 +22,12 @@ await client.connect();
 const getRecords = await client.query("SELECT * FROM RECORD");
 
 async function createRecord(values) {
-  const valueArray = Object.values(values);
-  console.log(valueArray);
-  const res = await client.query(
-    "INSERT INTO RECORD VALUES($1, $2, $3, $4, $5, $6)",
-    valueArray
-  );
-  console.log(`res.rows:${res.rows}`);
-  return res;
+  // const valueArray = Object.values(values);
+  // const formattedValues = formatRecord(values);
+  // console.log(formattedValues);
+  // console.log(textForCreateRecord);
+  const res = await client.query(textForCreateRecord, formatRecord(values));
+  return res.rows[0];
 }
 
 export { getRecords, createRecord };

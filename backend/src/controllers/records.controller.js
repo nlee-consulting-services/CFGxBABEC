@@ -16,8 +16,9 @@ async function get(req, res, next) {
 
 async function create(req, res, next) {
   try {
-    const rows = await createRecord(req.body).rows;
-    res.json(rows);
+    const row = await createRecord(req.body);
+    console.log(row);
+    res.json(row);
   } catch (err) {
     console.error(`Error while creating record`, err.message);
     next(err);
