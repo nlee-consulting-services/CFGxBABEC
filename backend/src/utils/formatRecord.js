@@ -1,5 +1,4 @@
 const recordColumns = [
-  "record_id",
   "insect_id",
   "student_id",
   "location_lon",
