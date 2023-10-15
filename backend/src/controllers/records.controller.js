@@ -1,8 +1,4 @@
-// TODO: async functions for REST API
-
-// sample below
 import { getRecords, createRecord } from "../services/records.js";
-// const wolbachiaRecords = require("../services/index.js");
 
 async function get(req, res, next) {
   try {

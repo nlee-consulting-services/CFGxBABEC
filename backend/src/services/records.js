@@ -8,7 +8,6 @@ import { textForCreateRecord, formatRecord } from "../utils/formatRecord.js";
 const secrets = JSON.parse(
   await readFile(new URL("../../secrets.json", import.meta.url))
 );
-// import secrets from "../../secrets.json" assert { type: "json" };
 
 const client = new Client({
   host: "bubble.db.elephantsql.com",
@@ -22,10 +21,6 @@ await client.connect();
 const getRecords = await client.query("SELECT * FROM RECORD");
 
 async function createRecord(values) {
-  // const valueArray = Object.values(values);
-  // const formattedValues = formatRecord(values);
-  // console.log(formattedValues);
-  // console.log(textForCreateRecord);
   const res = await client.query(textForCreateRecord, formatRecord(values));
   return res.rows[0];
 }
