@@ -1,13 +1,13 @@
 // TODO: async functions for REST API
 
 // sample below
-import { getRecords, createRecord } from "../services/index.js";
+import { getRecords, createRecord } from "../services/records.js";
 // const wolbachiaRecords = require("../services/index.js");
 
 async function get(req, res, next) {
   try {
     const rows = getRecords.rows;
-    res.send(rows);
+    res.json(rows);
   } catch (err) {
     console.error(`Error while getting records`, err.message);
     next(err);
@@ -16,7 +16,8 @@ async function get(req, res, next) {
 
 async function create(req, res, next) {
   try {
-    res.json(createRecord(req.body));
+    const rows = await createRecord(req.body).rows;
+    res.json(rows);
   } catch (err) {
     console.error(`Error while creating record`, err.message);
     next(err);

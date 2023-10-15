@@ -10,6 +10,9 @@ import { get, create } from "../controllers/records.controller.js";
 router.get("/records", get);
 
 router.post("/records", create);
+// router.post("/records", (req, res) => {
+//   res.json({ requestBody: req.body });
+// });
 
 // /* POST */
 // router.post("/", programmingLanguagesController.create);

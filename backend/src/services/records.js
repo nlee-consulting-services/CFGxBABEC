@@ -21,9 +21,16 @@ await client.connect();
 const getRecords = await client.query("SELECT * FROM RECORD");
 
 async function createRecord(values) {
-  await client.query("INSERT INTO USERS VALUES RETURNING *");
+  const valueArray = Object.values(values);
+  console.log(valueArray);
+  const res = await client.query(
+    "INSERT INTO RECORD VALUES($1, $2, $3, $4, $5, $6)",
+    valueArray
+  );
+  console.log(`res.rows:${res.rows}`);
+  return res;
 }
 
 export { getRecords, createRecord };
 
-await client.end();
+// await client.end();
