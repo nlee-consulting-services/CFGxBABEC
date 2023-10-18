@@ -4,10 +4,14 @@
 import pkg from "pg";
 const { Client } = pkg;
 import { readFile } from "fs/promises";
+import {
+  getTextForCreateRecord,
+  formatRecord,
+  getTextForGetRecord,
+} from "../utils/formatRecord.js";
 const secrets = JSON.parse(
   await readFile(new URL("../../secrets.json", import.meta.url))
 );
-// import secrets from "../../secrets.json" assert { type: "json" };
 
 const client = new Client({
   host: "bubble.db.elephantsql.com",
@@ -18,7 +22,19 @@ const client = new Client({
 
 await client.connect();
 
-export const result = await client.query("SELECT * FROM INSECT");
-console.log(result);
+async function getRecords(params) {
+  const res = await client.query(getTextForGetRecord(params));
+  return res.rows;
+}
 
-await client.end();
+async function createRecord(values) {
+  const res = await client.query(
+    getTextForCreateRecord(),
+    formatRecord(values)
+  );
+  return res.rows[0];
+}
+
+export { getRecords, createRecord };
+
+// await client.end();

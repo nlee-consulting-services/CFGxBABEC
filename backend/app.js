@@ -1,18 +1,14 @@
-// putting the express app onto a server
-import { result } from "./src/services/index.js";
-const http = require("http");
+import { router } from "./src/routes/records.route.js";
+import express from "express";
 
-// TODO: find hosting method & update info
-const hostname = "127.0.0.1";
-const port = 3000;
+const app = express();
+app.use(express.json());
 
-const server = http.createServer((req, res) => {
-  res.statusCode = 200;
-  res.setHeader("Content-Type", "text/plain");
-  res.end("Hello World");
-});
+const hostname = process.env.hostname || "127.0.0.1";
+const port = process.env.port || 3000;
 
-server.listen(port, hostname, () => {
+app.listen(port, hostname, () => {
   console.log(`Server running at http://${hostname}:${port}/`);
-  console.log(result);
 });
+
+app.use(router);
