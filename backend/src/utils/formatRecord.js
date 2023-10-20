@@ -28,15 +28,17 @@ const formatRecord = (values) => {
 };
 
 const getTextForGetRecord = (params) => {
-  if (params) {
-    const columns = Object.keys(params);
+  const columns = Object.keys(params);
+  if (columns.length === 0) {
+    console.log("getting everything");
+    return "SELECT * FROM RECORD";
+  } else {
+    console.log(`applying ${columns.length} constraints`);
     return `SELECT * FROM RECORD WHERE ${columns
       .map((col) => {
         return `${col} = ${params[col]}`;
       })
       .join(" AND ")}`;
-  } else {
-    return "SELECT * FROM RECORD";
   }
 };
 
