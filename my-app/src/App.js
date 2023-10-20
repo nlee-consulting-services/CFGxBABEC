@@ -21,24 +21,6 @@ function App() {
         </Routes> 
       </BrowserRouter>
     </div>
-    // <div className="App">
-    //   <header className="Wolbachia">
-       
-    //     <a
-    //       className=""
-    //       href="https://reactjs.org"
-    //       target="_blank"
-    //       rel="noopener noreferrer"
-    //     >
-    //       Learn React
-    //     </a>
-
-    //     MyButton()
-    //   </header>
-    // <div className = "navbar">
-    //   <Link to = "HomePage"></Link>
-    // </div>
-    // </div>
   );
 }
 

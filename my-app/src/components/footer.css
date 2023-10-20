@@ -12,11 +12,12 @@
     top: 15px;
 }
 
-li{
+.link{
     list-style-type:none ;
-    text-align: right; /*need to find a way to align the list on the right but keep the text itself left aligned*/
+    text-align: left; /*need to find a way to align the list on the right but keep the text itself left aligned*/
+    text-decoration: none;
+    text-indent: 100px;
 }
-
 
 .footerlogo{
     max-width: 250px;
@@ -26,10 +27,30 @@ li{
     padding-right: 30px;
 }
 
-a:link{
-    color: white;
+.cfgbanner {
+    max-width: 400px;
+    max-height: 100px;
+    float: left;
+    vertical-align: bottom;
+    padding-right: 350px;
 }
 
+.divider {
+    border-left: 2px solid black;
+    height: 100px;
+    float: left;
+    vertical-align: center;
+    padding-right: 30px;
+}
+
+a:link{
+    color: white;
+    text-decoration: none;
+}
+
+a:hover{
+    text-decoration: underline;
+}
 
 a:visited{
     color: white;
