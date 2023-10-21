@@ -8,7 +8,12 @@ function HomePage(){
     return (
         <div class='wrapper'>
             <Navbar />
-            <h1>Home Page</h1>
+            <div className="contentwrapper">
+                <img className = "hero" src= "./heroimg.png"/>
+                <div className="map">
+                    <img src = "./map.jpeg"/>
+                </div>
+            </div>
             <Footer />
         </div>
     )
