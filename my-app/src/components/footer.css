@@ -40,23 +40,22 @@
     height: 100px;
     float: left;
     vertical-align: center;
-    padding-right: 30px;
+    padding-right: 30   px;
 }
 
-a:link{
+.row a:link{
     color: white;
     text-decoration: none;
 }
 
-a:hover{
+.row a:hover{
     text-decoration: underline;
 }
 
-a:visited{
+.row a:visited{
     color: white;
-    
 }
 
-strong{
+.row strong{
     color: white;
 }

@@ -1,11 +1,25 @@
-.list{
-    background-color: rgb(99, 99, 99);
+.nav{
+    top: 0;
+    position: fixed;
+}
+
+
+
+.navbar >.list{
+    background-color: white;
     list-style-type:none ;
-    height: 60px; 
+    height: 70px; 
     top: 0;
     position: fixed; 
     width:100%;
+    color: black;
+    /*why is this not actually at the top i'm so lost -alex*/
 
+}
+
+.navbar h1{
+    color: green;
+    bottom: 20px;
 }
 
  .item{
@@ -18,14 +32,33 @@
 } 
 
 .list >li {
-    margin-right: 100px;
+    margin-right: 150px;
     display: inline-block;
-    color: black
+    color: black;
 
 
 }
 
 .logo{
-    max-width: 150px;
+    max-height: 70px;
+    padding-right: 20px;
+}
+
+.navbar a:visited{
+    color: black;
+}
+
+.navbar a:link{
+    color: white;
+    text-decoration: none;
+}
+
+.navbar a:hover{
+    text-decoration: underline;
+    /*probably make this like a color changing box or smth instead of this for navbar*/
+}
+
+.navbar strong{
+    color: white;
 }
 
