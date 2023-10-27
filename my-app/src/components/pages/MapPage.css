@@ -5,19 +5,3 @@
     top: 20%;
     left: 0;
 }
-
-/* resized popup menu and made the arrow disappear; 
-need to figure out how to move all content to the leftside of the screen esp whe all popup are differet locations
-have to move the other leaflet-animated div also because it blocks the way of moving map
-*/ 
-.leaflet-popup-content-wrapper, .leaflet-popup-close-button{
-    padding: 50px;
-    height: 50vh;
-    position: relative;
-    border: 20px;
-    left: -20vw;
-}  
-
-.leaflet-popup-tip{
-    opacity: 0;
-}

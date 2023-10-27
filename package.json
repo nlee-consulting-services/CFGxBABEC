@@ -9,6 +9,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "react-leaflet": "^4.2.1",
+    "leaflet-sidebar": "^0.2.4",
+    "react-leaflet-muster": "^2.0.1",
     "react-router-dom": "^6.16.0"
   }
 }
