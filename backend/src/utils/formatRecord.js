@@ -22,6 +22,23 @@ const recordColumns = [
   "arthropod_COI_sequence",
 ];
 
+const joinCommand = (
+  insectBool = true,
+  studentBool = true,
+  teacherBool = true,
+  orgBool = true
+) => {
+  const insectJoin = insectBool ? " JOIN INSECT_ORDER USING (ORDER_ID)" : "";
+  const studentJoin =
+    studentBool || teacherBool || orgBool
+      ? " JOIN STUDENT USING (STUDENT_ID)"
+      : "";
+  const teacherJoin =
+    teacherBool || orgBool ? " JOIN TEACHER USING (TEACHER_ID)" : "";
+  const orgJoin = orgBool ? " JOIN ORGANISATION USING (ORG_ID)" : "";
+  return [insectJoin, studentJoin, teacherJoin, orgJoin].join("");
+};
+
 const formatRecord = (values) => {
   return recordColumns.map((v) => {
     return values[v] === undefined ? null : values[v];
@@ -31,7 +48,7 @@ const formatRecord = (values) => {
 const getTextForGetRecord = (params) => {
   const columns = Object.keys(params);
   if (columns.length === 0) {
-    return "SELECT * FROM RECORD";
+    return `SELECT * FROM RECORD${joinCommand()}`;
   } else {
     return `SELECT * FROM RECORD WHERE ${columns
       .map((col) => {

@@ -23,7 +23,9 @@ const client = new Client({
 await client.connect();
 
 async function getRecords(params) {
-  const res = await client.query(getTextForGetRecord(params));
+  const textForGetRecord = getTextForGetRecord(params);
+  console.log(textForGetRecord);
+  const res = await client.query(textForGetRecord);
   return res.rows;
 }
 
