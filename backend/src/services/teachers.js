@@ -10,7 +10,6 @@ async function getTeachers(params) {
   const queryText = `SELECT * FROM TEACHER${
     params.org_id ? ` WHERE ORG_ID = ${params.org_id}` : ""
   }`;
-  console.log(queryText);
   const res = await client.query(queryText);
   return res.rows;
 }
