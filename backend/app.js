@@ -3,6 +3,7 @@ import { recordRouter } from "./src/routes/records.route.js";
 import express from "express";
 import { studentRouter } from "./src/routes/students.route.js";
 import { orgRouter } from "./src/routes/orgs.route.js";
+import { teacherRouter } from "./src/routes/teachers.route.js";
 
 const app = express();
 app.use(express.json());
@@ -18,3 +19,4 @@ app.use("/records", recordRouter);
 app.use("/orders", orderRouter);
 app.use("/students", studentRouter);
 app.use("/orgs", orgRouter);
+app.use("/teachers", teacherRouter);
