@@ -19,11 +19,11 @@
 
 .navbar h1{
     color: green;
-    bottom: 20px;
+
 }
 
  .item{
-    top: 0;
+    top: 30;
     font-size: 24px;
     text-decoration: none;
     position: fixed;
