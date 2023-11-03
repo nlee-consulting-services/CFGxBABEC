@@ -1,4 +1,4 @@
-import { getRecords, createRecord } from "../services/records.js";
+import { getRecords, createRecord } from "../services.js";
 
 async function get(req, res, next) {
   try {
