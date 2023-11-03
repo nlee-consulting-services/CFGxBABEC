@@ -1,8 +1,25 @@
 import "./HomePage.css";
 import Navbar from "../navbar.js";
 import axios from "axios";
+import {
+  recordEndpoint,
+  orderEndpoint,
+  studentEndpoint,
+  teacherEndpoint,
+  orgEndpoint,
+} from "../../utils/endpoints.js";
+import { useEffect, useState } from "react";
 
 function EntryForm() {
+  const [orders, setOrders] = useState([]);
+  useEffect(() => {
+    axios({ method: "get", url: orderEndpoint }).then((res) => {
+      console.log(res);
+      setOrders(res);
+    });
+  }, []);
+  // const orderList = axios.get()
+  // const teacherList = axios.get()
   return (
     <div class="wrapper">
       <Navbar />
