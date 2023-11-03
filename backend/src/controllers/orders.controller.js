@@ -1,4 +1,4 @@
-import { getOrders } from "../services/orders.js";
+import { getOrders } from "../services.js";
 
 async function get(req, res, next) {
   try {
