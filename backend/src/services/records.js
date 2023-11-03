@@ -1,30 +1,22 @@
-// sample SQL query template
-// use node-postgres library (run "npm install pg")
-// https://node-postgres.com/
 import pkg from "pg";
 const { Client } = pkg;
-import { readFile } from "fs/promises";
 import {
   getTextForCreateRecord,
   formatRecord,
   getTextForGetRecord,
 } from "../utils/formatRecord.js";
-const secrets = JSON.parse(
-  await readFile(new URL("../../secrets.json", import.meta.url))
-);
+import { applyFilters } from "../utils/filterRecord.js";
+import { clientInitializer } from "../utils/clientInitializer.js";
 
-const client = new Client({
-  host: "bubble.db.elephantsql.com",
-  database: "uehjppbc",
-  user: "uehjppbc",
-  password: secrets.dbpw,
-});
+const client = new Client(clientInitializer);
 
 await client.connect();
 
 async function getRecords(params) {
-  const res = await client.query(getTextForGetRecord(params));
-  return res.rows;
+  const textForGetRecord = getTextForGetRecord(params);
+  const res = await client.query(textForGetRecord);
+  const filteredData = applyFilters(res.rows, params);
+  return filteredData;
 }
 
 async function createRecord(values) {
@@ -36,5 +28,3 @@ async function createRecord(values) {
 }
 
 export { getRecords, createRecord };
-
-// await client.end();
