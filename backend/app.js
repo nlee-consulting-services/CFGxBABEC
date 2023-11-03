@@ -1,4 +1,4 @@
-import { router } from "./src/routes/records.route.js";
+import { recordRouter } from "./src/routes/records.route.js";
 import express from "express";
 
 const app = express();
@@ -11,4 +11,4 @@ app.listen(port, hostname, () => {
   console.log(`Server running at http://${hostname}:${port}/`);
 });
 
-app.use(router);
+app.use("/records", recordRouter);
