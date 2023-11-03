@@ -10,7 +10,6 @@ const defaultParams = {
 };
 
 const applyFilters = (rows, params) => {
-  console.log(Object.keys(params).length);
   if (Object.keys(params).length === 0) {
     return rows;
   }

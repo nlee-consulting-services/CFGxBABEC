@@ -2,7 +2,6 @@ import { getRecords, createRecord } from "../services/records.js";
 
 async function get(req, res, next) {
   try {
-    console.log(req.body);
     const rows = await getRecords(req.body);
     res.json(rows);
   } catch (err) {
