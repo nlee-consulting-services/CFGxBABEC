@@ -1,26 +1,32 @@
 const recordColumns = [
-  "insect_name",
   "order_id",
   "student_id",
   "location_lon",
   "location_lat",
   "collection_date",
-  "observations",
+  "insect_description",
   "gel_image",
-  "legend_well_1",
-  "legend_well_2",
-  "legend_well_3",
-  "legend_well_4",
-  "legend_well_5",
-  "legend_well_6",
-  "legend_well_7",
-  "legend_well_8",
   "wolbachia_presence",
-  "confidence_level",
-  "expl_conf_level",
   "wolbachia_WSP_sequence",
   "arthropod_COI_sequence",
+  "habitat_description",
+  "confidence_level",
+  "expl_of_confidence_level",
+  "well_1",
+  "well_2",
+  "well_3",
+  "well_4",
+  "well_5",
+  "well_6",
+  "well_7",
+  "well_8",
 ];
+
+const formatRecord = (values) => {
+  return recordColumns.map((v) => {
+    return values[v] === undefined ? null : values[v];
+  });
+};
 
 const joinCommand = (
   insectBool = true,
@@ -39,23 +45,8 @@ const joinCommand = (
   return [insectJoin, studentJoin, teacherJoin, orgJoin].join("");
 };
 
-const formatRecord = (values) => {
-  return recordColumns.map((v) => {
-    return values[v] === undefined ? null : values[v];
-  });
-};
-
 const getTextForGetRecord = (params) => {
-  const columns = Object.keys(params);
-  if (columns.length === 0) {
-    return `SELECT * FROM RECORD${joinCommand()}`;
-  } else {
-    return `SELECT * FROM RECORD WHERE ${columns
-      .map((col) => {
-        return `${col} = ${params[col]}`;
-      })
-      .join(" AND ")}`;
-  }
+  return `SELECT * FROM RECORD${joinCommand()}`;
 };
 
 const getTextForCreateRecord = () => {

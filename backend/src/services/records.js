@@ -9,6 +9,7 @@ import {
   formatRecord,
   getTextForGetRecord,
 } from "../utils/formatRecord.js";
+import { applyFilters } from "../utils/filterRecord.js";
 const secrets = JSON.parse(
   await readFile(new URL("../../secrets.json", import.meta.url))
 );
@@ -24,9 +25,9 @@ await client.connect();
 
 async function getRecords(params) {
   const textForGetRecord = getTextForGetRecord(params);
-  console.log(textForGetRecord);
   const res = await client.query(textForGetRecord);
-  return res.rows;
+  const filteredData = applyFilters(res.rows, params);
+  return filteredData;
 }
 
 async function createRecord(values) {
