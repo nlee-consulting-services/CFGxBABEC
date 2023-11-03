@@ -3,23 +3,15 @@
 // https://node-postgres.com/
 import pkg from "pg";
 const { Client } = pkg;
-import { readFile } from "fs/promises";
 import {
   getTextForCreateRecord,
   formatRecord,
   getTextForGetRecord,
 } from "../utils/formatRecord.js";
 import { applyFilters } from "../utils/filterRecord.js";
-const secrets = JSON.parse(
-  await readFile(new URL("../../secrets.json", import.meta.url))
-);
+import { clientInitializer } from "../utils/clientInitializer.js";
 
-const client = new Client({
-  host: "bubble.db.elephantsql.com",
-  database: "uehjppbc",
-  user: "uehjppbc",
-  password: secrets.dbpw,
-});
+const client = new Client(clientInitializer);
 
 await client.connect();
 
