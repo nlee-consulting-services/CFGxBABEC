@@ -1,6 +1,3 @@
-// sample SQL query template
-// use node-postgres library (run "npm install pg")
-// https://node-postgres.com/
 import pkg from "pg";
 const { Client } = pkg;
 import { clientInitializer } from "../utils/clientInitializer.js";
@@ -15,5 +12,3 @@ async function getOrders() {
 }
 
 export { getOrders };
-
-// await client.end();

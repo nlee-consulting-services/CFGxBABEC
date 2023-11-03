@@ -1,6 +1,3 @@
-// sample SQL query template
-// use node-postgres library (run "npm install pg")
-// https://node-postgres.com/
 import pkg from "pg";
 const { Client } = pkg;
 import {
@@ -31,5 +28,3 @@ async function createRecord(values) {
 }
 
 export { getRecords, createRecord };
-
-// await client.end();
