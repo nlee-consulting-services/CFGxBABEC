@@ -19,6 +19,8 @@
 
 .navbar h1{
     color: green;
+    position: relative;
+    top: -25px;
 
 }
 
@@ -29,12 +31,15 @@
     position: fixed;
 
 
+
 } 
 
 .list >li {
     margin-right: 150px;
     display: inline-block;
     color: black;
+
+
 
 
 }
@@ -49,8 +54,10 @@
 }
 
 .navbar a:link{
-    color: white;
+    color: rgb(0, 0, 0);
     text-decoration: none;
+    position: relative;
+    top: -25px;
 }
 
 .navbar a:hover{
