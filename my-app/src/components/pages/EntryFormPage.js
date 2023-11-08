@@ -40,7 +40,7 @@ function EntryForm() {
             <br />
             <input type="text" id="initials" name="initials" />
             <br />
-            <label for="lname">Teacher Last name:</label>
+            <label htmlFor="lname">Teacher Last name:</label>
             <br />
             <input type="text" id="tlname" name="tlname" />
             <br />
