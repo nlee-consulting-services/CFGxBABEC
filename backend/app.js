@@ -4,6 +4,7 @@ import express from "express";
 import { studentRouter } from "./src/routes/students.route.js";
 import { orgRouter } from "./src/routes/orgs.route.js";
 import { teacherRouter } from "./src/routes/teachers.route.js";
+import cors from "cors";
 
 const app = express();
 app.use(express.json());
