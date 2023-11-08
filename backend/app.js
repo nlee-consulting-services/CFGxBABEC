@@ -11,7 +11,7 @@ app.use(express.json());
 app.use(cors({ origin: "*" }));
 
 const hostname = process.env.hostname || "127.0.0.1";
-const port = process.env.port || 3000;
+const port = process.env.port || 8000;
 
 app.listen(port, hostname, () => {
   console.log(`Server running at http://${hostname}:${port}/`);
