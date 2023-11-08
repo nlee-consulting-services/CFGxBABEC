@@ -14,12 +14,14 @@ function HomePage(){
                 <div className="map">
                     <div className = "aboutoverlay" >
                         <h1>About the Project</h1>
-                        <p>this is a website used to track wolbachia here is some filler text. This text is talking about what the wolbachia tracking site does and why it is omportant. More filler text to make this sectio longer talking about what wolbachia is how it is so important things liek that.  </p>
+                        <p>This website is a hub for the Wolbachia PCR Project run by the Bay Area Bioscience Education Committee (BABEC). This project is designed to help high school students learn laboratory skills and help track the spread of Wolbachia, a bacterial infection that affects insects’ reproductive capabilities.</p>
                     </div>
                 </div>
                 <div className= "engagement">
-                    <h1>Get involved</h1>
-                    <p> here is how you can get involved in wolnachia tracking. here is some text explaining how to get involved there should be a form to the right. You can look at that and see what sort of work you need to do to get involved. We need your help. </p>
+                    <div className = "involvement">
+                        <h1>Get Involved</h1>
+                        <p>Contact BABEC at their website to learn more and become a partner school! BABEC has many different biotechnology-related project kits that are currently being used by 150+ partner schools around the USA.</p>
+                    </div>
                 </div>
             </div>
             <Footer />
