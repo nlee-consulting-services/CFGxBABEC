@@ -36,7 +36,7 @@ function EntryForm() {
         <form action="/action_page.php">
           <div class="student-data">
             <h2>Student Data</h2>
-            <label for="initials">Initials(e.g. John Doe → JD):</label>
+            <label htmlFor="initials">Initials(e.g. John Doe → JD):</label>
             <br />
             <input type="text" id="initials" name="initials" />
             <br />
@@ -44,7 +44,7 @@ function EntryForm() {
             <br />
             <input type="text" id="tlname" name="tlname" />
             <br />
-            <label for="orgname">Organization name:</label> <br />
+            <label htmlFor="orgname">Organization name:</label> <br />
             <select name="orgname" id="orgname">
               {orgs &&
                 orgs.map((v) => {
@@ -58,7 +58,7 @@ function EntryForm() {
 
           <div class="record">
             <h2>Insect information</h2>
-            <label for="ordername">Order name:</label> <br />
+            <label htmlFor="ordername">Order name:</label> <br />
             <select name="ordername" id="ordername">
               {orders &&
                 orders.map((v) => {
@@ -66,11 +66,11 @@ function EntryForm() {
                 })}
             </select>
             <br />
-            <label for="commonname">Common name:</label>
+            <label htmlFor="commonname">Common name:</label>
             <br />
             <input type="text" id="commonname" name="commonname" />
             <br />
-            <label for="insect-description">Insect description:</label>
+            <label htmlFor="insect-description">Insect description:</label>
             <br />
             <input
               type="text"
@@ -78,7 +78,7 @@ function EntryForm() {
               name="insect-description"
             />
             <br />
-            <label for="date-of-collection">Date of Collection:</label>
+            <label htmlFor="date-of-collection">Date of Collection:</label>
             <br />
             <input
               type="date"
@@ -86,7 +86,7 @@ function EntryForm() {
               name="date-of-collection"
             />
             <br />
-            <label for="habitat-description">Habitat description:</label>
+            <label htmlFor="habitat-description">Habitat description:</label>
             <br />
             <input
               type="text"
@@ -94,7 +94,7 @@ function EntryForm() {
               name="habitat-description"
             />
             <br />
-            <label for="presence-of-wolbachia">
+            <label htmlFor="presence-of-wolbachia">
               Presence of Wolbachia:
             </label>{" "}
             <br />
@@ -104,13 +104,13 @@ function EntryForm() {
               <option>Inconclusive</option>
             </select>
             <br />
-            <label for="confidence-levek">Confidence level:</label> <br />
+            <label htmlFor="confidence-levek">Confidence level:</label> <br />
             <select name="presence-of-wolbachia" id="presence-of-wolbachia">
               <option>High</option>
               <option>Low</option>
             </select>
             <br />
-            <label for="explanantion-of-confidence-level">
+            <label htmlFor="explanantion-of-confidence-level">
               Explanantion of confidence level:
             </label>
             <br />
@@ -120,7 +120,7 @@ function EntryForm() {
               name="explanantion-of-confidence-level"
             />
             <br />
-            <label for="gel-image">
+            <label htmlFor="gel-image">
               Gel image (Please use JPG or PNG format):
             </label>
             <br />
@@ -138,11 +138,11 @@ function EntryForm() {
           <div class="location">
             <h2>Location</h2>
 
-            <label for="Longitude">Longitude:</label>
+            <label htmlFor="Longitude">Longitude:</label>
             <br />
             <input type="text" id="Longitude" name="Longitude" />
             <br />
-            <label for="Latitude">Latitude:</label>
+            <label htmlFor="Latitude">Latitude:</label>
             <br />
             <input type="text" id="Latitude" name="Latitude" />
             <br />
