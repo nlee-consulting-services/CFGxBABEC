@@ -11,11 +11,19 @@ import {
 import { useEffect, useState } from "react";
 
 function EntryForm() {
+  const [entry, setEntry] = useState({});
   const [orders, setOrders] = useState([]);
+  const [orgs, setOrgs] = useState([]);
   useEffect(() => {
     axios({ method: "get", url: orderEndpoint }).then((res) => {
-      console.log(res);
-      setOrders(res);
+      console.log(res.data);
+      setOrders(res.data);
+    });
+  }, []);
+  useEffect(() => {
+    axios({ method: "get", url: orgEndpoint }).then((res) => {
+      console.log(res.data);
+      setOrgs(res.data);
     });
   }, []);
   // const orderList = axios.get()
@@ -38,10 +46,10 @@ function EntryForm() {
             <br />
             <label for="orgname">Organization name:</label> <br />
             <select name="orgname" id="orgname">
-              <option>school1</option>
-              <option>school2</option>
-              <option>school3</option>
-              <option>school4</option>
+              {orgs &&
+                orgs.map((v) => {
+                  return <option key={v.org_id}>{v.org_name}</option>;
+                })}
             </select>
             <br />
           </div>
@@ -52,10 +60,10 @@ function EntryForm() {
             <h2>Insect information</h2>
             <label for="ordername">Order name:</label> <br />
             <select name="ordername" id="ordername">
-              <option>bug1</option>
-              <option>bug2</option>
-              <option>bug3</option>
-              <option>bug4</option>
+              {orders &&
+                orders.map((v) => {
+                  return <option key={v.order_id}>{v.order_name}</option>;
+                })}
             </select>
             <br />
             <label for="commonname">Common name:</label>
