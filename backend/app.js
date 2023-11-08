@@ -7,6 +7,7 @@ import { teacherRouter } from "./src/routes/teachers.route.js";
 
 const app = express();
 app.use(express.json());
+app.use(cors({ origin: "*" }));
 
 const hostname = process.env.hostname || "127.0.0.1";
 const port = process.env.port || 3000;
