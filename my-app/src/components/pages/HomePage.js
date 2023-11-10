@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 function HomePage(){
     return (
-        <div class='wrapper'>
+        <div className='wrapper'>
             <Navbar />
             <div className="contentwrapper">
                 <div className ="hero">header section
