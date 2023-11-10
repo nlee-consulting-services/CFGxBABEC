@@ -33,8 +33,9 @@ L.Icon.Default.mergeOptions({
 // }
 
 function MapPage() {
-    const [showPopup, setShowPopup] = useState(false);
-    const onClick = () => {console.log("onclick");setShowPopup(true);}
+    const [showPopup, setShowPopup] = useState(true);
+    const onClick = () => {setShowPopup(!showPopup)}
+    
     return (
         <div className='wrapper'>
             <Navbar />
@@ -51,6 +52,7 @@ function MapPage() {
                     <Marker position={[37.75000975412356, -122.1452940572979]} eventHandlers={{ click: onClick }}></Marker>
                 </MarkerMuster>
             </MapContainer>
+
             <div className='popup' style={{display: showPopup ? 'block' : 'none'}}>
                 <h3>This is a placeholder div</h3>
                 <p>placeholder text and placeholder for a graph</p>
