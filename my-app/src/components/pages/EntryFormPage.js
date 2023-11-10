@@ -9,6 +9,7 @@ import {
   orgEndpoint,
 } from "../../utils/endpoints.js";
 import { useEffect, useState } from "react";
+import { checkValidity } from "../../utils/validateEntry.js";
 
 function EntryForm() {
   const [entry, setEntry] = useState({});
@@ -37,7 +38,29 @@ function EntryForm() {
     teacher_last_name,
     org_id,
     org_name
-  ) => {};
+  ) => {
+    e.preventDefault();
+    const [status, errmsg] = checkValidity(
+      entry,
+      name_initial,
+      teacher_last_name,
+      org_id,
+      org_name
+    );
+    switch (status) {
+      case 1:
+        console.log("good entry!");
+      // add entry api
+      case -1:
+        console.log(`bad entry: ${errmsg}`);
+      case -2:
+        console.log(`bad entry: ${errmsg}`);
+      // prompt to add
+      case -3:
+        console.log(`bad entry: ${errmsg}`);
+      // prompt to add
+    }
+  };
   return (
     <div className="wrapper">
       <Navbar />
