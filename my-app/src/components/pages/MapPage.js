@@ -34,7 +34,7 @@ L.Icon.Default.mergeOptions({
 
 function MapPage() {
     const [showPopup, setShowPopup] = useState(true);
-    const onClick = () => {setShowPopup(!showPopup)}
+    const onClick = () => {console.log("onclick");setShowPopup(!showPopup);}
     
     return (
         <div className='wrapper'>
@@ -63,5 +63,14 @@ function MapPage() {
         </div>
     );
 }
+
+// function PopUpContent({contentName, text, image}) {
+//     return (
+//         <div class = "contentName" > 
+//         <h3> {text} </h3>
+//         <img src = {image} />
+//         </div>
+//     )
+// }
 
 export default MapPage;
