@@ -1,6 +1,6 @@
 import "./HomePage.css";
 import Navbar from "../navbar.js";
-import axios from "axios";
+// import axios from "axios";
 import {
   recordEndpoint,
   orderEndpoint,

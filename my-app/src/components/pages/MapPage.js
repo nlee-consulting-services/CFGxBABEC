@@ -4,6 +4,7 @@ import Navbar from "../navbar.js";
 import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet'
 import { MarkerMuster } from 'react-leaflet-muster';
 import L from 'leaflet';
+import {returnBarGraph, tempData} from './GraphDataGen'
 import {useState} from "react";
 
 delete L.Icon.Default.prototype._getIconUrl;
@@ -53,7 +54,7 @@ function MapPage() {
             </MapContainer>
             <div className='popup' style={{display: showPopup ? 'block' : 'none'}}>
                 <h3>This is a placeholder div</h3>
-                <p>placeholder text and placeholder for a graph</p>
+                {returnBarGraph(tempData, 300, 350, 'Temp Data Graph')}
                 <img className="logo" src="./logo.png" />
                 <p>I'm bad a JS so if there's a way to open/close this for like an onclick event that might work?</p>
                 {/*https://stackoverflow.com/questions/40901539/arbitrary-function-on-react-leaflet-marker-click*/}
