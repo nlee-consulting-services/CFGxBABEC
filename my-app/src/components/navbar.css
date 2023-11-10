@@ -13,6 +13,7 @@
 
 .navbar h1{
     color: green;
+    margin-right: 200px;
 }
 
 .list {
@@ -22,20 +23,16 @@
     display: flex;
     align-items: center; /* Vertically center items */
     justify-content: flex-start; /* Horizontally align items to the right */
+    font-weight: bold;
 }
 
 .list >li {
-    margin-right: 150px;
+    margin-right: 100px;
     display: inline-block;
     color: black;
     font-size: 24px;
     text-decoration: none;
     justify-content: flex-end; 
-}
-
-.item {
-    margin-right: 150px;
-    align-items: center; /* Vertically center items */
 }
 
 .navbar a:visited{
