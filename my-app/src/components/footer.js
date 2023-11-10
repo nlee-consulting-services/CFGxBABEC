@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from "react-router-dom";
 import "./footer.css";
 
-const Footer = () => {    
+const footer = () => {    
     return (
         <footer>
             <div class='row'>
@@ -33,4 +33,4 @@ const Footer = () => {
         </footer>
     );
 };
-export default Footer;
+export default footer;
