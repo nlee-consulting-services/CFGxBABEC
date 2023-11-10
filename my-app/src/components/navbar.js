@@ -11,16 +11,16 @@ const Navbar = () => {
                     <h1>Wolbachia Map</h1>
                 </li>
                 <li>
-                    <Link className = "item" to="/">Home</Link>
+                    <Link to="/">Home</Link>
                 </li>
                 <li>
-                    <Link className = "item" to="/about">About</Link>
+                    <Link to="/about">About</Link>
                 </li>
                 <li>
-                    <Link className = "item" to="/map">Map</Link>
+                    <Link to="/map">Map</Link>
                 </li>
                 <li>
-                    <Link className = "item" to="/entryform">Entry Form</Link>
+                    <Link to="/entryform">Entry Form</Link>
                 </li>
             </ul>
         </nav>
