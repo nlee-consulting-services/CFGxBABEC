@@ -1,24 +1,25 @@
 const recordColumns = [
-  "insect_id",
+  "order_id",
   "student_id",
   "location_lon",
   "location_lat",
   "collection_date",
-  "observations",
-  "dna_extraction_kit",
-  "dna_extraction_location",
-  "gel_rig",
-  "running_buffer",
-  "dna_stain",
+  "insect_description",
   "gel_image",
-  "protocol_notes",
   "wolbachia_presence",
-  "wolbachia_16s_sequence",
-  "wolbachia_16s_fasta",
-  "wolbachia_16s_ab1",
-  "arthropod_coi_sequence",
-  "arthropod_coi_fasta",
-  "arthropod_coi_ab1",
+  "wolbachia_WSP_sequence",
+  "arthropod_COI_sequence",
+  "habitat_description",
+  "confidence_level",
+  "expl_of_confidence_level",
+  "well_1",
+  "well_2",
+  "well_3",
+  "well_4",
+  "well_5",
+  "well_6",
+  "well_7",
+  "well_8",
 ];
 
 const formatRecord = (values) => {
@@ -27,19 +28,25 @@ const formatRecord = (values) => {
   });
 };
 
+const joinCommand = (
+  insectBool = true,
+  studentBool = true,
+  teacherBool = true,
+  orgBool = true
+) => {
+  const insectJoin = insectBool ? " JOIN INSECT_ORDER USING (ORDER_ID)" : "";
+  const studentJoin =
+    studentBool || teacherBool || orgBool
+      ? " JOIN STUDENT USING (STUDENT_ID)"
+      : "";
+  const teacherJoin =
+    teacherBool || orgBool ? " JOIN TEACHER USING (TEACHER_ID)" : "";
+  const orgJoin = orgBool ? " JOIN ORGANISATION USING (ORG_ID)" : "";
+  return [insectJoin, studentJoin, teacherJoin, orgJoin].join("");
+};
+
 const getTextForGetRecord = (params) => {
-  const columns = Object.keys(params);
-  if (columns.length === 0) {
-    console.log("getting everything");
-    return "SELECT * FROM RECORD";
-  } else {
-    console.log(`applying ${columns.length} constraints`);
-    return `SELECT * FROM RECORD WHERE ${columns
-      .map((col) => {
-        return `${col} = ${params[col]}`;
-      })
-      .join(" AND ")}`;
-  }
+  return `SELECT * FROM RECORD${joinCommand()}`;
 };
 
 const getTextForCreateRecord = () => {
