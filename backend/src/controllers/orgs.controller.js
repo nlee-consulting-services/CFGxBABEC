@@ -1,4 +1,4 @@
-import { getOrgs } from "../services/orgs.js";
+import { getOrgs } from "../services.js";
 
 async function get(req, res, next) {
   try {
