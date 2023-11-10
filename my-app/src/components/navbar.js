@@ -5,11 +5,9 @@ import"./navbar.css";
 const Navbar = () => {    
     return (
         <nav className='navbar'>
+            <img className = "logo" src="./logo.png"/>
+            <h1>Wolbachia Map</h1>
             <ul className='list'>
-                <img className = "logo" src="./logo.png"/>
-                <li>
-                    <h1>Wolbachia Map</h1>
-                </li>
                 <li>
                     <Link to="/">Home</Link>
                 </li>
