@@ -1,41 +1,52 @@
-.navbar {
+.nav{
     top: 0;
     position: fixed;
-    width: 100%;
-    background-color: white;
 }
 
-.logo{
-    max-height: 70px;
-    padding-left: 25px;
-    padding-right: 50px;
+
+
+.navbar >.list{
+    background-color: white;
+    list-style-type:none ;
+    height: 70px; 
+    top: 0;
+    position: fixed; 
+    width:100%;
+    color: black;
+    /*why is this not actually at the top i'm so lost -alex*/
+
 }
 
 .navbar h1{
     color: green;
+    position: relative;
+    top: -25px;
+
 }
 
-.list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    align-items: center; /* Vertically center items */
-    justify-content: flex-start; /* Horizontally align items to the right */
-}
+ .item{
+    top: 30;
+    font-size: 24px;
+    text-decoration: none;
+    position: fixed;
+
+
+
+} 
 
 .list >li {
     margin-right: 150px;
     display: inline-block;
     color: black;
-    font-size: 24px;
-    text-decoration: none;
-    justify-content: flex-end; 
+
+
+
+
 }
 
-.item {
-    margin-right: 150px;
-    align-items: center; /* Vertically center items */
+.logo{
+    max-height: 70px;
+    padding-right: 20px;
 }
 
 .navbar a:visited{
@@ -43,13 +54,18 @@
 }
 
 .navbar a:link{
-    color: black;
+    color: rgb(0, 0, 0);
     text-decoration: none;
+    position: relative;
+    top: -25px;
 }
 
 .navbar a:hover{
     text-decoration: underline;
-    color: green;
     /*probably make this like a color changing box or smth instead of this for navbar*/
+}
+
+.navbar strong{
+    color: white;
 }
 
