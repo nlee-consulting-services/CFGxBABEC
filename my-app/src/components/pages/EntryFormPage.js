@@ -39,12 +39,12 @@ function EntryForm() {
     org_name
   ) => {};
   return (
-    <div class="wrapper">
+    <div className="wrapper">
       <Navbar />
-      <div class="entryform-wrapper">
+      <div className="entryform-wrapper">
         <h1>Entry Form</h1>
         <form action="/action_page.php">
-          <div class="student-data">
+          <div className="student-data">
             <h2>Student Data</h2>
             <label htmlFor="initials">Initials(e.g. John Doe → JD):</label>
             <br />
@@ -78,7 +78,7 @@ function EntryForm() {
           <br />
           <br />
 
-          <div class="record">
+          <div className="record">
             <h2>Insect information</h2>
             <label htmlFor="ordername">Order name:</label> <br />
             <select
@@ -209,7 +209,7 @@ function EntryForm() {
           <br />
           <br />
 
-          <div class="location">
+          <div className="location">
             <h2>Location</h2>
 
             <label htmlFor="Longitude">Longitude:</label>
