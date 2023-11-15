@@ -1,9 +1,10 @@
 import 'leaflet/dist/leaflet.css';
 import './MapPage.css'
 import Navbar from "../navbar.js";
-import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet'
+import { MapContainer, Marker, Popup, TileLayer, useMap } from 'react-leaflet'
 import { MarkerMuster } from 'react-leaflet-muster';
 import L from 'leaflet';
+import {returnBarGraph, tempData} from './GraphDataGen'
 import {useState} from "react";
 
 delete L.Icon.Default.prototype._getIconUrl;
@@ -14,27 +15,40 @@ L.Icon.Default.mergeOptions({
     shadowUrl: require('leaflet/dist/images/marker-shadow.png'),
 });
 
-// function useData() {
-//     fetch('https://cfgxbabec.onrender.com/records', {
-//         method: 'GET',
-//         headers: {
-//             'Content-Type': 'application/json',
-//         }
-//     })
-//         .then(response => response.json())
-//         .then(data => {
-//             const map = useMap()
-//             for (var i in data) {
-//                 var latlng = L.latLng({lat: data[i].location_lat, lng: data[i].location_lon});
-//                 L.marker(latlng).addTo(map);
-//             }
-//         });
-//     return null;
-// }
+function MarkerDataComponent() {
+
+    const map = useMap();
+    const [markerData, setMarkerData] = useState([]);
+    fetch('https://cfgxbabec.onrender.com/records', {
+        method: 'GET',
+        mode: 'cors',
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    })
+        .then(response => response.json())
+        .then(data => {
+            // console.log(data);
+            //             // console.log(map.)
+            //             // for (var i in data) {
+            //             //     var latlng = L.latLng({lat: data[i].location_lat, lng: data[i].location_lon});
+            //             //     L.marker(latlng).addTo(map);
+            //             // }
+            setMarkerData(data);
+        })
+        .catch(function(err) {
+            console.log('Fetch Error :-S', err);
+        });
+    return markerData.map((row) => (<Marker
+        key={row.record_id}
+        position={[row.location_lat, row.location_lon]}
+    />));
+}
 
 function MapPage() {
-    const [showPopup, setShowPopup] = useState(false);
-    const onClick = () => {console.log("onclick");setShowPopup(true);}
+    const [showPopup, setShowPopup] = useState(true);
+    const onClick = () => {console.log("onclick");setShowPopup(!showPopup);}
+    
     return (
         <div className='wrapper'>
             <Navbar />
@@ -49,11 +63,13 @@ function MapPage() {
                     <Marker position={[37.87177211344883, -122.25949238073825]} eventHandlers={{ click: onClick }}></Marker>
                     <Marker position={[37.75263747699897, -122.42092369463343]} eventHandlers={{ click: onClick }}></Marker>
                     <Marker position={[37.75000975412356, -122.1452940572979]} eventHandlers={{ click: onClick }}></Marker>
+                    <MarkerDataComponent />
                 </MarkerMuster>
             </MapContainer>
+
             <div className='popup' style={{display: showPopup ? 'block' : 'none'}}>
                 <h3>This is a placeholder div</h3>
-                <p>placeholder text and placeholder for a graph</p>
+                {returnBarGraph(tempData, 300, 350, 'Temp Data Graph')}
                 <img className="logo" src="./logo.png" />
                 <p>I'm bad a JS so if there's a way to open/close this for like an onclick event that might work?</p>
                 {/*https://stackoverflow.com/questions/40901539/arbitrary-function-on-react-leaflet-marker-click*/}
@@ -61,5 +77,14 @@ function MapPage() {
         </div>
     );
 }
+
+// function PopUpContent({contentName, text, image}) {
+//     return (
+//         <div class = "contentName" > 
+//         <h3> {text} </h3>
+//         <img src = {image} />
+//         </div>
+//     )
+// }
 
 export default MapPage;
