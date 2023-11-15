@@ -13,6 +13,12 @@
 
 .navbar h1{
     color: green;
+
+    position: relative;
+    top: -25px;
+    left: 5px;
+
+
 }
 
 .list {
@@ -25,7 +31,7 @@
 }
 
 .list >li {
-    margin-right: 150px;
+    margin-right: 110px;
     display: inline-block;
     color: black;
     font-size: 24px;

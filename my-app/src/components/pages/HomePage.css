@@ -9,12 +9,40 @@ footer{
 
 .hero{
     max-width:100vw;
-    display: block;
-    background-color: rgb(86, 86, 86);
-    height :500px;
+    display: flex;
+    background-color: rgb(29, 29, 61);
+    height :600px;
+    justify-content: center;
+    align-items: center;
 
 
 }
+.hero img{
+    width:50%;
+    height:60%;
+    transition: opacity 0.3s;
+
+}
+
+
+
+#second {
+  opacity: 0; /* Initially hide the second image */
+}
+
+#first:hover {
+  opacity: 0;
+}
+
+#first:hover + #second {
+  opacity: 1; /* Display the second image when hovering over the first */
+}
+
+#second:hover {
+  opacity: 0; /* Hide the second image when hovering over it */
+}
+
+
 .map{
     background-color:rgb(161, 196, 230);
     width: 100vw;

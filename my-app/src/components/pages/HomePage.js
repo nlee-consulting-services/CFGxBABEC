@@ -9,7 +9,10 @@ function HomePage(){
         <div className='wrapper'>
             <Navbar />
             <div className="contentwrapper">
-                <div className ="hero">header section
+                <div className ="hero">
+                    <img id = "first" src = "./hero1.png" alt = "this picture didnt load :(" />
+                    <img id = "second" src = "./hero2.png" alt = "this img failed to load sorry"/>
+
                 </div>
                 <div className="map">
                     <div className = "aboutoverlay" >
