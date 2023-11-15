@@ -31,7 +31,7 @@ const checkValidity = async (
   if (!teacher_id) {
     return {
       status: -2,
-      errmsg: `Teacher with last name ${teacher_last_name} does not exist under institution ${org_name}.`,
+      errmsg: `Teacher with last name ${teacher_last_name} does not exist under institution ${org_name}. If you are certain this is not a mistake, press the "Add Teacher" button and resubmit.`,
     };
   }
 
@@ -50,7 +50,7 @@ const checkValidity = async (
   if (!student_id) {
     return {
       status: -3,
-      errmsg: `Student with initials ${name_initial} does not exist under instructor ${teacher_last_name} at ${org_name}.`,
+      errmsg: `Student with initials ${name_initial} does not exist under instructor ${teacher_last_name} at ${org_name}. If you are certain this is not a mistake, press the "Add Teacher" button and resubmit`,
     };
   }
 
