@@ -3,18 +3,26 @@ import Navbar from "../navbar.js";
 import Footer from "../footer.js";
 import { Link } from "react-router-dom";
 
+import React, { useState } from "react";
+
 
 function HomePage(){
+    const [isHovered, setHovered] = useState(false);
     return (
         <div className='wrapper'>
             <Navbar />
             <div className="contentwrapper">
                 <div className ="hero">
-                    <img id = "first" src = "./hero1.png" alt = "this picture didnt load :(" />
-                    <img id = "second" src = "./hero2.png" alt = "this img failed to load sorry"/>
+                    <img
+                    onMouseEnter={() => setHovered(true)}
+                    onMouseLeave={() => setHovered(false)}
+                    className="hero-image"
+                    src={isHovered ? './hero2.png' : './hero1.png'}
+                    alt="Hero Image" />
 
                 </div>
-                <div className="map">
+                <div className="about">
+                    <img className = "map" src = "./map1.png"/>
                     <div className = "aboutoverlay" >
                         <h1>About the Project</h1>
                         <p>This website is a hub for the Wolbachia PCR Project run by the Bay Area Bioscience Education Committee (BABEC). This project is designed to help high school students learn laboratory skills and help track the spread of Wolbachia, a bacterial infection that affects insects’ reproductive capabilities.</p>

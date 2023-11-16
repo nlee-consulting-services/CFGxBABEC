@@ -17,47 +17,41 @@ footer{
 
 
 }
+
 .hero img{
-    width:50%;
-    height:60%;
-    transition: opacity 0.3s;
-
+  width:400px;
+  margin:0;
+  padding:0;
 }
 
 
 
-#second {
-  opacity: 0; /* Initially hide the second image */
+
+
+.about{
+  margin:0;
+  padding: 0;
+  height:500px;
 }
-
-#first:hover {
-  opacity: 0;
-}
-
-#first:hover + #second {
-  opacity: 1; /* Display the second image when hovering over the first */
-}
-
-#second:hover {
-  opacity: 0; /* Hide the second image when hovering over it */
-}
-
-
 .map{
-    background-color:rgb(161, 196, 230);
     width: 100vw;
     height: 500px;
     margin: 0;
     display: inline-block;
+    padding: 0;
   
 }
 
 .aboutoverlay{
     width: 500px;
-    height:470px;
-    background-color: rgba(255, 255, 255, 0.401);
-    margin-top: 0px;
-    padding: 25px;
+    height:500px;
+    background-color: rgba(255, 255, 255, 0.5);
+    box-sizing: border-box;
+    top: 600px;
+    padding: 35px;
+    position: absolute;
+    margin: 0;
+
 
 
 }
@@ -65,6 +59,8 @@ footer{
 .aboutoverlay h1 {
     margin-top: 0; /* Reset the top margin for the <h1> element */
     font-size: 50px;
+    font-family: inter, sans-serif;
+
   }
 
   p {
@@ -76,7 +72,8 @@ footer{
     background-color: #ffffff;
     display: inline-block;
 
-    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 
   }
 
@@ -90,7 +87,7 @@ footer{
     background-color: #707AAB;
     display: inline-block;
     height:500px;
-    
+    box-sizing: border-box;
   }
 
 .involvement h1{

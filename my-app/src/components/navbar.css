@@ -3,12 +3,17 @@
     position: fixed;
     width: 100%;
     background-color: white;
+    z-index: 1;
+    height: 60px;
 }
 
 .logo{
-    max-height: 70px;
-    padding-left: 25px;
-    padding-right: 50px;
+    max-height: 50px;
+    position: relative;
+    top:-20px;
+    margin-left: 10px;
+    margin-right: 50px;
+
 }
 
 .navbar h1{
@@ -36,12 +41,13 @@
     color: black;
     font-size: 24px;
     text-decoration: none;
-    justify-content: flex-end; 
+
 }
 
 .item {
-    margin-right: 150px;
+
     align-items: center; /* Vertically center items */
+
 }
 
 .navbar a:visited{
