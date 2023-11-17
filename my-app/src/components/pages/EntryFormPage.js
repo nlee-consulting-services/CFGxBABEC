@@ -145,7 +145,7 @@ function EntryForm() {
                       "data-id"
                     )
                   );
-                  setOrgName(e.target.options[e.target.selectedIndex].name);
+                  setOrgName(e.target.options[e.target.selectedIndex].value);
                 }}
               >
                 {orgs &&
