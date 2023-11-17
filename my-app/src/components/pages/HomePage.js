@@ -13,6 +13,7 @@ function HomePage(){
             <Navbar />
             <div className="contentwrapper">
                 <div className ="hero">
+                    <h1>Wolbachia Tracking</h1>
                     <img
                     onMouseEnter={() => setHovered(true)}
                     onMouseLeave={() => setHovered(false)}
