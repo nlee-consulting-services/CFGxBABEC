@@ -1,5 +1,6 @@
 import "./HomePage.css";
 import Navbar from "../navbar.js";
+import Footer from "../footer.js";
 import axios from "axios";
 import {
   recordEndpoint,
@@ -152,6 +153,7 @@ function EntryForm() {
           <input type="submit" value="Submit" />
         </form>
       </div>
+      <Footer />
     </div>
   );
 }

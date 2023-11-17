@@ -21,6 +21,7 @@ function About(){
                 <div class="rectangle" id="rectbabec"></div>
                 <div class="rectangle" id="rectcfg"></div>
             </div>
+            <Footer />
         </div>
     )
 
