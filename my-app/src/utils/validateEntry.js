@@ -1,4 +1,5 @@
 import { studentEndpoint, teacherEndpoint } from "./endpoints";
+import axios from "axios";
 
 // stautus -1: error in entry --> user needs to fix entry
 // status -2: teacher does not exist in org --> prompt if wants to add teacher
