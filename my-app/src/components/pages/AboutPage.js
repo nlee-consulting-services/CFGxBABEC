@@ -18,7 +18,10 @@ function About(){
                     <p>Learn more about BABEC <a href='https://babec.org/'>here.</a></p>
                     <p>View the curriculum for this project <a href="https://babec.org/curricula/wolbachia-pcr-discover-the-microbes-within/">here.</a></p>
                 </div>
+                <div class="rectangle" id="rectbabec"></div>
+                <div class="rectangle" id="rectcfg"></div>
             </div>
+            <Footer />
         </div>
     )
 

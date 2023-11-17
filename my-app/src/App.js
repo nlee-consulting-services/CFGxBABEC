@@ -8,6 +8,7 @@ import Home from "./components/pages/HomePage";
 import About from "./components/pages/AboutPage";
 import MapPage from "./components/pages/MapPage";
 import EntryForm from "./components/pages/EntryFormPage";
+import Graphs from "./components/pages/Graphs";
 import navbar from "./components/navbar";
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
           <Route path="/about" Component={About} />
           <Route path="/map" Component={MapPage} />
           <Route path="/entryform" Component={EntryForm} />
+          <Route path="/data" Component={Graphs} />
         </Routes>
       </BrowserRouter>
     </div>

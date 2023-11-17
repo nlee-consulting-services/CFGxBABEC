@@ -1,5 +1,6 @@
 import "./HomePage.css";
 import Navbar from "../navbar.js";
+import Footer from "../footer.js";
 import axios from "axios";
 import {
   recordEndpoint,
@@ -295,6 +296,7 @@ function EntryForm() {
             />
           </form>
         </div>
+        <Footer />
       </div>
       {/* Modal 1: form entry successfully submitted */}
       <Modal
