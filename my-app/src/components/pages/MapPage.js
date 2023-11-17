@@ -3,7 +3,7 @@ import './MapPage.css'
 import Navbar from "../navbar.js";
 import { MapContainer, Marker, Popup, TileLayer, useMap } from 'react-leaflet'
 import { MarkerMuster } from 'react-leaflet-muster';
-import L from 'leaflet';
+import L, { marker, map } from 'leaflet';
 import {returnBarGraph, tempData} from './GraphDataGen'
 import {useState} from "react";
 import Footer from "../footer.js";
@@ -48,8 +48,19 @@ function MarkerDataComponent() {
 
 function MapPage() {
     const [showPopup, setShowPopup] = useState(true);
-    const onClick = () => {console.log("onclick");setShowPopup(!showPopup);}
+
+    // we would be centering our map and updatign icon color based with the onClick function right ? think we need to pass in marker referencne 
+    // so we can setView() for centering map based on the lat/long for it 
+    const onClick = () => {
+        console.log("onclick");setShowPopup(!showPopup);
+        // map.setView -> function for centering
+        // if (showPopup){
+        //     Marker.Icon(
+        //         {iconUrl: './logo.png'})
+        //     }
+        }
     
+
     return (
         <div className='wrapper'>
             <Navbar />
