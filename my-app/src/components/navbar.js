@@ -5,22 +5,20 @@ import"./navbar.css";
 const Navbar = () => {    
     return (
         <nav className='navbar'>
+            <img className = "logo" src="./logo.png"/>
+            <h1>Wolbachia Map</h1>
             <ul className='list'>
-                <img className = "logo" src="./logo.png"/>
                 <li>
-                    <h1>Wolbachia Map</h1>
+                    <Link to="/">Home</Link>
                 </li>
                 <li>
-                    <Link className = "item" to="/">Home</Link>
+                    <Link to="/about">About</Link>
                 </li>
                 <li>
-                    <Link className = "item" to="/about">About</Link>
+                    <Link to="/map">Map</Link>
                 </li>
                 <li>
-                    <Link className = "item" to="/map">Map</Link>
-                </li>
-                <li>
-                    <Link className = "item" to="/entryform">Entry Form</Link>
+                    <Link to="/entryform">Entry Form</Link>
                 </li>
             </ul>
         </nav>
