@@ -3,6 +3,7 @@
     position: fixed;
     width: 100%;
     background-color: white;
+    z-index: 100;
     display: flex;
     align-items: center;
     justify-content: space-between; /* Changed to space-between for better spacing */
@@ -11,14 +12,14 @@
 }
 
 .logo {
-    max-height: 70px;
+    max-height: 55px;
     margin-right: 30px;
     flex-shrink: 0; /* Prevents the logo from shrinking */
 }
 
 .navbar h1 {
     color: green;
-    font-weight: bold;
+font-weight: bold;
     margin-right: auto; /* Ensures h1 pushes other elements to the right */
     white-space: nowrap; /* Prevents the text from wrapping */
 }
