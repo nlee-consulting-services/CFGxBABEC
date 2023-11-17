@@ -15,6 +15,7 @@ import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 
 function EntryForm() {
+  // useState declarations
   const [entry, setEntry] = useState({});
   const [orders, setOrders] = useState([]);
   const [orgs, setOrgs] = useState([]);
@@ -32,19 +33,22 @@ function EntryForm() {
     msg: "",
   });
   const [successModal, setSuccessModal] = useState({ status: false, msg: "" });
+
+  // initial API call to get data for dropdown
   useEffect(() => {
     axios({ method: "get", url: orderEndpoint }).then((res) => {
-      console.log(res.data);
       setOrders(res.data);
     });
   }, []);
   useEffect(() => {
     axios({ method: "get", url: orgEndpoint }).then((res) => {
-      console.log(res.data);
       setOrgs(res.data);
     });
   }, []);
-  const handleSubmit = (
+
+  // function activated when submit button is pressed
+  // validates data --> post API if valid, request action if invalid
+  const handleSubmit = async (
     e,
     entry,
     name_initial,
@@ -53,7 +57,7 @@ function EntryForm() {
     org_name
   ) => {
     e.preventDefault();
-    const [status, errmsg] = checkValidity(
+    const { status, errmsg } = await checkValidity(
       entry,
       name_initial,
       teacher_last_name,
@@ -63,25 +67,51 @@ function EntryForm() {
     switch (status) {
       case 1:
         console.log("good entry!");
-      // send, await api call
+        // send, await api call
+        break;
       case -1:
         console.log(`bad entry: ${errmsg}`);
         setErrorModal({ status: true, msg: errmsg });
+        break;
       case -2:
         console.log(`bad entry: ${errmsg}`);
         setAddTeacherModal({ status: true, msg: errmsg });
+        break;
       case -3:
         console.log(`bad entry: ${errmsg}`);
         setAddStudentModal({ status: true, msg: errmsg });
+        break;
     }
   };
+
+  // POST teachers
+  const addTeacher = async (teacher_last_name, org_id) => {
+    axios({
+      method: "post",
+      url: teacherEndpoint,
+      data: { teacher_last_name: teacher_last_name, org_id: org_id },
+    })
+      .then(() => {
+        setAddTeacherModal({ status: false, msg: "" });
+        setSuccessModal({ status: true, msg: "Teacher successfully added!" });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  // POST student
+
+  // POST record
+  // Your entry has been successfully added. Thank you for your submission!
+
   return (
     <>
       <div className="wrapper">
         <Navbar />
         <div className="entryform-wrapper">
           <h1>Entry Form</h1>
-          <form action="/action_page.php">
+          <form>
             <div className="student-data">
               <h2>Student Data</h2>
               <label htmlFor="initials">Initials(e.g. John Doe → JD):</label>
@@ -105,10 +135,30 @@ function EntryForm() {
               />
               <br />
               <label htmlFor="orgname">Organization name:</label> <br />
-              <select name="orgname" id="orgname">
+              <select
+                name="orgname"
+                id="orgname"
+                onChange={(e) => {
+                  e.preventDefault();
+                  setOrgId(
+                    e.target.options[e.target.selectedIndex].getAttribute(
+                      "data-id"
+                    )
+                  );
+                  setOrgName(e.target.options[e.target.selectedIndex].name);
+                }}
+              >
                 {orgs &&
                   orgs.map((v) => {
-                    return <option key={v.org_id}>{v.org_name}</option>;
+                    return (
+                      <option
+                        key={v.org_id}
+                        value={v.org_name}
+                        data-id={v.org_id}
+                      >
+                        {v.org_name}
+                      </option>
+                    );
                   })}
               </select>
               <br />
@@ -123,8 +173,10 @@ function EntryForm() {
                 name="ordername"
                 id="ordername"
                 onChange={(e) => {
-                  setOrgId(e.target.getAttribute("data-id"));
-                  setOrgName(e.target.name);
+                  setEntry({
+                    ...entry,
+                    order_id: e.target.getAttribute("data-id"),
+                  });
                 }}
               >
                 {orders &&
@@ -279,10 +331,8 @@ function EntryForm() {
             </div>
 
             <br />
-            <input
-              type="submit"
-              value="Submit"
-              onSubmit={(e) => {
+            <div
+              onClick={(e) => {
                 e.preventDefault();
                 handleSubmit(
                   e,
@@ -293,7 +343,9 @@ function EntryForm() {
                   org_name
                 );
               }}
-            />
+            >
+              Submit
+            </div>
           </form>
         </div>
         <Footer />
@@ -308,9 +360,7 @@ function EntryForm() {
         <Modal.Header closeButton>
           <Modal.Title>Submission Successful!</Modal.Title>
         </Modal.Header>
-        <Modal.Body>
-          Your entry has been successfully added. Thank you for your submission!
-        </Modal.Body>
+        <Modal.Body>{successModal.msg}</Modal.Body>
         <Modal.Footer>
           <Button
             variant="primary"
@@ -383,7 +433,13 @@ function EntryForm() {
         <Modal.Body>{addStudentModal.msg}</Modal.Body>
         <Modal.Footer>
           {/* TODO: add teacher function */}
-          <Button variant="danger" onClick={() => {}}>
+          <Button
+            variant="danger"
+            onClick={(e) => {
+              e.preventDefault();
+              addTeacher(teacher_last_name, org_id);
+            }}
+          >
             Add Student
           </Button>
           <Button
