@@ -1,12 +1,17 @@
 import "./AboutPage.css";
 import Navbar from "../navbar.js";
 import Footer from "../footer.js";
+import coverImage from '../images/cover_about.png';
+
+
+
+
 
 function About() {
     return (
         <div className='wrapper'>
             <Navbar />
-            <div className="page-header">
+            <div className="page-header" style={{ backgroundImage: `url(${coverImage})` }}>
                 <h1 className="page-title">About Us</h1>
             </div>
             <div className="content">
