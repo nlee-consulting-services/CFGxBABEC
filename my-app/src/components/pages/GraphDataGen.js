@@ -18,43 +18,57 @@ function returnBarGraph(data, height, width, title){
     </Plot> 
 }
 
-async function returnGroupedBarGraph(data, height, width, title){
-    const groupedData = await data();
-    const x_vals = [];
-    // Object.keys(groupedData);
+async function returnGroupedBarGraph(data, height, width, margin, title){
+    var groupedData = await data();
+    const x_vals = Object.keys(groupedData);
     const yes = [];
     const no = [];
     const inc = [];
-    for (value in groupedData){
-        console.log("yooooo", value);
+    for (const [key, value] of Object.entries(groupedData)){
+        // x_vals.push(key)
         yes.push(value[0]);
         no.push(value[1]);
         inc.push(value[2]);
     }
-
     return <Plot id='temp' 
     data = {
         [
             {
-                x:{x_vals},
-                y:{yes},
-                name: 'Yes',
+                x:x_vals,
+                y:yes,
                 type:'bar', 
+                name:'Present',
+                maker: {color:'red'}
+            },
+            {
+                x:x_vals,
+                y:no,
+                type:'bar', 
+                name:'Not Present',
+                maker: {color:'red'}
+            },
+            {
+                x:x_vals,
+                y:inc,
+                type:'bar', 
+                name:'Inconclusive',
                 maker: {color:'red'}
             }
         ]
     }
-    layout = {{barmode:'group', width:width, height:height, title:title}}>
+    layout = {{margin:margin, barmode:'grouped', width:width, height:height, title:title}}>
 
     </Plot> 
 }
+
 function tempData(){
     return [[1,2,3], [4,5,6]];
 }
 
 async function wolbachiaPerInsectData(){
-    const values = await useRecords();
+    var values = await useRecords();
     var wolb_presences = {}; 
+
     for (var index in values){
         const order_name = values[index].order_name;
         const wolbachia_presence = values[index].wolbachia_presence;
@@ -76,13 +90,13 @@ async function wolbachiaPerInsectData(){
 
 async function useRecords() {
     const response = await fetch('https://cfgxbabec.onrender.com/records', {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json',
-        }
-    });
-    const values = await response.json();
-    return values;
+                            method: 'GET',
+                            headers: {
+                                'Content-Type': 'application/json',
+                            }
+                        }
+                    )
+    return response.json();
 }
 
 export {returnBarGraph, returnGroupedBarGraph, tempData, wolbachiaPerInsectData}
