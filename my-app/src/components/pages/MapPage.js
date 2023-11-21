@@ -4,8 +4,8 @@ import Navbar from "../navbar.js";
 import { MapContainer, Marker, Popup, TileLayer, useMap } from 'react-leaflet'
 import { MarkerMuster } from 'react-leaflet-muster';
 import L from 'leaflet';
-import {returnBarGraph, tempData, returnGroupedBarGraph, wolbachiaPerInsectData} from './GraphDataGen'
-import {useEffect, useState} from "react";
+import {returnBarGraph, tempData} from './GraphDataGen'
+import {useState} from "react";
 
 delete L.Icon.Default.prototype._getIconUrl;
 
@@ -48,20 +48,6 @@ function MarkerDataComponent() {
 function MapPage() {
     const [showPopup, setShowPopup] = useState(true);
     const onClick = () => {console.log("onclick");setShowPopup(!showPopup);}
-
-    const [groupedGraph, setData] = useState(null);
-    useEffect(() => {
-        const getGraph = async () => {
-            try{
-                const result = await returnGroupedBarGraph(wolbachiaPerInsectData, 300, 350,{l: 20,r: 20,b: 50,t: 100,pad: 5}, 'Wolbachia Presence');
-                setData(result);
-            } catch(error) {
-                console.error('Error fetching data:', error);
-            }
-        }
-        getGraph();
-        }, []
-    );
     
     return (
         <div className='wrapper'>
@@ -83,13 +69,7 @@ function MapPage() {
 
             <div className='popup' style={{display: showPopup ? 'block' : 'none'}}>
                 <h3>This is a placeholder div</h3>
-                {groupedGraph ? (
-                // Render using the fetched data
-                <p>{groupedGraph}</p>
-            ) : (
-                // Loading while waiting for data
-                <p>Loading...</p>
-            )}
+                {returnBarGraph(tempData, 300, 350, 'Temp Data Graph')}
                 <img className="logo" src="./logo.png" />
                 <p>I'm bad a JS so if there's a way to open/close this for like an onclick event that might work?</p>
                 {/*https://stackoverflow.com/questions/40901539/arbitrary-function-on-react-leaflet-marker-click*/}
