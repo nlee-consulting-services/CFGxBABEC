@@ -52,29 +52,33 @@ function MapPage() {
     
     return (
         <div className='wrapper'>
-            <Navbar />
-            <h1> Map </h1>
-            <MapContainer className="mainMap" center={[37.8017, -122.3394]} zoom={11} scrollWheelZoom={false}>
-                <TileLayer
-                    attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                />
-                <MarkerMuster>
-                    <Marker position={[37.86248870618779, -122.37885512075702]} eventHandlers={{ click: onClick }}></Marker>
-                    <Marker position={[37.87177211344883, -122.25949238073825]} eventHandlers={{ click: onClick }}></Marker>
-                    <Marker position={[37.75263747699897, -122.42092369463343]} eventHandlers={{ click: onClick }}></Marker>
-                    <Marker position={[37.75000975412356, -122.1452940572979]} eventHandlers={{ click: onClick }}></Marker>
-                    <MarkerDataComponent />
-                </MarkerMuster>
-            </MapContainer>
-
-            <div className='popup' style={{display: showPopup ? 'block' : 'none'}}>
-                <h3>This is a placeholder div</h3>
-                {returnBarGraph(tempData, 300, 350, 'Temp Data Graph')}
-                <img className="logo" src="./logo.png" />
-                <p>I'm bad a JS so if there's a way to open/close this for like an onclick event that might work?</p>
-                {/*https://stackoverflow.com/questions/40901539/arbitrary-function-on-react-leaflet-marker-click*/}
-            </div>
+            <Navbar/>  
+            <div className = "mapdiv">
+                <h1> Map </h1>
+                <MapContainer className="mainMap" center={[37.8017, -122.3394]} zoom={11} scrollWheelZoom={false}>
+                    <TileLayer
+                        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                    />
+                    <MarkerMuster>
+                        <Marker position={[37.86248870618779, -122.37885512075702]} eventHandlers={{ click: onClick }}></Marker>
+                        <Marker position={[37.87177211344883, -122.25949238073825]} eventHandlers={{ click: onClick }}></Marker>
+                        <Marker position={[37.75263747699897, -122.42092369463343]} eventHandlers={{ click: onClick }}></Marker>
+                        <Marker position={[37.75000975412356, -122.1452940572979]} eventHandlers={{ click: onClick }}></Marker>
+                        <MarkerDataComponent />
+                    </MarkerMuster>
+                </MapContainer>
+                
+                <div className='popup' style={{display: showPopup ? 'block' : 'none'}}>
+                    <h3>This is a placeholder div</h3>
+                    {returnBarGraph(tempData, 300, 350, 'Temp Data Graph')}
+                    <img className="logo" src="./logo.png" />
+                    <p>I'm bad a JS so if there's a way to open/close this for like an onclick event that might work?</p>
+                    {/*https://stackoverflow.com/questions/40901539/arbitrary-function-on-react-leaflet-marker-click*/}
+                </div>
+            </div>   
+             <Footer/>
+            
             {/*<Footer /> this breaks for some reason probably bc the map is fixed, will deal with later.*/}
         </div>
     );
