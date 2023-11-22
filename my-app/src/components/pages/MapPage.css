@@ -42,7 +42,7 @@
     z-index: 3;
 }
 
-footer {
+.divfooter footer {
     position: relative;
     top: 700px;
     z-index: 2;

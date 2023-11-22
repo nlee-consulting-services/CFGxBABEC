@@ -30,10 +30,17 @@
 
 
 .content {
-    margin-top: 50px;
+   /* margin-top: 50px;
     text-align:left;
     margin-left: 100px;
-    margin-right: 100px;
+    margin-right: 100px;*/
+    background: rgb(224, 251, 222);
+    background: linear-gradient(360deg, rgb(245, 255, 245) 0%, rgb(173, 252, 163) 100%);
+}
+
+.about_text {  
+    text-align:left;    
+    padding: 50px;
 }
 
 .get-involved {
@@ -47,6 +54,7 @@
     display: flex;
     gap: 40px; 
     margin-bottom: 20px;
+    padding: 50px;
 }
 
 .rectangle p {
@@ -56,9 +64,10 @@
 
 .rectangle {
     flex-basis: calc(50% - 10px); 
-    max-width: calc(50% - 10px); 
+    max-width: calc(50% - 10px);
+    width: 50%;
     height: 480px;
-    padding: 20px;
+    padding: 50px;
     background-color: #f0f0f0; 
     border-radius: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.9); 
@@ -73,13 +82,47 @@
     margin-top: 0;
 }
 
-#rectbabec {
-    background-color: green;
+footer {
+    position: absolute;
+    top: 1855px;
+    width: 100%;
 }
+
+.babeclogo{
+    max-width: 250px;
+    max-height: 100px;
+    float: left;
+    vertical-align: bottom;
+}
+
+.cfgbanner {
+    position: relative;
+    max-width: 400px;
+    max-height: 100px;
+    float: left;
+    vertical-align: bottom;
+    right: -180px;
+}
+
+
+#rectbabec {
+    background-color: rgb(56, 163, 56);
+    transition: 0.5s;
+}
+
+#rectbabec:hover {
+    transform: scale(1.05); 
+}
+
 
 #rectcfg {
     background-color: black;
     color: white;
+    transition: 0.5s;
+}
+
+#rectcfg:hover {
+    transform: scale(1.05); 
 }
 
 
@@ -89,3 +132,20 @@
         max-width: 100%; 
     }
 }
+
+p {
+    font-size: 20px;
+}
+
+
+.reveal{
+    position: relative;
+    transform: translateY(150px);
+    opacity: 0;
+    transition: 1s all ease;
+  }
+  
+  .reveal.active{
+    transform: translateY(0);
+    opacity: 1;
+  }

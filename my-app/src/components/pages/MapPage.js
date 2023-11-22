@@ -87,8 +87,11 @@ function MapPage() {
                     <p>I'm bad a JS so if there's a way to open/close this for like an onclick event that might work?</p>
                     {/*https://stackoverflow.com/questions/40901539/arbitrary-function-on-react-leaflet-marker-click*/}
                 </div>
-            </div>   
-             <Footer/>
+            </div>  
+            <div className='divfooter'>
+                <Footer/>
+            </div> 
+             
             
             {/*<Footer /> this breaks for some reason probably bc the map is fixed, will deal with later.*/}
         </div>
