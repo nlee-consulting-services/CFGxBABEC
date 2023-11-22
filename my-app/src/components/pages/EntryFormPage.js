@@ -1,4 +1,4 @@
-import "./HomePage.css";
+import "./EntryFormPage.css";
 import Navbar from "../navbar.js";
 import Footer from "../footer.js";
 import axios from "axios";
