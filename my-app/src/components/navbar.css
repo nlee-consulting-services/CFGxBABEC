@@ -3,16 +3,25 @@
     position: fixed;
     width: 100%;
     background-color: white;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Changed to space-between for better spacing */
+    flex-flow: row wrap;
+    padding: 0 10px; /* Added padding for small screens */
 }
 
-.logo{
-    max-height: 70px;
-    padding-left: 25px;
-    padding-right: 50px;
+.logo {
+    max-height: 55px;
+    margin-right: 30px;
+    flex-shrink: 0; /* Prevents the logo from shrinking */
 }
 
-.navbar h1{
+.navbar h1 {
     color: green;
+    font-weight: bold;
+    margin-right: auto; /* Ensures h1 pushes other elements to the right */
+    white-space: nowrap; /* Prevents the text from wrapping */
 }
 
 .list {
@@ -20,22 +29,17 @@
     padding: 0;
     margin: 0;
     display: flex;
-    align-items: center; /* Vertically center items */
-    justify-content: flex-start; /* Horizontally align items to the right */
+    flex-wrap: wrap; /* Allows list items to wrap */
+    gap: 10px; /* Adjusts gap for small screens */
+    font-weight: bold;
 }
 
-.list >li {
-    margin-right: 150px;
-    display: inline-block;
+.list > li {
+    margin-right: 5vw;
+    display: flex;
     color: black;
-    font-size: 24px;
+    font-size: 1.5em;
     text-decoration: none;
-    justify-content: flex-end; 
-}
-
-.item {
-    margin-right: 150px;
-    align-items: center; /* Vertically center items */
 }
 
 .navbar a:visited{
@@ -51,4 +55,96 @@
     text-decoration: underline;
     color: green;
     /*probably make this like a color changing box or smth instead of this for navbar*/
+}
+
+.dropdown-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 900px) {
+    .navbar h1 {
+        color: green;
+        font-weight: bold;
+        white-space: nowrap; 
+    }
+
+    .dropdown-toggle {
+        display: block;
+        margin-right: 10px;
+    }
+
+    .list {
+        display: none;
+        position: absolute;
+        z-index: 0;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: white;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        flex-direction: column;
+        align-items: start;
+        padding-left: 20px;
+    }
+
+    .list.show {
+        display: flex;
+    }
+
+    .list > li {
+        margin: 10px 0;
+    }
+
+    /* Responsive adjustments for smaller screens */
+    @media (max-width: 768px) {
+        .list > li {
+            margin-right: 0; /* Remove margin right */
+            font-size: 1.2em; /* Smaller font size for list items */
+        }
+    }
+
+    /* Adjustments for very small screens */
+    @media (max-width: 480px) {
+        .logo {
+            max-height: 70px;
+            margin-right: 5px;
+            flex-shrink: 0; /* Prevents the logo from shrinking */
+        }
+
+        .navbar h1 {
+            color: green;
+            font-weight: bold;
+            margin-right: 5px; /* Ensures h1 pushes other elements to the right */
+            white-space: nowrap; /* Prevents the text from wrapping */
+        }
+
+        .list > li {
+            font-size: 1em; /* Even smaller font size for list items */
+        }
+    }
+
+    /* Adjustments for very small screens */
+    @media (max-width: 395px) {
+        .logo {
+            max-height: 70px;
+            margin-right: 1px;
+            flex-shrink: 1; /* Prevents the logo from shrinking */
+        }
+
+        .navbar h1 {
+            color: green;
+            font-weight: bold;
+            margin-right: 1px; /* Ensures h1 pushes other elements to the right */
+            white-space: nowrap; /* Prevents the text from wrapping */
+            flex-shrink: 1;
+        }
+
+        .list > li {
+            font-size: 1em; /* Even smaller font size for list items */
+        }
+    }
 }
