@@ -149,11 +149,11 @@ function EntryForm() {
                   setOrgName(e.target.options[e.target.selectedIndex].value);
                 }}
               >
-                {orgs ? (
-                  <option>Please Select an Organisation...</option>
-                ) : (
-                  <option>Loading Organisations...</option>
-                )}
+                <option value={undefined} data-id={undefined}>
+                  {orgs
+                    ? "Please Select an Organisation..."
+                    : "Loading Organisation"}
+                </option>
                 {orgs &&
                   orgs.map((v) => {
                     return (
@@ -188,11 +188,9 @@ function EntryForm() {
                   });
                 }}
               >
-                {orders ? (
-                  <option>Please Select an Order</option>
-                ) : (
-                  <option>Loading Orders...</option>
-                )}
+                <option value={undefined} data-id={undefined}>
+                  {orgs ? "Please Select an Order..." : "Loading Order"}
+                </option>
                 {orders &&
                   orders.map((v) => {
                     return (
