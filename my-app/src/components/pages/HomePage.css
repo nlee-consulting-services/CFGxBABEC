@@ -80,27 +80,17 @@ footer{
     font-size: 24px;
     font-family: "Open Sans", sans-serif;
   }
-  .engagement{
-    height: 700px;
-    width: 100vw;
-    background-color: #707AAB;
-    display: flex;
-    color:#ffffff;
-    margin: 0;
-    padding: 0;
-    align-items: center;
-  }
-
 
 
   .involvement{
+    background-color: #707AAB;
     position: relative;
     padding: 50px;
     display: flex;
-
     height:500px;
     box-sizing: border-box;
-    margin-left: 50px;
+    color: white;
+
 
   }
 
@@ -114,7 +104,7 @@ footer{
   display: flex;
   justify-content: space-around;
   width: 100%;
-  margin-top: 5%;
+  align-items:center;
 
 }
 
