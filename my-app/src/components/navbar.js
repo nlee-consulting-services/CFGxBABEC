@@ -18,13 +18,14 @@ const Navbar = () => {
 
     return (
         <nav className='navbar'>
-            <img 
+            <Link to="/" onClick={toggleDropdown}>
+                <img 
                 className="logo" 
                 src="./logo.png" 
                 alt="Logo" 
-                onClick={handleClick}
-            />
-            <h1>Wolbachia Map</h1>
+                onClick={handleClick}/>
+            </Link>
+            <h1><Link to="/" onClick={toggleDropdown} style={{color:'green'}}>Wolbachia Tracker</Link></h1>
             <button className="dropdown-toggle" onClick={toggleDropdown}>
                 ☰
             </button>
