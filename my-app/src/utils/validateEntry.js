@@ -17,6 +17,16 @@ const checkValidity = async (
     return { status: -1, errmsg: "Please select a valid organization" };
   }
 
+  //check existence of teacher
+  if (!teacher_last_name) {
+    return { status: -1, errmsg: "Please enter your teacher's last name" };
+  }
+
+  //check existence of student initial
+  if (!name_initial) {
+    return { status: -1, errmsg: "Please enter your initials" };
+  }
+
   // check if the teacher exists in the given organization
   const teacherList = await axios({
     method: "get",
@@ -32,7 +42,7 @@ const checkValidity = async (
   if (!teacher_id) {
     return {
       status: -2,
-      errmsg: `Teacher with last name ${teacher_last_name} does not exist under institution ${org_name}. If you are certain this is not a mistake, press the "Add Teacher" button and resubmit.`,
+      errmsg: `Teacher with last name "${teacher_last_name}" does not exist under institution "${org_name}". If you are certain this is not a mistake, press the "Add Teacher" button and resubmit.`,
     };
   }
 
@@ -51,17 +61,23 @@ const checkValidity = async (
   if (!student_id) {
     return {
       status: -3,
-      errmsg: `Student with initials ${name_initial} does not exist under instructor ${teacher_last_name} at ${org_name}. If you are certain this is not a mistake, press the "Add Teacher" button and resubmit`,
+      errmsg: `Student with initials "${name_initial}" does not exist under instructor "${teacher_last_name}" at "${org_name}." If you are certain this is not a mistake, press the "Add Student" button and resubmit`,
     };
   }
 
   // check if longtitude is within range
   if (entry.location_lon < -180 || entry.location_lon > 180) {
-    return { status: -1, errmsg: "Please provide a valid longitude" };
+    return {
+      status: -1,
+      errmsg: "Please provide a valid longitude (range: -180<x<180)",
+    };
   }
   // check if latitude is within range
   if (entry.location_lat < -90 || entry.location_lat > 90) {
-    return { status: -1, errmsg: "Please provide a valid latitude" };
+    return {
+      status: -1,
+      errmsg: "Please provide a valid latitude (range: -90<x<90)",
+    };
   }
 };
 const addTeacher = () => {};

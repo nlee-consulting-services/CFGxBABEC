@@ -470,7 +470,7 @@ function EntryForm() {
         </Modal.Header>
         <Modal.Body>{addStudentModal.msg}</Modal.Body>
         <Modal.Footer>
-          {/* TODO: add teacher function */}
+          {/* TODO: add student function */}
           <Button
             variant="danger"
             onClick={(e) => {
