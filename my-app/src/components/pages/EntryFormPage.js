@@ -33,6 +33,7 @@ function EntryForm() {
     msg: "",
   });
   const [successModal, setSuccessModal] = useState({ status: false, msg: "" });
+  console.log(entry);
 
   // initial API call to get data for dropdown
   useEffect(() => {
@@ -148,6 +149,11 @@ function EntryForm() {
                   setOrgName(e.target.options[e.target.selectedIndex].value);
                 }}
               >
+                {orgs ? (
+                  <option>Please Select an Organisation...</option>
+                ) : (
+                  <option>Loading Organisations...</option>
+                )}
                 {orgs &&
                   orgs.map((v) => {
                     return (
@@ -175,10 +181,18 @@ function EntryForm() {
                 onChange={(e) => {
                   setEntry({
                     ...entry,
-                    order_id: e.target.getAttribute("data-id"),
+                    order_id:
+                      e.target.options[e.target.selectedIndex].getAttribute(
+                        "data-id"
+                      ),
                   });
                 }}
               >
+                {orders ? (
+                  <option>Please Select an Order</option>
+                ) : (
+                  <option>Loading Orders...</option>
+                )}
                 {orders &&
                   orders.map((v) => {
                     return (
@@ -246,7 +260,11 @@ function EntryForm() {
                 id="presence-of-wolbachia"
                 onChange={(e) => {
                   e.preventDefault();
-                  setEntry({ ...entry, wolbachia_presence: e.target.value });
+                  setEntry({
+                    ...entry,
+                    wolbachia_presence:
+                      e.target.options[e.target.selectedIndex].value,
+                  });
                 }}
               >
                 <option value="Yes">Yes</option>
@@ -260,11 +278,15 @@ function EntryForm() {
                 id="presence-of-wolbachia"
                 onChange={(e) => {
                   e.preventDefault();
-                  setEntry({ ...entry, confidence_level: e.target.value });
+                  setEntry({
+                    ...entry,
+                    confidence_level:
+                      e.target.options[e.target.selectedIndex].vlue,
+                  });
                 }}
               >
-                <option>High</option>
-                <option>Low</option>
+                <option value="High">High</option>
+                <option value="Low">Low</option>
               </select>
               <br />
               <label htmlFor="explanantion-of-confidence-level">
