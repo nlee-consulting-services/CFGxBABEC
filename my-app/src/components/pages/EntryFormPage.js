@@ -149,7 +149,11 @@ function EntryForm() {
                   setOrgName(e.target.options[e.target.selectedIndex].value);
                 }}
               >
-                <option value={undefined} data-id={undefined}>
+                <option
+                  value={undefined}
+                  data-id={undefined}
+                  className="void-option"
+                >
                   {orgs
                     ? "Please Select an Organisation..."
                     : "Loading Organisation"}
@@ -188,7 +192,11 @@ function EntryForm() {
                   });
                 }}
               >
-                <option value={undefined} data-id={undefined}>
+                <option
+                  value={undefined}
+                  data-id={undefined}
+                  className="void-option"
+                >
                   {orgs ? "Please Select an Order..." : "Loading Order"}
                 </option>
                 {orders &&
@@ -223,6 +231,10 @@ function EntryForm() {
                 type="text"
                 id="insect-description"
                 name="insect-description"
+                onChange={(e) => {
+                  e.preventDefault();
+                  setEntry({ ...entry, insect_description: e.target.value });
+                }}
               />
               <br />
               <label htmlFor="date-of-collection">Date of Collection:</label>
@@ -265,6 +277,9 @@ function EntryForm() {
                   });
                 }}
               >
+                <option value={undefined} className="void-option">
+                  Please select an option...
+                </option>
                 <option value="Yes">Yes</option>
                 <option value="No">No</option>
                 <option value="Inconclusive">Inconclusive</option>
@@ -279,10 +294,13 @@ function EntryForm() {
                   setEntry({
                     ...entry,
                     confidence_level:
-                      e.target.options[e.target.selectedIndex].vlue,
+                      e.target.options[e.target.selectedIndex].value,
                   });
                 }}
               >
+                <option value={undefined} className="void-option">
+                  Please select an option...
+                </option>
                 <option value="High">High</option>
                 <option value="Low">Low</option>
               </select>
