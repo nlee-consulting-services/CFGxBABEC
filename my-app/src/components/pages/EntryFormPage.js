@@ -23,6 +23,7 @@ function EntryForm() {
   const [teacher_last_name, setTeacherLastName] = useState("");
   const [org_id, setOrgId] = useState(0);
   const [org_name, setOrgName] = useState("");
+  const [loadingModal, setLoadingModal] = useState(false);
   const [errorModal, setErrorModal] = useState({ status: false, msg: "" });
   const [addTeacherModal, setAddTeacherModal] = useState({
     status: false,
@@ -58,6 +59,7 @@ function EntryForm() {
     org_name
   ) => {
     e.preventDefault();
+    setLoadingModal(true);
     const { status, errmsg } = await checkValidity(
       entry,
       name_initial,
@@ -65,6 +67,7 @@ function EntryForm() {
       org_id,
       org_name
     );
+    setLoadingModal(false);
     switch (status) {
       case 1:
         console.log("good entry!");
@@ -388,6 +391,17 @@ function EntryForm() {
         </div>
         <Footer />
       </div>
+      {/* Modal 0: processing... */}
+      <Modal
+        show={loadingModal}
+        onHide={() => {
+          setLoadingModal(true);
+        }}
+      >
+        <Modal.Body>
+          <div class="spinner-border" role="status" />
+        </Modal.Body>
+      </Modal>
       {/* Modal 1: form entry successfully submitted */}
       <Modal
         show={successModal.status}
