@@ -1,9 +1,9 @@
 import express from "express";
-const router = express.Router();
+const recordRouter = express.Router();
 import { get, create } from "../controllers/records.controller.js";
 
-router.get("/records", get);
+recordRouter.get("/", get);
 
-router.post("/records", create);
+recordRouter.post("/", create);
 
-export { router };
+export { recordRouter };
