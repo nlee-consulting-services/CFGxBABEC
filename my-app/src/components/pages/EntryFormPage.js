@@ -398,9 +398,10 @@ function EntryForm() {
           setLoadingModal(true);
         }}
       >
-        <Modal.Body>
-          <div class="spinner-border" role="status" />
-        </Modal.Body>
+        <div className="spinner-wrapper">
+          <div className="spinner-wrapper-label">Loading...</div>
+          <div className="spinner-border" role="status" />
+        </div>
       </Modal>
       {/* Modal 1: form entry successfully submitted */}
       <Modal

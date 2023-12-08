@@ -44,3 +44,17 @@ input[type="submit"]:hover {
 .void-option {
   font-style: italic;
 }
+
+.spinner-wrapper {
+  align-self: center;
+  justify-self: center;
+  margin: 100px 0px 110px 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.spinner-wrapper-label {
+  margin-bottom: 20px;
+}
