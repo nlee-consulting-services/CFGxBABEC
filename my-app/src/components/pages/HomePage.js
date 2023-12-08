@@ -13,11 +13,12 @@ function HomePage(){
             <Navbar />
             <div className="contentwrapper">
                 <div className ="hero">
+                    <h1>Wolbachia Tracking</h1>
                     <img
                     onMouseEnter={() => setHovered(true)}
                     onMouseLeave={() => setHovered(false)}
                     className="hero-image"
-                    src={isHovered ? './hero2.png' : './hero1.png'}
+                    src={isHovered ? './icon1.png' : './icon2.gif'}
                     alt="Hero Image" />
 
                 </div>
@@ -31,7 +32,22 @@ function HomePage(){
                 <div className= "engagement">
                     <div className = "involvement">
                         <h1>Get Involved</h1>
-                        <p>Contact BABEC at their website to learn more and become a partner school! BABEC has many different biotechnology-related project kits that are currently being used by 150+ partner schools around the USA.</p>
+                        <div className="flexcontainer">
+                            <div className = "contact">
+                                <img src = "./website.png"/>
+                                <p>Contact BABEC at their website to learn more and become a partner school!</p>
+                            </div>
+                            <div className="lab">
+                                <img src = "./lab.png"/>
+                                <p> BABEC has many different biotechnology project currently being used by 150+ partner schools around the USA.</p>
+                            </div>
+                            <div className="form">
+                                <img src = "./form.png"/>
+                                <p>Submit your very own insect data by filling out this short form</p>
+                            </div>
+                        </div>
+
+                        
                     </div>
                 </div>
             </div>
