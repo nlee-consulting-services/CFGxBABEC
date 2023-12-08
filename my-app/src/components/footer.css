@@ -6,53 +6,51 @@ footer {
 
 .footer-wrapper {
   display: grid;
-  grid-template-columns: 25% 5% 20% 25% 5% 20%;
-  grid-template-rows: 50% 50%;
-  grid-template-areas:
-    "babec-logo about1 aboutlink1 cfg-logo about2 aboutlink2"
-    "babec-logo email1 emaillink1 cfg-logo email2 emaillink2";
-  align-items: center;
+  grid-template-columns: 22% 22% 34% 22%;
+}
+
+.footer-logo-holder {
+  flex-grow: 1;
+  display: flex;
   justify-content: center;
+  align-items: center;
 }
 
-.footer-wrapper a {
-  font-style: bold;
-  color: white;
-}
-
-.footer-wrapper img {
-  width: 100%;
+.footer-logo-holder > img {
+  flex-grow: 1;
+  padding: 20px;
 }
 
 .babec-logo {
-  grid-area: "babec-logo";
+  width: 100%;
 }
-.about1 {
-  grid-area: "about1";
-}
-.aboutlink1 {
-  grid-area: "aboutlink1";
-}
-.email1 {
-  grid-area: "email1";
-}
-.emaillink1 {
-  grid-area: "emaillink1";
-}
+
 .cfg-logo {
-  grid-area: "cfg-logo";
+  width: 100%;
 }
-.about2 {
-  grid-area: "about2";
+
+.footer-link-grid {
+  flex-grow: 1;
+  display: grid;
+  grid-template-columns: 15% 85%;
+  grid-template-rows: auto;
 }
-.aboutlink2 {
-  grid-area: "aboutlink2";
+
+.footer-link-grid > a {
+  color: white;
+  text-decoration: none;
+  align-self: center;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 100%;
+  font-size: large;
+  overflow-wrap: normal;
 }
-.email2 {
-  grid-area: "email2";
-}
-.emaillink2 {
-  grid-area: "emaillink2";
+
+.footer-link-grid > img {
+  align-self: center;
+  width: 80%;
 }
 
 .item {
@@ -61,29 +59,6 @@ footer {
   text-decoration: none;
   position: fixed;
   top: 15px;
-}
-
-.link {
-  list-style-type: none;
-  text-align: left; /*need to find a way to align the list on the right but keep the text itself left aligned*/
-  text-decoration: none;
-  text-indent: 100px;
-}
-
-.footerlogo {
-  max-width: 250px;
-  max-height: 100px;
-  float: left;
-  vertical-align: bottom;
-  padding-right: 30px;
-}
-
-.cfgbanner {
-  max-width: 400px;
-  max-height: 100px;
-  float: left;
-  vertical-align: bottom;
-  padding-right: 350px;
 }
 
 .divider {
