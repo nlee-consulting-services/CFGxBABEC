@@ -205,6 +205,7 @@ function EntryForm() {
                 name="ordername"
                 id="ordername"
                 onChange={(e) => {
+                  e.preventDefault();
                   setEntry({
                     ...entry,
                     order_id:
@@ -414,7 +415,8 @@ function EntryForm() {
       {/* Modal 0: processing... */}
       <Modal
         show={loadingModal}
-        onHide={() => {
+        onHide={(e) => {
+          e.preventDefault();
           setLoadingModal(true);
         }}
       >
@@ -426,7 +428,8 @@ function EntryForm() {
       {/* Modal 1: form entry successfully submitted */}
       <Modal
         show={successModal.status}
-        onHide={() => {
+        onHide={(e) => {
+          e.preventDefault();
           setSuccessModal({ status: false, msg: "" });
         }}
       >
@@ -437,7 +440,8 @@ function EntryForm() {
         <Modal.Footer>
           <Button
             variant="primary"
-            onClick={() => {
+            onClick={(e) => {
+              e.preventDefault();
               setSuccessModal({ status: false, msg: "" });
             }}
           >
@@ -448,7 +452,8 @@ function EntryForm() {
       {/* Modal 2: invalid entry attempt */}
       <Modal
         show={errorModal.status}
-        onHide={() => {
+        onHide={(e) => {
+          e.preventDefault();
           setErrorModal({ status: false, msg: "" });
         }}
       >
@@ -459,7 +464,8 @@ function EntryForm() {
         <Modal.Footer>
           <Button
             variant="primary"
-            onClick={() => {
+            onClick={(e) => {
+              e.preventDefault();
               setErrorModal({ status: false, msg: "" });
             }}
           >
@@ -470,7 +476,8 @@ function EntryForm() {
       {/* Modal 3: teacher does not exist */}
       <Modal
         show={addTeacherModal.status}
-        onHide={() => {
+        onHide={(e) => {
+          e.preventDefault();
           setAddTeacherModal({ status: false, msg: "" });
         }}
       >
@@ -481,7 +488,7 @@ function EntryForm() {
         <Modal.Footer>
           <Button
             variant="danger"
-            onClick={() => {
+            onClick={(e) => {
               e.preventDefault();
               addTeacher(teacher_last_name, org_id);
             }}
@@ -490,7 +497,8 @@ function EntryForm() {
           </Button>
           <Button
             variant="primary"
-            onClick={() => {
+            onClick={(e) => {
+              e.preventDefault();
               setAddTeacherModal({ status: false, msg: "" });
             }}
           >
@@ -501,7 +509,8 @@ function EntryForm() {
       {/* Modal 4: student does not exist */}
       <Modal
         show={addStudentModal.status}
-        onHide={() => {
+        onHide={(e) => {
+          e.preventDefault();
           setAddStudentModal({ status: false, msg: "" });
         }}
       >
@@ -522,7 +531,8 @@ function EntryForm() {
           </Button>
           <Button
             variant="primary"
-            onClick={() => {
+            onClick={(e) => {
+              e.preventDefault();
               setAddStudentModal({ status: false, msg: "" });
             }}
           >
