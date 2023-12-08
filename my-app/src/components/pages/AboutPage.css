@@ -50,6 +50,14 @@
   margin-bottom: 20px;
 }
 
+.babec-banner {
+  max-height: 80px;
+}
+
+.cfg-banner {
+  max-height: 80px;
+}
+
 .rectangles {
   display: flex;
   gap: 40px;
@@ -58,7 +66,8 @@
 }
 
 .rectangle p {
-  font-size: 1.5vw;
+  font-size: 1.2rem;
+  margin-top: 1rem;
 }
 
 .rectangle {
@@ -137,4 +146,13 @@ p {
 .reveal.active {
   transform: translateY(0);
   opacity: 1;
+}
+
+p > a {
+  font-style: bold;
+  color: #4caf50;
+}
+
+p > a:hover {
+  color: #45a049;
 }
