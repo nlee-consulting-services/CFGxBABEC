@@ -47,6 +47,14 @@ async function getTeachers(params) {
   return res.rows;
 }
 
+async function createTeacher(params) {
+  const queryText = `INSERT INTO TEACHER (ORG_ID, TEACHER_LAST_NAME) VALUES ${
+    (params.org_id, params.teacher_last_name)
+  }`;
+  const res = await client.query(queryText);
+  return res.rows;
+}
+
 async function getOrgs() {
   const res = await client.query("SELECT * FROM ORGANISATION");
   return res.rows;
@@ -58,5 +66,6 @@ export {
   getOrders,
   getStudents,
   getTeachers,
+  createTeacher,
   getOrgs,
 };
