@@ -72,11 +72,9 @@ const checkValidity = async (
     url: teacherEndpoint,
     data: { org_id: org_id },
   });
-  console.log(teacherList.data[0].teacher_last_name);
   var teacher_id = null;
   var i = 0;
   while (i < teacherList.data.length) {
-    console.log(teacherList.data[i]);
     if (teacher_last_name === teacherList.data[i].teacher_last_name) {
       teacher_id = teacherList.data[i];
     }
