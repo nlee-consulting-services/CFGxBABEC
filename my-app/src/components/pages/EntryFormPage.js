@@ -384,6 +384,7 @@ function EntryForm() {
                   org_name
                 );
               }}
+              className="submit-button"
             >
               Submit
             </div>

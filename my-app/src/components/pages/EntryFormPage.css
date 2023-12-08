@@ -41,6 +41,16 @@ input[type="submit"]:hover {
   border-radius: 15px;
 }
 
+.submit-button {
+  background-color: #4caf50;
+  padding: 15px;
+  border-radius: 15px;
+  text-align: center;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+}
+
 .void-option {
   font-style: italic;
 }
