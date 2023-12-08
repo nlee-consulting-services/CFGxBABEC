@@ -7,11 +7,12 @@ const recordColumns = [
   "insect_description",
   "gel_image",
   "wolbachia_presence",
-  "wolbachia_WSP_sequence",
-  "arthropod_COI_sequence",
+  "wolbachia_wsp_sequence",
+  "arthropod_coi_sequence",
   "habitat_description",
   "confidence_level",
   "expl_of_confidence_level",
+  "common_name",
   "well_1",
   "well_2",
   "well_3",
@@ -50,7 +51,7 @@ const getTextForGetRecord = (params) => {
 };
 
 const getTextForCreateRecord = () => {
-  return `INSERT INTO RECORD VALUES($${Array.from(
+  return `INSERT INTO RECORD (${recordColumns.join(", ")}) VALUES($${Array.from(
     { length: recordColumns.length },
     (_, i) => i + 1
   ).join(", $")}) RETURNING *`;

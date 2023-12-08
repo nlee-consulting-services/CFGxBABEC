@@ -110,7 +110,7 @@ const checkValidity = async (
   }
 
   //** Part 4: Valid Entry! Send it off to backend now */
-  return { status: 1 };
+  return { status: 1, data: { student_id, student_id } };
 };
 
 export { checkValidity };

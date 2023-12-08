@@ -4,6 +4,7 @@ import { clientInitializer } from "./utils/clientInitializer.js";
 import {
   getTextForGetRecord,
   getTextForCreateRecord,
+  formatRecord,
 } from "./utils/formatRecord.js";
 import { applyFilters } from "./utils/filterRecord.js";
 
@@ -19,6 +20,8 @@ async function getRecords(params) {
 }
 
 async function createRecord(values) {
+  console.log(getTextForCreateRecord());
+  console.log(formatRecord(values));
   const res = await client.query(
     getTextForCreateRecord(),
     formatRecord(values)

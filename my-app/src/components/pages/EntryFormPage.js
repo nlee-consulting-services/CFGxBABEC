@@ -48,47 +48,6 @@ function EntryForm() {
     });
   }, []);
 
-  // function activated when submit button is pressed
-  // validates data --> post API if valid, request action if invalid
-  const handleSubmit = async (
-    e,
-    entry,
-    name_initial,
-    teacher_last_name,
-    org_id,
-    org_name
-  ) => {
-    e.preventDefault();
-    setLoadingModal(true);
-    const { status, errmsg, data } = await checkValidity(
-      entry,
-      name_initial,
-      teacher_last_name,
-      org_id,
-      org_name
-    );
-    setLoadingModal(false);
-    switch (status) {
-      case 1:
-        console.log("good entry!");
-        // post api call
-        setSuccessModal({ status: true, msg: "Good entry!" });
-        break;
-      case -1:
-        console.log(`bad entry: ${errmsg}`);
-        setErrorModal({ status: true, msg: errmsg });
-        break;
-      case -2:
-        console.log(`bad entry: ${errmsg}`);
-        setAddTeacherModal({ status: true, msg: errmsg });
-        break;
-      case -3:
-        console.log(`bad entry: ${errmsg}`);
-        setAddStudentModal({ status: true, msg: errmsg, data: data });
-        break;
-    }
-  };
-
   // POST teachers
   const addTeacher = async (teacher_last_name, org_id) => {
     axios({
@@ -127,7 +86,58 @@ function EntryForm() {
   };
 
   // POST record
-  // Your entry has been successfully added. Thank you for your submission!
+  const addRecord = async (entry) => {
+    axios({ method: "post", url: recordEndpoint, data: entry })
+      .then(() => {
+        setSuccessModal({
+          status: true,
+          msg: "Your entry has been successfully added. Thank you for your submission!",
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  // function activated when submit button is pressed
+  // validates data --> post API if valid, request action if invalid
+  const handleSubmit = async (
+    e,
+    entry,
+    name_initial,
+    teacher_last_name,
+    org_id,
+    org_name
+  ) => {
+    e.preventDefault();
+    setLoadingModal(true);
+    const { status, errmsg, data } = await checkValidity(
+      entry,
+      name_initial,
+      teacher_last_name,
+      org_id,
+      org_name
+    );
+    setLoadingModal(false);
+    switch (status) {
+      case 1:
+        console.log("good entry!");
+        addRecord({ ...entry, student_id: data.student_id });
+        break;
+      case -1:
+        console.log(`bad entry: ${errmsg}`);
+        setErrorModal({ status: true, msg: errmsg });
+        break;
+      case -2:
+        console.log(`bad entry: ${errmsg}`);
+        setAddTeacherModal({ status: true, msg: errmsg });
+        break;
+      case -3:
+        console.log(`bad entry: ${errmsg}`);
+        setAddStudentModal({ status: true, msg: errmsg, data: data });
+        break;
+    }
+  };
 
   return (
     <>
