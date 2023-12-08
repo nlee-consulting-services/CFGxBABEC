@@ -127,8 +127,5 @@ const checkValidity = async (
     };
   }
 };
-const addTeacher = () => {};
 
-const addStudent = () => {};
-
-export { checkValidity, addTeacher, addStudent };
+export { checkValidity };
