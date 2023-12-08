@@ -3,7 +3,7 @@
   position: fixed;
   width: 100%;
   background-color: white;
-  z-index: 1000;
+  z-index: 10000;
   display: flex;
   align-items: center;
   justify-content: space-between; /* Changed to space-between for better spacing */

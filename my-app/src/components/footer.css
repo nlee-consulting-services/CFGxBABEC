@@ -1,61 +1,61 @@
-
-.row{
-    background-color: #54565A;
-    padding: 20px;
+footer {
+  width: 100%;
+  background-color: #54565a;
+  padding: 20px;
 }
 
- .item{
-    color: rgb(45, 27, 27);
-    font-size: 24px;
-    text-decoration: none;
-    position: fixed;
-    top: 15px;
+.item {
+  color: rgb(45, 27, 27);
+  font-size: 24px;
+  text-decoration: none;
+  position: fixed;
+  top: 15px;
 }
 
-.link{
-    list-style-type:none ;
-    text-align: left; /*need to find a way to align the list on the right but keep the text itself left aligned*/
-    text-decoration: none;
-    text-indent: 100px;
+.link {
+  list-style-type: none;
+  text-align: left; /*need to find a way to align the list on the right but keep the text itself left aligned*/
+  text-decoration: none;
+  text-indent: 100px;
 }
 
-.footerlogo{
-    max-width: 250px;
-    max-height: 100px;
-    float: left;
-    vertical-align: bottom;
-    padding-right: 30px;
+.footerlogo {
+  max-width: 250px;
+  max-height: 100px;
+  float: left;
+  vertical-align: bottom;
+  padding-right: 30px;
 }
 
 .cfgbanner {
-    max-width: 400px;
-    max-height: 100px;
-    float: left;
-    vertical-align: bottom;
-    padding-right: 350px;
+  max-width: 400px;
+  max-height: 100px;
+  float: left;
+  vertical-align: bottom;
+  padding-right: 350px;
 }
 
 .divider {
-    border-left: 2px solid black;
-    height: 100px;
-    float: left;
-    vertical-align: center;
-    padding-right: 30   px;
+  border-left: 2px solid black;
+  height: 100px;
+  float: left;
+  vertical-align: center;
+  padding-right: 30 px;
 }
 
-.row a:link{
-    color: white;
-    text-decoration: none;
+.row a:link {
+  color: white;
+  text-decoration: none;
 }
 
-.row a:hover{
-    text-decoration: underline;
+.row a:hover {
+  text-decoration: underline;
 }
 
-.row a:visited{
-    color: white;
+.row a:visited {
+  color: white;
 }
 
-.row strong{
-    color: white;
+.row strong {
+  color: white;
 }
