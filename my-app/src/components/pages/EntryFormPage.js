@@ -71,7 +71,8 @@ function EntryForm() {
     switch (status) {
       case 1:
         console.log("good entry!");
-        // send, await api call
+        // post api call
+        setSuccessModal({ status: true, msg: "Good entry!" });
         break;
       case -1:
         console.log(`bad entry: ${errmsg}`);

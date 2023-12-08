@@ -64,6 +64,7 @@ const checkValidity = async (
       errmsg: "Please provide a valid latitude (range: -90<x<90)",
     };
   }
+  console.log("finished part 2");
 
   //** Part 3: Validate values with DB communication **//
   // check if the teacher exists in the given organization
@@ -93,10 +94,12 @@ const checkValidity = async (
     data: { teacher_id: teacher_id },
   });
   var student_id = null;
-  for (var s in studentList) {
-    if (name_initial === s.name_initial) {
-      student_id = s.student_id;
+  var i = 0;
+  while (i < studentList.data.length) {
+    if (name_initial === studentList.data[i].name_initial) {
+      student_id = studentList.data[i].student_id;
     }
+    i++;
   }
   if (!student_id) {
     return {
@@ -105,6 +108,9 @@ const checkValidity = async (
       data: { teacher_id: teacher_id },
     };
   }
+
+  //** Part 4: Valid Entry! Send it off to backend now */
+  return { status: 1 };
 };
 
 export { checkValidity };
