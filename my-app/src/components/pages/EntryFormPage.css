@@ -1,37 +1,63 @@
-input[type=text], input[type=date],input[type=file],  select {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-  }
-  
-  input[type=submit] {
-    width: 100%;
-    background-color: #4CAF50;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  input[type=submit]:hover {
-    background-color: #45a049;
-  }
-  
-.entryform-wrapper {
-    border-radius: 5px;
-    background-color: #f2f2f2;
-    padding: 70px;
-    font-family:verdana
-  }
+input[type="text"],
+input[type="date"],
+input[type="file"],
+select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
 
-  .record,.student-data,.location{
-    background-color: #d3cfcf;
-    padding: 15px;
-    border-radius: 15px;
-  }
+.entryform-wrapper {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding-left: 70px;
+  padding-right: 70px;
+  padding-bottom: 20px;
+  font-family: verdana;
+}
+
+.record,
+.student-data,
+.location {
+  background-color: #d3cfcf;
+  padding: 15px;
+  border-radius: 15px;
+}
+
+.submit-button {
+  width: 100%;
+  background-color: #4caf50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.submit-button:hover {
+  background-color: #45a049;
+}
+
+.void-option {
+  font-style: italic;
+}
+
+.spinner-wrapper {
+  align-self: center;
+  justify-self: center;
+  margin: 100px 0px 110px 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.spinner-wrapper-label {
+  margin-bottom: 20px;
+}

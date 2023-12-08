@@ -4,6 +4,7 @@ import { clientInitializer } from "./utils/clientInitializer.js";
 import {
   getTextForGetRecord,
   getTextForCreateRecord,
+  formatRecord,
 } from "./utils/formatRecord.js";
 import { applyFilters } from "./utils/filterRecord.js";
 
@@ -39,12 +40,30 @@ async function getStudents(params) {
   return res.rows;
 }
 
+async function createStudent(params) {
+  const queryText = `INSERT INTO STUDENT (TEACHER_ID, NAME_INITIAL) VALUES (${
+    params.teacher_id
+  }, E'${params.name_initial.replaceAll("'", "\\'")}')`;
+
+  const res = await client.query(queryText);
+  return res.rows[0];
+}
+
 async function getTeachers(params) {
   const queryText = `SELECT * FROM TEACHER${
     params.org_id ? ` WHERE ORG_ID = ${params.org_id}` : ""
   }`;
   const res = await client.query(queryText);
   return res.rows;
+}
+
+async function createTeacher(params) {
+  const queryText = `INSERT INTO TEACHER (ORG_ID, TEACHER_LAST_NAME) VALUES (${
+    params.org_id
+  }, E'${params.teacher_last_name.replaceAll("'", "\\'")}')
+  `;
+  const res = await client.query(queryText);
+  return res.rows[0];
 }
 
 async function getOrgs() {
@@ -57,6 +76,8 @@ export {
   createRecord,
   getOrders,
   getStudents,
+  createStudent,
   getTeachers,
+  createTeacher,
   getOrgs,
 };

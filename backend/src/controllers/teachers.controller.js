@@ -1,4 +1,4 @@
-import { getTeachers } from "../services.js";
+import { getTeachers, createTeacher } from "../services.js";
 
 async function get(req, res, next) {
   try {
@@ -10,4 +10,14 @@ async function get(req, res, next) {
   }
 }
 
-export { get };
+async function create(req, res, next) {
+  try {
+    const row = await createTeacher(req.body);
+    res.json(row);
+  } catch (err) {
+    console.log("Error while creating teacher", err.message);
+    next(err);
+  }
+}
+
+export { get, create };
