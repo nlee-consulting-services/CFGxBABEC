@@ -24,7 +24,6 @@ window.addEventListener("scroll", reveal);
 function About() {
   return (
     <div className="wrapper">
-      <Navbar />
       <div
         className="page-header"
         style={{ backgroundImage: `url(${coverImage})` }}
@@ -101,7 +100,6 @@ function About() {
           </div>
         </div>
       </div>
-      <Footer />
     </div>
   );
 }
