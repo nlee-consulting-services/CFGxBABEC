@@ -9,7 +9,6 @@ function HomePage() {
   const [isHovered, setHovered] = useState(false);
   return (
     <div className="wrapper">
-      <Navbar />
       <div className="contentwrapper">
         <div className="hero">
           <h1>Wolbachia Tracking</h1>
@@ -64,7 +63,6 @@ function HomePage() {
           </div>
         </div>
       </div>
-      <Footer />
     </div>
   );
 }

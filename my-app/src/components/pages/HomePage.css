@@ -1,117 +1,97 @@
-footer{
-    position: relative;
-    top: 0px; 
+footer {
+  position: relative;
+  top: 0px;
 }
 
-.contentwrapper{
-    margin: 0;
+.contentwrapper {
+  margin: 0;
 }
 
-.hero{
-    max-width:100vw;
-    position:relative;
-    top:0px;
-    
-
-
-
-
+.hero {
+  max-width: 100%;
+  position: relative;
+  top: 0px;
 }
 
-.hero h1{
-
+.hero h1 {
   position: absolute;
-  top:700px;
+  top: 700px;
   color: rgb(255, 255, 255);
-  font-size:50px;
-  font-family: 'Open Sans', sans-serif;
+  font-size: 50px;
+  font-family: "Open Sans", sans-serif;
   margin-left: 30px;
 }
 
-.hero img{
-  width:100vw;
+.hero img {
+  width: 100%;
   margin: 0;
-
-
 }
 
-
-.about{
-  margin:0;
+.about {
+  margin: 0;
   padding: 0;
-  height:500px;
-  display:flex;
+  height: 500px;
+  display: flex;
   flex-wrap: wrap;
   background-image: "./map1.png";
   background-size: cover;
 }
-.map{
-    width: 100vw;
-    height: 600px;
-    margin: 0;
-    display: inline-block;
-    padding: 0;
-  
+.map {
+  width: 100%;
+  height: 600px;
+  margin: 0;
+  display: inline-block;
+  padding: 0;
 }
 
-.aboutoverlay{
-    width: 60%;
-    height:600px;
-    background-color: rgba(255, 255, 255, 0.5);
-    box-sizing: border-box;
-    top: 815px;
-    padding: 80px;
-    position: absolute;
-    margin: 0;
-
-
-
+.aboutoverlay {
+  width: 60%;
+  height: 600px;
+  background-color: rgba(255, 255, 255, 0.5);
+  box-sizing: border-box;
+  top: 815px;
+  padding: 80px;
+  position: absolute;
+  margin: 0;
 }
 
 .aboutoverlay h1 {
-    margin-top: 0; /* Reset the top margin for the <h1> element */
-    font-size: 50px;
+  margin-top: 0; /* Reset the top margin for the <h1> element */
+  font-size: 50px;
 
-    font-family: 'Open Sans', sans-serif;
-
-  }
-
-  p {
-    font-size: 24px;
-    font-family: "Open Sans", sans-serif;
-  }
-
-
-  .involvement{
-    background-color: #707AAB;
-    position: relative;
-    padding: 50px;
-    display: flex;
-    height:500px;
-    box-sizing: border-box;
-    color: white;
-
-
-  }
-
-
-
-.involvement h1{
-  font-size:50px;
+  font-family: "Open Sans", sans-serif;
 }
 
-.flexcontainer{
+p {
+  font-size: 24px;
+  font-family: "Open Sans", sans-serif;
+}
+
+.involvement {
+  background-color: #707aab;
+  position: relative;
+  padding: 50px;
+  display: flex;
+  height: 500px;
+  box-sizing: border-box;
+  color: white;
+}
+
+.involvement h1 {
+  font-size: 50px;
+}
+
+.flexcontainer {
   display: flex;
   justify-content: space-around;
   width: 100%;
-  align-items:center;
-
+  align-items: center;
 }
 
 .contact,
 .lab,
 .form {
-  width:30%;
+  width: 30%;
   text-align: center; /* Center the text within each item */
 }
 

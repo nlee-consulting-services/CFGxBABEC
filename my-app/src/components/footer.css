@@ -1,61 +1,87 @@
-
-.row{
-    background-color: #54565A;
-    padding: 20px;
+footer {
+  width: 100%;
+  background-color: #54565a;
+  padding: 20px;
 }
 
- .item{
-    color: rgb(45, 27, 27);
-    font-size: 24px;
-    text-decoration: none;
-    position: fixed;
-    top: 15px;
+.footer-wrapper {
+  display: grid;
+  grid-template-columns: 22% 22% 34% 22%;
 }
 
-.link{
-    list-style-type:none ;
-    text-align: left; /*need to find a way to align the list on the right but keep the text itself left aligned*/
-    text-decoration: none;
-    text-indent: 100px;
+.footer-logo-holder {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.footerlogo{
-    max-width: 250px;
-    max-height: 100px;
-    float: left;
-    vertical-align: bottom;
-    padding-right: 30px;
+.footer-logo-holder > img {
+  flex-grow: 1;
+  padding: 20px;
 }
 
-.cfgbanner {
-    max-width: 400px;
-    max-height: 100px;
-    float: left;
-    vertical-align: bottom;
-    padding-right: 350px;
+.babec-logo {
+  width: 100%;
+}
+
+.cfg-logo {
+  width: 100%;
+}
+
+.footer-link-grid {
+  flex-grow: 1;
+  display: grid;
+  grid-template-columns: 15% 85%;
+  grid-template-rows: auto;
+}
+
+.footer-link-grid > a {
+  color: white;
+  text-decoration: none;
+  align-self: center;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 100%;
+  font-size: large;
+  overflow-wrap: normal;
+}
+
+.footer-link-grid > img {
+  align-self: center;
+  width: 80%;
+}
+
+.item {
+  color: rgb(45, 27, 27);
+  font-size: 24px;
+  text-decoration: none;
+  position: fixed;
+  top: 15px;
 }
 
 .divider {
-    border-left: 2px solid black;
-    height: 100px;
-    float: left;
-    vertical-align: center;
-    padding-right: 30   px;
+  border-left: 2px solid black;
+  height: 100px;
+  float: left;
+  vertical-align: center;
+  padding-right: 30 px;
 }
 
-.row a:link{
-    color: white;
-    text-decoration: none;
+.row a:link {
+  color: white;
+  text-decoration: none;
 }
 
-.row a:hover{
-    text-decoration: underline;
+.row a:hover {
+  text-decoration: underline;
 }
 
-.row a:visited{
-    color: white;
+.row a:visited {
+  color: white;
 }
 
-.row strong{
-    color: white;
+.row strong {
+  color: white;
 }

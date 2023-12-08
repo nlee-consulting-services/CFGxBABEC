@@ -34,22 +34,6 @@ function EntryForm() {
     msg: "",
   });
   const [successModal, setSuccessModal] = useState({ status: false, msg: "" });
-  const navbarRef = useRef(null);
-  const [navbarCurrentHeight, setNavBarCurrentHeight] = useState("70px");
-  useEffect(() => {
-    if (!navbarRef.current) {
-      return;
-    }
-    const resizeObserver = new ResizeObserver(() => {
-      if (navbarRef.current.offsetHeight !== navbarCurrentHeight) {
-        setNavBarCurrentHeight(navbarRef.current.offsetHeight);
-      }
-    });
-    resizeObserver.observe(navbarRef.current);
-    return function cleanup() {
-      resizeObserver.disconnect();
-    };
-  }, [navbarRef.current]);
 
   // initial API call to get data for dropdown
   useEffect(() => {
@@ -153,13 +137,7 @@ function EntryForm() {
   return (
     <>
       <div className="wrapper">
-        <Navbar ref={navbarRef} />
-        <div
-          className="entryform-wrapper"
-          style={{
-            paddingTop: navbarCurrentHeight,
-          }}
-        >
+        <div className="entryform-wrapper">
           <br />
           <h1>Entry Form</h1>
           <form>
@@ -472,7 +450,6 @@ function EntryForm() {
             </div>
           </form>
         </div>
-        <Footer />
       </div>
       {/* Modal 0: processing... */}
       <Modal

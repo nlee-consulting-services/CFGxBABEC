@@ -31,7 +31,6 @@ function Graphs() {
 
   return (
     <div class="wrapper">
-      <Navbar />
       <h1>Graphs</h1>
       {groupedGraph ? (
         // Render using the fetched data

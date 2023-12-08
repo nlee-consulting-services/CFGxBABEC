@@ -24,7 +24,6 @@ window.addEventListener("scroll", reveal);
 function About() {
   return (
     <div className="wrapper">
-      <Navbar />
       <div
         className="page-header"
         style={{ backgroundImage: `url(${coverImage})` }}
@@ -69,7 +68,7 @@ function About() {
         <p className="get-involved">Get Involved</p>
         <div className="rectangles reveal">
           <div className="rectangle" id="rectbabec">
-            <img className="babeclogo" src="./babec_logo_bw.png" />
+            <img className="babec-banner" src="./babec_logo_bw.png" />
 
             <p>
               The Bay Area Bioscience Education Community (BABEC) is a nonprofit
@@ -80,11 +79,18 @@ function About() {
               students the chance to develop their scientific skills.
             </p>
             <p>
-              Find out more: <a href="https://babec.org/what-we-do/">here</a>.
+              Find out more:{" "}
+              <a
+                href="https://babec.org/what-we-do/"
+                style={{ color: "white" }}
+              >
+                here
+              </a>
+              .
             </p>
           </div>
           <div className="rectangle" id="rectcfg">
-            <img className="cfgbanner" src="./CFG Banner.png" />
+            <img className="cfg-banner" src="./CFG Banner.png" />
 
             <p>
               Code for Good Berkeley is a student-run technology consulting
@@ -101,7 +107,6 @@ function About() {
           </div>
         </div>
       </div>
-      <Footer />
     </div>
   );
 }

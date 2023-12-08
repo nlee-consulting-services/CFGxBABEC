@@ -1,6 +1,5 @@
 import "leaflet/dist/leaflet.css";
 import "./MapPage.css";
-import Navbar from "../navbar.js";
 import { MapContainer, Marker, Popup, TileLayer, useMap } from "react-leaflet";
 import { MarkerMuster } from "react-leaflet-muster";
 import L from "leaflet";
@@ -80,9 +79,7 @@ function MapPage() {
   }, []);
 
   return (
-    <div className="wrapper">
-      <Navbar />
-      <h1> Map </h1>
+    <div className="mappage-wrapper">
       <MapContainer
         className="mainMap"
         center={[37.8017, -122.3394]}
