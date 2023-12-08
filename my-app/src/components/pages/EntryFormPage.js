@@ -319,6 +319,40 @@ function EntryForm() {
                 <option value="Inconclusive">Inconclusive</option>
               </select>
               <br />
+              <label htmlFor="wolbachia-wsp-sequence">
+                Wolbachia WSP Sequence:
+              </label>
+              <br />
+              <input
+                type="text"
+                id="wolbachia-wsp-sequence"
+                name="wolbachia-wsp-sequence"
+                onChange={(e) => {
+                  e.preventDefault();
+                  setEntry({
+                    ...entry,
+                    wolbachia_wsp_sequence: e.target.value,
+                  });
+                }}
+              />
+              <br />
+              <label htmlFor="arthropod-coi-sequence">
+                Arthropod COI Sequence:
+              </label>
+              <br />
+              <input
+                type="text"
+                id="arthropod-coi-sequence"
+                name="arthropod-coi-sequence"
+                onChange={(e) => {
+                  e.preventDefault();
+                  setEntry({
+                    ...entry,
+                    arthropod_coi_sequence: e.target.value,
+                  });
+                }}
+              />
+              <br />
               <label htmlFor="confidence-levek">Confidence level:</label> <br />
               <select
                 name="presence-of-wolbachia"
