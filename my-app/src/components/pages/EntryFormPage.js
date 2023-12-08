@@ -34,7 +34,6 @@ function EntryForm() {
     msg: "",
   });
   const [successModal, setSuccessModal] = useState({ status: false, msg: "" });
-  console.log(entry);
 
   // initial API call to get data for dropdown
   useEffect(() => {
@@ -121,19 +120,15 @@ function EntryForm() {
     setLoadingModal(false);
     switch (status) {
       case 1:
-        console.log("good entry!");
         addRecord({ ...entry, student_id: data.student_id });
         break;
       case -1:
-        console.log(`bad entry: ${errmsg}`);
         setErrorModal({ status: true, msg: errmsg });
         break;
       case -2:
-        console.log(`bad entry: ${errmsg}`);
         setAddTeacherModal({ status: true, msg: errmsg });
         break;
       case -3:
-        console.log(`bad entry: ${errmsg}`);
         setAddStudentModal({ status: true, msg: errmsg, data: data });
         break;
     }

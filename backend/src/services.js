@@ -20,8 +20,6 @@ async function getRecords(params) {
 }
 
 async function createRecord(values) {
-  console.log(getTextForCreateRecord());
-  console.log(formatRecord(values));
   const res = await client.query(
     getTextForCreateRecord(),
     formatRecord(values)
@@ -64,7 +62,6 @@ async function createTeacher(params) {
     params.org_id
   }, E'${params.teacher_last_name.replaceAll("'", "\\'")}')
   `;
-  console.log(queryText);
   const res = await client.query(queryText);
   return res.rows[0];
 }

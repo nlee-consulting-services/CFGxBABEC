@@ -64,7 +64,6 @@ const checkValidity = async (
       errmsg: "Please provide a valid latitude (range: -90<x<90)",
     };
   }
-  console.log("finished part 2");
 
   //** Part 3: Validate values with DB communication **//
   // check if the teacher exists in the given organization
