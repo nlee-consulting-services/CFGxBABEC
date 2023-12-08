@@ -467,8 +467,7 @@ function EntryForm() {
       {/* Modal 1: form entry successfully submitted */}
       <Modal
         show={successModal.status}
-        onHide={(e) => {
-          e.preventDefault();
+        onHide={() => {
           setSuccessModal({ status: false, msg: "" });
         }}
       >
