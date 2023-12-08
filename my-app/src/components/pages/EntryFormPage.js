@@ -9,7 +9,7 @@ import {
   teacherEndpoint,
   orgEndpoint,
 } from "../../utils/endpoints.js";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { checkValidity } from "../../utils/validateEntry.js";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
@@ -34,6 +34,22 @@ function EntryForm() {
     msg: "",
   });
   const [successModal, setSuccessModal] = useState({ status: false, msg: "" });
+  const navbarRef = useRef(null);
+  const [navbarCurrentHeight, setNavBarCurrentHeight] = useState("70px");
+  useEffect(() => {
+    if (!navbarRef.current) {
+      return;
+    }
+    const resizeObserver = new ResizeObserver(() => {
+      if (navbarRef.current.offsetHeight !== navbarCurrentHeight) {
+        setNavBarCurrentHeight(navbarRef.current.offsetHeight);
+      }
+    });
+    resizeObserver.observe(navbarRef.current);
+    return function cleanup() {
+      resizeObserver.disconnect();
+    };
+  }, [navbarRef.current]);
 
   // initial API call to get data for dropdown
   useEffect(() => {
@@ -137,8 +153,13 @@ function EntryForm() {
   return (
     <>
       <div className="wrapper">
-        <Navbar />
-        <div className="entryform-wrapper">
+        <Navbar ref={navbarRef} />
+        <div
+          className="entryform-wrapper"
+          style={{
+            paddingTop: navbarCurrentHeight,
+          }}
+        >
           <h1>Entry Form</h1>
           <form>
             <div className="student-data">
