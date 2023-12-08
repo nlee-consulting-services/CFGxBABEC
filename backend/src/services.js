@@ -40,7 +40,9 @@ async function getStudents(params) {
 }
 
 async function createStudent(params) {
-  const queryText = `INSERT INTO STUDENT (TEACHER_ID, NAME_INITIAL) VALUES (${params.teacher_id}, ${params.name_initial}`;
+  const queryText = `INSERT INTO STUDENT (TEACHER_ID, NAME_INITIAL) VALUES (${
+    params.teacher_id
+  }, E'${params.name_initial.replaceAll("'", "\\'")}'`;
   const res = await client.query(queryText);
   return res.rows[0];
 }
@@ -54,8 +56,11 @@ async function getTeachers(params) {
 }
 
 async function createTeacher(params) {
-  const queryText = `INSERT INTO TEACHER (ORG_ID, TEACHER_LAST_NAME) VALUES (${params.org_id}, ${params.teacher_last_name})
+  const queryText = `INSERT INTO TEACHER (ORG_ID, TEACHER_LAST_NAME) VALUES (${
+    params.org_id
+  }, E'${params.teacher_last_name.replaceAll("'", "\\'")}')
   `;
+  console.log(queryText);
   const res = await client.query(queryText);
   return res.rows[0];
 }

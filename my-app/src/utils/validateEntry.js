@@ -1,8 +1,6 @@
 import { studentEndpoint, teacherEndpoint } from "./endpoints";
 import axios from "axios";
 
-const stringRegex = /^[^"]*$/;
-
 // stautus -1: error in entry --> user needs to fix entry
 // status -2: teacher does not exist in org --> prompt if wants to add teacher
 // status -3: student does not exist under teacher --> prompt if wants to add student
@@ -66,21 +64,6 @@ const checkValidity = async (
       errmsg: "Please provide a valid latitude (range: -90<x<90)",
     };
   }
-  // check string for double quotation marks
-  if (
-    ![
-      name_initial,
-      teacher_last_name,
-      entry.common_name,
-      entry.insect_description,
-      entry.habitat_description,
-      entry.expl_of_confidence_level,
-    ].every(function (text) {
-      return stringRegex.test(text);
-    })
-  ) {
-    return { status: -1, errmsg: "Please remove all double quotation marks" };
-  }
 
   //** Part 3: Validate values with DB communication **//
   // check if the teacher exists in the given organization
@@ -89,11 +72,15 @@ const checkValidity = async (
     url: teacherEndpoint,
     data: { org_id: org_id },
   });
+  console.log(teacherList.data[0].teacher_last_name);
   var teacher_id = null;
-  for (var t in teacherList) {
-    if (teacher_last_name === t.teacher_last_name) {
-      teacher_id = t.teacher_id;
+  var i = 0;
+  while (i < teacherList.data.length) {
+    console.log(teacherList.data[i]);
+    if (teacher_last_name === teacherList.data[i].teacher_last_name) {
+      teacher_id = teacherList.data[i];
     }
+    i++;
   }
   if (!teacher_id) {
     return {
