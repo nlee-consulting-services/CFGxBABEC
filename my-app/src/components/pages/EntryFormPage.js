@@ -60,7 +60,7 @@ function EntryForm() {
   ) => {
     e.preventDefault();
     setLoadingModal(true);
-    const { status, errmsg } = await checkValidity(
+    const { status, errmsg, data } = await checkValidity(
       entry,
       name_initial,
       teacher_last_name,
@@ -83,7 +83,7 @@ function EntryForm() {
         break;
       case -3:
         console.log(`bad entry: ${errmsg}`);
-        setAddStudentModal({ status: true, msg: errmsg });
+        setAddStudentModal({ status: true, msg: errmsg, data: data });
         break;
     }
   };
@@ -98,6 +98,7 @@ function EntryForm() {
       .then(() => {
         setAddTeacherModal({ status: false, msg: "" });
         setSuccessModal({ status: true, msg: "Teacher successfully added!" });
+        // todo: display what was added
       })
       .catch((err) => {
         console.log(err);
@@ -105,6 +106,24 @@ function EntryForm() {
   };
 
   // POST student
+  const addStudent = async (name_initial, teacher_id) => {
+    axios({
+      method: "post",
+      url: studentEndpoint,
+      data: { name_initial: name_initial, teacher_id: teacher_id },
+    })
+      .then(() => {
+        setAddStudentModal({ status: false, msg: "" });
+        setSuccessModal({
+          status: true,
+          msg: "Student with successfully added!",
+        });
+        // todo: display what was added
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   // POST record
   // Your entry has been successfully added. Thank you for your submission!
@@ -460,8 +479,13 @@ function EntryForm() {
         </Modal.Header>
         <Modal.Body>{addTeacherModal.msg}</Modal.Body>
         <Modal.Footer>
-          {/* TODO: add teacher function */}
-          <Button variant="danger" onClick={() => {}}>
+          <Button
+            variant="danger"
+            onClick={() => {
+              e.preventDefault();
+              addTeacher(teacher_last_name, org_id);
+            }}
+          >
             Add Teacher
           </Button>
           <Button
@@ -491,7 +515,7 @@ function EntryForm() {
             variant="danger"
             onClick={(e) => {
               e.preventDefault();
-              addTeacher(teacher_last_name, org_id);
+              addStudent(name_initial, addStudentModal.data.teacher_id);
             }}
           >
             Add Student

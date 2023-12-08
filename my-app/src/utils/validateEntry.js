@@ -124,6 +124,7 @@ const checkValidity = async (
     return {
       status: -3,
       errmsg: `Student with initials "${name_initial}" does not exist under instructor "${teacher_last_name}" at "${org_name}." If you are certain this is not a mistake, press the "Add Student" button and resubmit`,
+      data: { teacher_id: teacher_id },
     };
   }
 };
