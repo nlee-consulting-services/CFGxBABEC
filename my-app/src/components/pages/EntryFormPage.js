@@ -160,6 +160,7 @@ function EntryForm() {
             paddingTop: navbarCurrentHeight,
           }}
         >
+          <br />
           <h1>Entry Form</h1>
           <form>
             <div className="student-data">
