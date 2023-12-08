@@ -42,7 +42,8 @@ async function getStudents(params) {
 async function createStudent(params) {
   const queryText = `INSERT INTO STUDENT (TEACHER_ID, NAME_INITIAL) VALUES (${
     params.teacher_id
-  }, E'${params.name_initial.replaceAll("'", "\\'")}'`;
+  }, E'${params.name_initial.replaceAll("'", "\\'")}')`;
+  console.log(queryText);
   const res = await client.query(queryText);
   return res.rows[0];
 }

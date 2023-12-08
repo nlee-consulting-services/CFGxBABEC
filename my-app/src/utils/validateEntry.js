@@ -76,7 +76,7 @@ const checkValidity = async (
   var i = 0;
   while (i < teacherList.data.length) {
     if (teacher_last_name === teacherList.data[i].teacher_last_name) {
-      teacher_id = teacherList.data[i];
+      teacher_id = teacherList.data[i].teacher_id;
     }
     i++;
   }
