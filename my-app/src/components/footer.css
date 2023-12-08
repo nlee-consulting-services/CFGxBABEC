@@ -4,6 +4,57 @@ footer {
   padding: 20px;
 }
 
+.footer-wrapper {
+  display: grid;
+  grid-template-columns: 25% 5% 20% 25% 5% 20%;
+  grid-template-rows: 50% 50%;
+  grid-template-areas:
+    "babec-logo about1 aboutlink1 cfg-logo about2 aboutlink2"
+    "babec-logo email1 emaillink1 cfg-logo email2 emaillink2";
+  align-items: center;
+  justify-content: center;
+}
+
+.footer-wrapper a {
+  font-style: bold;
+  color: white;
+}
+
+.footer-wrapper img {
+  width: 100%;
+}
+
+.babec-logo {
+  grid-area: "babec-logo";
+}
+.about1 {
+  grid-area: "about1";
+}
+.aboutlink1 {
+  grid-area: "aboutlink1";
+}
+.email1 {
+  grid-area: "email1";
+}
+.emaillink1 {
+  grid-area: "emaillink1";
+}
+.cfg-logo {
+  grid-area: "cfg-logo";
+}
+.about2 {
+  grid-area: "about2";
+}
+.aboutlink2 {
+  grid-area: "aboutlink2";
+}
+.email2 {
+  grid-area: "email2";
+}
+.emaillink2 {
+  grid-area: "emaillink2";
+}
+
 .item {
   color: rgb(45, 27, 27);
   font-size: 24px;
