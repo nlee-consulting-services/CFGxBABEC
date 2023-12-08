@@ -39,6 +39,12 @@ async function getStudents(params) {
   return res.rows;
 }
 
+async function createStudent(params) {
+  const queryText = `INSERT INTO STUDENT (TEACHER_ID, NAME_INITIAL) VALUES (${params.teacher_id}, ${params.name_initial}`;
+  const res = await client.query(queryText);
+  return res.rows[0];
+}
+
 async function getTeachers(params) {
   const queryText = `SELECT * FROM TEACHER${
     params.org_id ? ` WHERE ORG_ID = ${params.org_id}` : ""
@@ -48,11 +54,10 @@ async function getTeachers(params) {
 }
 
 async function createTeacher(params) {
-  const queryText = `INSERT INTO TEACHER (ORG_ID, TEACHER_LAST_NAME) VALUES ${
-    (params.org_id, params.teacher_last_name)
-  }`;
+  const queryText = `INSERT INTO TEACHER (ORG_ID, TEACHER_LAST_NAME) VALUES (${params.org_id}, ${params.teacher_last_name})
+  `;
   const res = await client.query(queryText);
-  return res.rows;
+  return res.rows[0];
 }
 
 async function getOrgs() {
@@ -65,6 +70,7 @@ export {
   createRecord,
   getOrders,
   getStudents,
+  createStudent,
   getTeachers,
   createTeacher,
   getOrgs,
