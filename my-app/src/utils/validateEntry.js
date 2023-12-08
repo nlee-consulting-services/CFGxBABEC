@@ -3,13 +3,6 @@ import axios from "axios";
 
 const stringRegex = /^[^"]*$/;
 
-const validateText = (text) => {
-  if (!text) {
-    return false;
-  }
-  return stringRegex.test(text);
-};
-
 // stautus -1: error in entry --> user needs to fix entry
 // status -2: teacher does not exist in org --> prompt if wants to add teacher
 // status -3: student does not exist under teacher --> prompt if wants to add student
@@ -83,7 +76,7 @@ const checkValidity = async (
       entry.habitat_description,
       entry.expl_of_confidence_level,
     ].every(function (text) {
-      return validateText(text);
+      return stringRegex.test(text);
     })
   ) {
     return { status: -1, errmsg: "Please remove all double quotation marks" };

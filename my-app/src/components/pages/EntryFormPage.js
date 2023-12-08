@@ -415,8 +415,7 @@ function EntryForm() {
       {/* Modal 0: processing... */}
       <Modal
         show={loadingModal}
-        onHide={(e) => {
-          e.preventDefault();
+        onHide={() => {
           setLoadingModal(true);
         }}
       >
@@ -452,8 +451,7 @@ function EntryForm() {
       {/* Modal 2: invalid entry attempt */}
       <Modal
         show={errorModal.status}
-        onHide={(e) => {
-          e.preventDefault();
+        onHide={() => {
           setErrorModal({ status: false, msg: "" });
         }}
       >
@@ -476,8 +474,7 @@ function EntryForm() {
       {/* Modal 3: teacher does not exist */}
       <Modal
         show={addTeacherModal.status}
-        onHide={(e) => {
-          e.preventDefault();
+        onHide={() => {
           setAddTeacherModal({ status: false, msg: "" });
         }}
       >
@@ -509,8 +506,7 @@ function EntryForm() {
       {/* Modal 4: student does not exist */}
       <Modal
         show={addStudentModal.status}
-        onHide={(e) => {
-          e.preventDefault();
+        onHide={() => {
           setAddStudentModal({ status: false, msg: "" });
         }}
       >
