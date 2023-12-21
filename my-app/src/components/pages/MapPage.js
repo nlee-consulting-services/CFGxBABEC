@@ -55,7 +55,7 @@ function MapPage() {
   const lat = 0;
   const lon = 0;
   const height = 450;
-  const width = 330;
+  const width = 350;
   const onClick = () => {
     // console.log("onclick");
     // setShowPopup(!showPopup);
@@ -117,7 +117,7 @@ function MapPage() {
     {/* Data for a specific coordinate being displayed */}
       <div
         className="popup"
-        style={{overflowY: "auto", opacity: 0, minWidth: width + 30}}
+        style={{overflowY: "auto", opacity: 0, minWidth: width + 75}}
         id="mapPopup"
       >
         {groupedGraph[0] ? (
@@ -150,7 +150,7 @@ function MapPage() {
       {/* All data being displayed by default */}
       <div
         className="popup"
-        style={{overflowY: "auto", opacity: 1, maxHeight:"100%",minWidth:width + 30}}
+        style={{overflowY: "auto", opacity: 1, minWidth:width + 75}}
         id="mapPopupAll"
       >
         {groupedGraph[0] ? (
@@ -182,6 +182,7 @@ function MapPage() {
     </div>
   );
 }
+
 
 // function PopUpContent({contentName, text, image}) {
 //     return (
