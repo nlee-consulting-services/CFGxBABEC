@@ -3,7 +3,7 @@ import logo from "./logo.svg";
 import { useRef, useState, useEffect } from "react";
 import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import "bootstrap/dist/css/bootstrap.css";
+// import "bootstrap/dist/css/bootstrap.css";
 
 import Home from "./components/pages/HomePage";
 import About from "./components/pages/AboutPage";

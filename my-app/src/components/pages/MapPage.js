@@ -54,9 +54,16 @@ function MapPage() {
   const [showPopup, setShowPopup] = useState(true);
   const lat = 0;
   const lon = 0;
+  const height = 450;
+  const width = 330;
   const onClick = () => {
-    console.log("onclick");
-    setShowPopup(!showPopup);
+    // console.log("onclick");
+    // setShowPopup(!showPopup);
+
+    //start off with opacity = 0, then onClick makes opacity = 1, etc
+    document.getElementById('mapPopup').style.opacity = 1 - document.getElementById('mapPopup').style.opacity;
+    document.getElementById('mapPopupAll').style.opacity = 1 - document.getElementById('mapPopupAll').style.opacity;
+    console.log(document.getElementById('mapPopup').style.opacity)
   };
 
   const [groupedGraph, setData] = useState([null, null]);
@@ -65,8 +72,8 @@ function MapPage() {
       try {
         const result = await returnGroupedBarGraph(
           wolbachiaPerInsectData,
-          450,
-          330,
+          height,
+          width,
           { l: 20, r: 0, b: 100, t: 100, pad: 5 },
           "Wolbachia Presence"
         );
@@ -107,25 +114,70 @@ function MapPage() {
               null}
         </MarkerMuster>
       </MapContainer>
-
+    {/* Data for a specific coordinate being displayed */}
       <div
         className="popup"
-        style={{ display: showPopup ? "block" : "none", overflowY: "auto" }}
+        style={{overflowY: "auto", opacity: 0, minWidth: width + 30}}
+        id="mapPopup"
       >
-        <h3>This is a placeholder div</h3>
         {groupedGraph[0] ? (
           // Render using the fetched data
+          <div>
+          <h2>{'(' + groupedGraph[1][0][0] + ', ' + groupedGraph[1][0][1] + ')'}</h2>
           <p>{groupedGraph[0]}</p>
+          <img className="logo" src="./logo.png" />
+          </div>
         ) : (
           // Loading while waiting for data
-          <p>Loading...</p>
+          <div
+            style={{height:"100%"}}>      
+            <div class="center">
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="wave"></div>
+            </div>
+          </div>
         )}
-        <img className="logo" src="./logo.png" />
-        <p>
-          I'm bad a JS so if there's a way to open/close this for like an
-          onclick event that might work?
-        </p>
-        {/*https://stackoverflow.com/questions/40901539/arbitrary-function-on-react-leaflet-marker-click*/}
+      </div>
+
+      {/* All data being displayed by default */}
+      <div
+        className="popup"
+        style={{overflowY: "auto", opacity: 1, maxHeight:"100%",minWidth:width + 30}}
+        id="mapPopupAll"
+      >
+        {groupedGraph[0] ? (
+          // Render using the fetched data
+          <div>
+          <h2>{'All Data'}</h2>
+          <p>{groupedGraph[0]}</p>
+          <img className="logo" src="./logo.png" />
+          </div>
+        ) : (
+          // Loading while waiting for data
+          <div
+            style={{height:"100%"}}>      
+            <div class="center">
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="wave"></div>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
