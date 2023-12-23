@@ -18,8 +18,8 @@ function returnBarGraph(data, height, width, title){
     </Plot> 
 }
 
-async function returnGroupedBarGraph(data, height, width, margin, title, location=[]){
-    var groupedData = await data();
+function returnGroupedBarGraph(data, height, width, margin, title, location=[]){
+    var groupedData = data;
     const secondary = groupedData[1];
     groupedData = groupedData[0];
     const x_vals = Object.keys(groupedData);

@@ -14,8 +14,9 @@ function Graphs() {
   useEffect(() => {
     const getGraph = async () => {
       try {
-        const result = await returnGroupedBarGraph(
-          wolbachiaPerInsectData,
+        const data = await wolbachiaPerInsectData()
+        const result = returnGroupedBarGraph(
+          data,
           600,
           1200,
           { l: 50, r: 50, b: 100, t: 100, pad: 4 },
