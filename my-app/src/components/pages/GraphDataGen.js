@@ -18,10 +18,12 @@ function returnBarGraph(data, height, width, title){
     </Plot> 
 }
 
-function returnGroupedBarGraph(data, height, width, margin, title, location=[]){
+function returnGroupedBarGraph(data, height, width, margin, title){
     var groupedData = data;
     const secondary = groupedData[1];
     groupedData = groupedData[0];
+
+
     const x_vals = Object.keys(groupedData);
     const yes = [];
     const no = [];
@@ -32,7 +34,8 @@ function returnGroupedBarGraph(data, height, width, margin, title, location=[]){
         no.push(value[1]);
         inc.push(value[2]);
     }
-    return [<Plot id='temp' style={{overflowY:"auto"}}
+
+    return [<Plot id='graph' style={{overflowY:"auto"}}
     data = {
         [
             {
@@ -67,19 +70,34 @@ function tempData(){
     return [[1,2,3], [4,5,6]];
 }
 
-async function wolbachiaPerInsectData(location=[]){
-    var values = await getRecords();
-    var wolb_presences = await getOrdersAsDict(); 
+async function wolbachiaPerInsectData(data = null, location=[]){
+    var ogValues;
+    var ogWolbPresences;
+    if (data == null){
+        ogValues = await getRecords();
+        ogWolbPresences = await getOrdersAsDict(); 
+    }
+    else{
+        ogValues = data[0];
+        ogWolbPresences = data[1]; 
+    }
+    var locsSet = new Set([]);
     var locs = [];
-
-    for (var index in values){
-        const order_name = values[index].order_name;
-        const curr_loc = [values[index].location_lon, values[index].location_lat];
-        const wolbachia_presence = values[index].wolbachia_presence;
+    var wolb_presences = new Object();
+    for (var index in ogValues){
+        const order_name = ogValues[index].order_name;
+        const wolbachia_presence = ogValues[index].wolbachia_presence;
         
-        locs.push([values[index].location_lon, values[index].location_lat]);
+        const latitude = Math.round(ogValues[index].location_lat * 1000) / 1000;
+        const longitude = Math.round(ogValues[index].location_lon * 1000) / 1000;
 
-        if (location.length == 0 || location == curr_loc){
+        if (!locsSet.has(latitude * longitude)){
+            locsSet.add(latitude * longitude);
+            locs.push([latitude, longitude]);
+        }
+
+
+        if (location.length == 0 || (location[0] == latitude && location[1] == longitude)){
             if (wolb_presences[order_name] == undefined){
                 wolb_presences[order_name] = [0,0,0];
             }
@@ -94,17 +112,17 @@ async function wolbachiaPerInsectData(location=[]){
             }
         }
     }
-    return [wolb_presences, locs];
+    return [wolb_presences, locs, ogValues, ogWolbPresences];
 }
 
 async function getAllLocs(){
     var values = await getRecords();
-    var locs = [];
+    var locs = new Set([]);
 
     for (var index in values){
         locs.push([values[index].location_lon, values[index].location_lat]);
     }
-    return locs;
+    return Array.from(locs);
 }
 
 async function getRecords() {

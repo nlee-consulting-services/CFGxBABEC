@@ -52,15 +52,16 @@ function MarkerDataComponent() {
 
 function MapPage() {
   const [showPopup, setShowPopup] = useState(true);
-  var lat = 0;
-  var lon = 0;
-  var data = null;
   var result = null;
   const height = 450;
   const width = 350;
-  var pastPosition = null;
-  var popupTitle = null;
 
+
+  const [getLocation, setLocation] = useState([]);
+  const [popupTitle, setPopupTitle] = useState(null);
+  const [pastPosition, setPastPosition] = useState(null);
+  const [generateAllData, setGenerateAllData] = useState(true);
+  // function meant to handle when marker is clicked on map
   const onClick = (position) => {
     // setShowPopup(!showPopup);
     const mapPopup = document.getElementById('mapPopup');
@@ -70,65 +71,77 @@ function MapPage() {
     const selectLng = position.latlng['lng'];
     const location = [selectLat, selectLng];
 
+    console.log(position.title)
     // clicking on the same marker
     if (popupTitle == null || (popupTitle != null && popupTitle[0] == selectLat && popupTitle[1] == selectLng)){
         // hiding all data, showing marker data
         if (mapPopup.classList.contains("slide-left")){
-            position.originalEvent.explicitOriginalTarget.src = 
-                        'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png';
             mapPopup.classList.add('slide-right');
             mapPopup.classList.remove('slide-left');
             mapPopupAll.classList.add('slide-left');
             mapPopupAll.classList.remove('slide-right');
             document.getElementById('mapPopupTitle').textContent = location;
-            popupTitle = location;
-            pastPosition = position;
+            setPopupTitle(location);
+            setPastPosition(position);
+            setLocation(location);
         }
         // hiding marker data, showing all data
         else {
-            position.originalEvent.explicitOriginalTarget.src = 
-                        'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-blue.png';
             mapPopupAll.style.visibility = "visible";
             mapPopup.classList.add('slide-left');
             mapPopup.classList.remove('slide-right');
             mapPopupAll.classList.add('slide-right');
             mapPopupAll.classList.remove('slide-left');
-            popupTitle = null;
+            setPopupTitle(null);
+            setLocation([]);
         }
     }
     // clicking on different marker
-    else{
+    else{            
+        
+        // pastPosition.originalEvent.explicitOriginalTarget.src = 
+        // 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-blue.png';
+//         position.originalEvent.explicitOriginalTarget.src = 
+//         'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png';
+
+
+        console.log(pastPosition);
         if (pastPosition != null){
-            pastPosition.originalEvent.explicitOriginalTarget.src = 
-                            'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-blue.png';
         }
-        position.originalEvent.explicitOriginalTarget.src = 
-                        'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png';
-        popupTitle = location;
+        setPopupTitle(location);
         document.getElementById('mapPopupTitle').textContent = location;
-        pastPosition = position;
+        setPastPosition(position);
+        setLocation(location);
     }
   };
 
-  const [groupedGraph, setData] = useState([null, null]);
+  const [groupedGraph, setGraph] = useState([null, null]);
+  const [data, setData] = useState([null, null]);
   useEffect(() => {
     const getGraph = async () => {
       try {
-        data = await wolbachiaPerInsectData();
-        result = returnGroupedBarGraph(
-          data,
+        var newData;
+        if (generateAllData){
+            newData = await wolbachiaPerInsectData();
+        }
+        else{
+            newData = await wolbachiaPerInsectData([data[2], data[3]], getLocation);
+        }
+        setData(newData);
+        setGraph(returnGroupedBarGraph(
+          newData,
           height,
           width,
-          { l: 20, r: 0, b: 100, t: 100, pad: 5 },
+          { l: 30, r: 0, b: 100, t: 100, pad: 5 },
           "Wolbachia Presence"
-        );
-        setData(result);
+        ));
+        setGenerateAllData(false);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
     };
     getGraph();
-  }, []);
+  }, [getLocation]);
   return (
     <div className="mappage-wrapper">
       <MapContainer
@@ -144,7 +157,7 @@ function MapPage() {
         <MarkerMuster>
           {groupedGraph[1]
             ? // Render using the fetched data
-              groupedGraph[1].map(function (data) {
+              groupedGraph[1].map(function (data, index) {
                 return (
                   <Marker
                     position={data}
@@ -162,7 +175,7 @@ function MapPage() {
         {/* Data for a specific coordinate being displayed */}
         <div
         className="popup slide-left"
-        style={{overflowY: "scroll", minWidth:width + 75, border:'green inset 5px'}}
+        style={{overflowY: "scroll", minWidth:width + 75, borderColor:'green'}}
         id="mapPopup"
       >
         {groupedGraph[0] ? (
@@ -195,7 +208,7 @@ function MapPage() {
       {/* All data being displayed by default */}
       <div
         className="popup"
-        style={{overflowY: "auto", minWidth:width + 75, border:'black inset 5px'}}
+        style={{overflowY: "auto", minWidth:width + 75, borderColor:'grey'}}
         id="mapPopupAll"
       >
         {groupedGraph[0] ? (
