@@ -4,6 +4,7 @@ import { MapContainer, Marker, Popup, TileLayer, useMap } from "react-leaflet";
 import { MarkerMuster } from "react-leaflet-muster";
 import L, { latLng, map, popup } from "leaflet";
 import {
+    dailyInsectData,
   returnBarGraph,
   returnGroupedBarGraph,
   tempData,
@@ -53,8 +54,9 @@ function MarkerDataComponent() {
 function MapPage() {
   const [showPopup, setShowPopup] = useState(true);
   var result = null;
-  const height = 450;
+  const height = 350;
   const width = 350;
+  const margins = { l: 35, r: 35, b: 30, t: 20, pad: 0 };
 
 
   const [getLocation, setLocation] = useState([]);
@@ -115,25 +117,38 @@ function MapPage() {
     }
   };
 
-  const [groupedGraph, setGraph] = useState([null, null]);
+  const [groupedGraph, setGroupedGraph] = useState([null, null]);
   const [data, setData] = useState([null, null]);
+  const [barLineGraph, setBarLineGraph] = useState([null, null]);
+  const [data2, setData2] = useState([null, null]);
   useEffect(() => {
     const getGraph = async () => {
       try {
         var newData;
+        var newData2;
         if (generateAllData){
             newData = await wolbachiaPerInsectData();
+            newData2 = await dailyInsectData(newData[2]);
         }
         else{
             newData = await wolbachiaPerInsectData([data[2], data[3]], getLocation);
+            newData2 = await dailyInsectData(newData[2], getLocation);
         }
         setData(newData);
-        setGraph(returnGroupedBarGraph(
+        setData2(newData2);
+        setGroupedGraph(returnGroupedBarGraph(
           newData,
           height,
           width,
-          { l: 30, r: 0, b: 100, t: 100, pad: 5 },
+          margins,
           "Wolbachia Presence"
+        ));
+        setBarLineGraph(returnBarGraph(
+            newData2,
+            height,
+            width,
+            margins,
+            "Daily Collected Insects"
         ));
         setGenerateAllData(false);
       } catch (error) {
@@ -183,6 +198,7 @@ function MapPage() {
           <div>
           <h2 id="mapPopupTitle"></h2>
           <p>{groupedGraph[0]}</p>
+          <p>{barLineGraph}</p>
           <img className="logo" src="./logo.png" />
           </div>
         ) : (
@@ -216,6 +232,7 @@ function MapPage() {
           <div>
           <h2 id="mapPopupAllTitle">{'All Data'}</h2>
           <p>{groupedGraph[0]}</p>
+          <p>{barLineGraph}</p>
           <img className="logo" src="./logo.png" />
           </div>
         ) : (
