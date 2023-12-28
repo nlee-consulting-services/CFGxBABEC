@@ -5,8 +5,8 @@ import Plot from "react-plotly.js";
 import {
   returnBarGraph,
   returnGroupedBarGraph,
-  tempData,
   wolbachiaPerInsectData,
+  dailyInsectData
 } from "./GraphDataGen";
 
 function Graphs() {
@@ -14,8 +14,9 @@ function Graphs() {
   useEffect(() => {
     const getGraph = async () => {
       try {
-        const result = await returnGroupedBarGraph(
-          wolbachiaPerInsectData,
+        const data = await dailyInsectData();
+        const result = returnBarGraph(
+          data,
           600,
           1200,
           { l: 50, r: 50, b: 100, t: 100, pad: 4 },

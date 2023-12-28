@@ -2,8 +2,9 @@ import "leaflet/dist/leaflet.css";
 import "./MapPage.css";
 import { MapContainer, Marker, Popup, TileLayer, useMap } from "react-leaflet";
 import { MarkerMuster } from "react-leaflet-muster";
-import L from "leaflet";
+import L, { latLng, map, popup } from "leaflet";
 import {
+    dailyInsectData,
   returnBarGraph,
   returnGroupedBarGraph,
   tempData,
@@ -52,39 +53,110 @@ function MarkerDataComponent() {
 
 function MapPage() {
   const [showPopup, setShowPopup] = useState(true);
-  const lat = 0;
-  const lon = 0;
-  const height = 450;
-  const width = 330;
-  const onClick = () => {
-    // console.log("onclick");
-    // setShowPopup(!showPopup);
+  var result = null;
+  const height = 350;
+  const width = 350;
+  const margins = { l: 35, r: 35, b: 30, t: 20, pad: 0 };
 
+
+  const [getLocation, setLocation] = useState([]);
+  const [popupTitle, setPopupTitle] = useState(null);
+  const [pastPosition, setPastPosition] = useState(null);
+  const [generateAllData, setGenerateAllData] = useState(true);
+  // function meant to handle when marker is clicked on map
+  const onClick = (position) => {
+    // setShowPopup(!showPopup);
+    const mapPopup = document.getElementById('mapPopup');
+    const mapPopupAll = document.getElementById('mapPopupAll');
     //start off with opacity = 0, then onClick makes opacity = 1, etc
-    document.getElementById('mapPopup').style.opacity = 1 - document.getElementById('mapPopup').style.opacity;
-    document.getElementById('mapPopupAll').style.opacity = 1 - document.getElementById('mapPopupAll').style.opacity;
-    console.log(document.getElementById('mapPopup').style.opacity)
+    const selectLat = position.latlng['lat'];
+    const selectLng = position.latlng['lng'];
+    const location = [selectLat, selectLng];
+
+    console.log(position.title)
+    // clicking on the same marker
+    if (popupTitle == null || (popupTitle != null && popupTitle[0] == selectLat && popupTitle[1] == selectLng)){
+        // hiding all data, showing marker data
+        if (mapPopup.classList.contains("slide-left")){
+            mapPopup.classList.add('slide-right');
+            mapPopup.classList.remove('slide-left');
+            mapPopupAll.classList.add('slide-left');
+            mapPopupAll.classList.remove('slide-right');
+            document.getElementById('mapPopupTitle').textContent = location;
+            setPopupTitle(location);
+            setPastPosition(position);
+            setLocation(location);
+        }
+        // hiding marker data, showing all data
+        else {
+            mapPopupAll.style.visibility = "visible";
+            mapPopup.classList.add('slide-left');
+            mapPopup.classList.remove('slide-right');
+            mapPopupAll.classList.add('slide-right');
+            mapPopupAll.classList.remove('slide-left');
+            setPopupTitle(null);
+            setLocation([]);
+        }
+    }
+    // clicking on different marker
+    else{            
+        
+        // pastPosition.originalEvent.explicitOriginalTarget.src = 
+        // 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-blue.png';
+//         position.originalEvent.explicitOriginalTarget.src = 
+//         'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png';
+
+
+        console.log(pastPosition);
+        if (pastPosition != null){
+        }
+        setPopupTitle(location);
+        document.getElementById('mapPopupTitle').textContent = location;
+        setPastPosition(position);
+        setLocation(location);
+    }
   };
 
-  const [groupedGraph, setData] = useState([null, null]);
+  const [groupedGraph, setGroupedGraph] = useState([null, null]);
+  const [data, setData] = useState([null, null]);
+  const [barLineGraph, setBarLineGraph] = useState([null, null]);
+  const [data2, setData2] = useState([null, null]);
   useEffect(() => {
     const getGraph = async () => {
       try {
-        const result = await returnGroupedBarGraph(
-          wolbachiaPerInsectData,
+        var newData;
+        var newData2;
+        if (generateAllData){
+            newData = await wolbachiaPerInsectData();
+            newData2 = await dailyInsectData(newData[2]);
+        }
+        else{
+            newData = await wolbachiaPerInsectData([data[2], data[3]], getLocation);
+            newData2 = await dailyInsectData(newData[2], getLocation);
+        }
+        setData(newData);
+        setData2(newData2);
+        setGroupedGraph(returnGroupedBarGraph(
+          newData,
           height,
           width,
-          { l: 20, r: 0, b: 100, t: 100, pad: 5 },
+          margins,
           "Wolbachia Presence"
-        );
-        setData(result);
+        ));
+        setBarLineGraph(returnBarGraph(
+            newData2,
+            height,
+            width,
+            margins,
+            "Daily Collected Insects"
+        ));
+        setGenerateAllData(false);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
     };
     getGraph();
-  }, []);
-
+  }, [getLocation]);
   return (
     <div className="mappage-wrapper">
       <MapContainer
@@ -100,7 +172,7 @@ function MapPage() {
         <MarkerMuster>
           {groupedGraph[1]
             ? // Render using the fetched data
-              groupedGraph[1].map(function (data) {
+              groupedGraph[1].map(function (data, index) {
                 return (
                   <Marker
                     position={data}
@@ -114,17 +186,19 @@ function MapPage() {
               null}
         </MarkerMuster>
       </MapContainer>
-    {/* Data for a specific coordinate being displayed */}
-      <div
-        className="popup"
-        style={{overflowY: "auto", opacity: 0, minWidth: width + 30}}
+        
+        {/* Data for a specific coordinate being displayed */}
+        <div
+        className="popup slide-left"
+        style={{overflowY: "scroll", minWidth:width + 75, borderColor:'green'}}
         id="mapPopup"
       >
         {groupedGraph[0] ? (
           // Render using the fetched data
           <div>
-          <h2>{'(' + groupedGraph[1][0][0] + ', ' + groupedGraph[1][0][1] + ')'}</h2>
+          <h2 id="mapPopupTitle"></h2>
           <p>{groupedGraph[0]}</p>
+          <p>{barLineGraph}</p>
           <img className="logo" src="./logo.png" />
           </div>
         ) : (
@@ -150,14 +224,15 @@ function MapPage() {
       {/* All data being displayed by default */}
       <div
         className="popup"
-        style={{overflowY: "auto", opacity: 1, maxHeight:"100%",minWidth:width + 30}}
+        style={{overflowY: "auto", minWidth:width + 75, borderColor:'grey'}}
         id="mapPopupAll"
       >
         {groupedGraph[0] ? (
           // Render using the fetched data
           <div>
-          <h2>{'All Data'}</h2>
+          <h2 id="mapPopupAllTitle">{'All Data'}</h2>
           <p>{groupedGraph[0]}</p>
+          <p>{barLineGraph}</p>
           <img className="logo" src="./logo.png" />
           </div>
         ) : (
@@ -182,14 +257,5 @@ function MapPage() {
     </div>
   );
 }
-
-// function PopUpContent({contentName, text, image}) {
-//     return (
-//         <div class = "contentName" >
-//         <h3> {text} </h3>
-//         <img src = {image} />
-//         </div>
-//     )
-// }
 
 export default MapPage;
