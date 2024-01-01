@@ -1,7 +1,35 @@
 import Plot from 'react-plotly.js'
 
 function returnBarGraph(data, height, width, margin, title){
-    console.log("okay here now", data);
+    return <Plot id='temp' 
+    data = {
+        [
+            {
+                x:data[0],
+                y:data[1],
+                name: "Insect Count",
+                yaxis: 'y1',
+                type:'bar'
+            }
+        ]
+    }
+    layout = {{width:width, height:height, title:title, margin:margin,
+        legend:{
+            orientation:"h",
+            yanchor:"bottom",
+            y:-.3,
+            xanchor:"left"}, 
+          yaxis1:{
+            title: 'Insect Count',
+            side: 'left'
+            },
+            font:{size:9}
+        }}>
+
+    </Plot> 
+}
+
+function returnBarAndLineGraph(data, height, width, margin, title){
     return <Plot id='temp' 
     data = {
         [
@@ -26,8 +54,7 @@ function returnBarGraph(data, height, width, margin, title){
             orientation:"h",
             yanchor:"bottom",
             y:-.3,
-            xanchor:"right",
-            x:1}, 
+            xanchor:"left"}, 
           yaxis1:{
             title: 'Insect Count',
             side: 'left'
@@ -92,9 +119,8 @@ function returnGroupedBarGraph(data, height, width, margin, title){
                 legend:{
                     orientation:"h",
                     yanchor:"bottom",
-                    y:-.3,
-                    xanchor:"right",
-                    x:1},    
+                    y:-.5,
+                    xanchor:"left"},    
                 yaxis1:{
                     title: 'Insect Count',
                     side: 'left'
@@ -136,7 +162,7 @@ async function wolbachiaPerInsectData(data = null, location=[]){
 
     for (var index in ogValues){
         const order_name = ogValues[index].order_name;
-        const wolbachia_presence = ogValues[index].wolbachia_presence;
+        const wolbachiaPresence = ogValues[index].wolbachia_presence;
         const latitude = Math.round(ogValues[index].location_lat * 1000) / 1000;
         const longitude = Math.round(ogValues[index].location_lon * 1000) / 1000;
 
@@ -144,10 +170,10 @@ async function wolbachiaPerInsectData(data = null, location=[]){
             if (wolbPresences[order_name] == undefined){
                 wolbPresences[order_name] = [0,0,0];
             }
-            if (wolbachia_presence == 'yes'){
+            if (wolbachiaPresence == 'yes'){
                 wolbPresences[order_name][0]++;
             }
-            else if(wolbachia_presence == 'no'){
+            else if(wolbachiaPresence == 'no'){
                 wolbPresences[order_name][1]++;
             } 
             else{
@@ -168,7 +194,6 @@ async function dailyInsectData(data = null, location=[]){
     }
     var locs = getLocations(ogValues);
     var perDay = new Object();
-    var wolbNumsPerDay = [];
     for (var index in ogValues){
         const wolbachiaPresence = ogValues[index].wolbachia_presence;
         const collectionDate = ogValues[index].collection_date;
@@ -198,11 +223,54 @@ async function dailyInsectData(data = null, location=[]){
     for (const [key, value] of Object.entries(orderedPerDay)){
         dates.push(key);
         insectNumsPerDay.push(value[0]);
-        console.log(value[0], value[1])
         wolbPercentPerDay.push(value[1]/(value[0]));
     }
-    console.log(insectNumsPerDay, wolbNumsPerDay, dates);
     return [dates, insectNumsPerDay, wolbPercentPerDay, locs, ogValues];
+}
+
+async function collectionsPerOrg(data = null, location=[]){
+    var ogValues;
+    var ogWolbPresences;
+    if (data == null){
+        ogValues = await getRecords();
+    }
+    else{
+        ogValues = data;
+    }
+    var locs = getLocations(ogValues);
+    var organizations = new Object();
+
+    for (var index in ogValues){
+        const orgName = ogValues[index].org_name;
+        const latitude = Math.round(ogValues[index].location_lat * 1000) / 1000;
+        const longitude = Math.round(ogValues[index].location_lon * 1000) / 1000;
+
+        if (location.length == 0 || (location[0] == latitude && location[1] == longitude)){
+            if (organizations[orgName] == undefined){
+                organizations[orgName] = 1;
+            }
+            else{
+                organizations[orgName]++;
+            }
+        }
+    }
+    
+    const orderedInsects = Object.keys(organizations).sort().reduce(
+        (obj, key) => { 
+          obj[key] = organizations[key]; 
+          return obj;
+        }, 
+        {}
+      );
+      
+    var orgNames = [];
+    var orgNums = [];
+    for (const [key, value] of Object.entries(orderedInsects)){
+        orgNames.push(key);
+        orgNums.push(value);
+    }
+
+    return [orgNames, orgNums, locs, ogValues];
 }
 
 async function getAllLocs(){
@@ -242,4 +310,4 @@ async function getOrdersAsDict() {
     return orders;
 }
 
-export {returnBarGraph, returnGroupedBarGraph, wolbachiaPerInsectData, dailyInsectData, getAllLocs}
+export {returnBarGraph, returnBarAndLineGraph, returnGroupedBarGraph, wolbachiaPerInsectData, dailyInsectData, collectionsPerOrg, getAllLocs}

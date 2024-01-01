@@ -4,8 +4,10 @@ import React, { Component, useEffect, useState } from "react";
 import Plot from "react-plotly.js";
 import {
   returnBarGraph,
+  returnBarAndLineGraph,
   returnGroupedBarGraph,
   wolbachiaPerInsectData,
+  collectionsPerOrg,
   dailyInsectData
 } from "./GraphDataGen";
 
@@ -14,13 +16,13 @@ function Graphs() {
   useEffect(() => {
     const getGraph = async () => {
       try {
-        const data = await dailyInsectData();
+        const data = await collectionsPerOrg();
         const result = returnBarGraph(
           data,
           600,
           1200,
           { l: 50, r: 50, b: 100, t: 100, pad: 4 },
-          "Wolbachia Presence"
+          "Insects Collected Per Organization"
         );
         setData(result);
       } catch (error) {
