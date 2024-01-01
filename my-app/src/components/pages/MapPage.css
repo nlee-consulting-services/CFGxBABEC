@@ -107,6 +107,17 @@
   border-width: 10px;
 }
 
+.vertical{
+  box-sizing: border-box;
+  position: absolute;
+  top: 15%;
+  height: 40%;
+  width: 80%;
+  max-width: 80%;
+  overflow-x: scroll;
+  z-index: 1000;
+}
+
 .popup h3 {
   padding-left: 20px;
   padding-right: 20px;

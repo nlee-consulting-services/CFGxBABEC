@@ -46,7 +46,6 @@ function App() {
               <Route path="/about" Component={About} />
               <Route path="/map" Component={MapPage} />
               <Route path="/entryform" Component={EntryForm} />
-              <Route path="/data" Component={Graphs} />
             </Routes>
           </div>
           <Footer />
