@@ -6,15 +6,15 @@ import { Link } from "react-router-dom";
 import React, { useState } from "react";
 
 function HomePage() {
-  const [isHovered, setHovered] = useState(false);
+  const [isHovered, setHovered] = useState(true);
   return (
     <div className="wrapper">
       <div className="contentwrapper">
         <div className="hero">
           <h1>Wolbachia Tracking</h1>
           <img
-            onMouseEnter={() => setHovered(true)}
-            onMouseLeave={() => setHovered(false)}
+            onMouseEnter={() => setHovered(false)}
+            onMouseLeave={() => setHovered(true)}
             className="hero-image"
             src={isHovered ? "./icon1.png" : "./icon2.gif"}
             alt="Hero Image"
@@ -33,7 +33,6 @@ function HomePage() {
             </p>
           </div>
         </div>
-        <div className="engagement">
           <div className="involvement">
             <h1>Get Involved</h1>
             <div className="flexcontainer">
@@ -61,7 +60,6 @@ function HomePage() {
               </div>
             </div>
           </div>
-        </div>
       </div>
     </div>
   );

@@ -30,7 +30,7 @@ footer {
 .about {
   margin: 0;
   padding: 0;
-  height: 500px;
+  height: 600px;
   display: flex;
   flex-wrap: wrap;
   background-image: "./map1.png";
@@ -45,12 +45,12 @@ footer {
 }
 
 .aboutoverlay {
-  width: 60%;
+  width: 500px;
   height: 600px;
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.6);
   box-sizing: border-box;
-  top: 815px;
-  padding: 80px;
+  text-align:center;
+  padding: 50px;
   position: absolute;
   margin: 0;
 }
@@ -71,14 +71,20 @@ p {
   background-color: #707aab;
   position: relative;
   padding: 50px;
-  display: flex;
+  display: block;
   height: 500px;
   box-sizing: border-box;
   color: white;
 }
 
+.involvementtitle{
+  width:100%;
+  display:block;
+}
+
 .involvement h1 {
   font-size: 50px;
+  text-align:center;
 }
 
 .flexcontainer {
@@ -86,6 +92,7 @@ p {
   justify-content: space-around;
   width: 100%;
   align-items: center;
+  flex-basis:100%;
 }
 
 .contact,
