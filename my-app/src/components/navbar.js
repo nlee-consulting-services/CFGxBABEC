@@ -7,7 +7,7 @@ const Navbar = forwardRef(function Navbar(props, navbarRef) {
 
   const handleClick = () => {
     toggleDropdown();
-    navigate("/");
+    navigate("https://babec.org/");
   };
 
   const [isDropdownVisible, setIsDropdownVisible] = useState(false);
@@ -18,7 +18,7 @@ const Navbar = forwardRef(function Navbar(props, navbarRef) {
 
   return (
     <nav className="navbar" ref={navbarRef}>
-      <Link to="/" onClick={toggleDropdown}>
+        <Link to="https://babec.org" onClick={toggleDropdown}>
         <img
           className="logo"
           src="./logo.png"
