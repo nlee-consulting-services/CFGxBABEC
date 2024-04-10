@@ -1,12 +1,25 @@
 import "./HomePage.css";
 import Navbar from "../navbar.js";
 import Footer from "../footer.js";
-import { Link } from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 
 import React, { useState } from "react";
 
 function HomePage() {
+  const navigate = useNavigate();
   const [isHovered, setHovered] = useState(true);
+
+  const handleContactClick = () => {
+    window.location.href = "https://babec.org/contact";
+  };
+
+  const handleLabClick = () => {
+    window.location.href = "https://babec.org/curricula";
+  };
+
+  const handleInsectClick = () => {
+    window.location.href = "https://wolbachia.babec.org/entryform";
+  };
   return (
     <div className="wrapper">
       <div className="contentwrapper">
@@ -37,26 +50,38 @@ function HomePage() {
             <h1>Get Involved</h1>
             <div className="flexcontainer">
               <div className="contact">
-                <img src="./website.png" />
+                <Link to="https://babec.org/contact" onClick={handleContactClick}>
+                <img src="./website.png"
+                     onClick={handleContactClick}
+                />
                 <p>
                   Contact BABEC at their website to learn more and become a
                   partner school!
                 </p>
+                </Link>
               </div>
               <div className="lab">
-                <img src="./lab.png" />
+                <Link to="https://babec.org/curricula" onClick={handleLabClick}>
+                <img src="./lab.png"
+                     onClick={handleLabClick}
+                />
                 <p>
                   {" "}
-                  BABEC has many different biotechnology project currently being
-                  used by 150+ partner schools around the USA.
+                  BABEC has many different biotechnology lessons being used by
+                  150+ partner schools around the USA.
                 </p>
+                </Link>
               </div>
               <div className="form">
-                <img src="./form.png" />
+                <Link to="https://babec.org/curricula" onClick={handleInsectClick}>
+                <img src="./form.png"
+                     onClick={handleInsectClick}
+                />
                 <p>
                   Submit your very own insect data by filling out this short
                   form
                 </p>
+                </Link>
               </div>
             </div>
           </div>
