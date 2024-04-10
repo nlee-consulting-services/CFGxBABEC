@@ -133,6 +133,7 @@ function EntryForm() {
         break;
     }
   };
+  
 
   return (
     <>
@@ -144,65 +145,39 @@ function EntryForm() {
             <div className="student-data">
               <h2>Student Data</h2>
               <label htmlFor="initials">Initials(e.g. John Doe → JD):</label>
-              <br />
+              <br/>
               <input
-                type="text"
-                id="initials"
-                name="initials"
-                onChange={(e) => {
-                  setNameInitial(e.target.value);
-                }}
+                  type="text"
+                  id="initials"
+                  name="initials"
+                  onChange={(e) => {
+                    setNameInitial(e.target.value);
+                  }}
+                  required
               />
-              <br />
+              <br/>
               <label htmlFor="lname">Teacher Last name:</label>
-              <br />
+              <br/>
               <input
-                type="text"
-                id="tlname"
-                name="tlname"
-                onChange={(e) => setTeacherLastName(e.target.value)}
+                  type="text"
+                  id="tlname"
+                  name="tlname"
+                  onChange={(e) => setTeacherLastName(e.target.value)}
+                  required
               />
-              <br />
-              <label htmlFor="orgname">Organization name:</label> <br />
-              <select
-                name="orgname"
-                id="orgname"
-                onChange={(e) => {
-                  e.preventDefault();
-                  setOrgId(
-                    e.target.options[e.target.selectedIndex].getAttribute(
-                      "data-id"
-                    )
-                  );
-                  setOrgName(e.target.options[e.target.selectedIndex].value);
-                }}
-              >
-                <option
-                  value={undefined}
-                  data-id={undefined}
-                  className="void-option"
-                >
-                  {orgs
-                    ? "Please Select an Organisation..."
-                    : "Loading Organisation"}
-                </option>
-                {orgs &&
-                  orgs.map((v) => {
-                    return (
-                      <option
-                        key={v.org_id}
-                        value={v.org_name}
-                        data-id={v.org_id}
-                      >
-                        {v.org_name}
-                      </option>
-                    );
-                  })}
-              </select>
-              <br />
+              <br/>
+              <label htmlFor="orgname">School / Organization Name:</label> <br/>
+              <input
+                  type="text"
+                  id="orgname"
+                  name="orgname"
+                  required
+              />
+
+              <br/>
             </div>
-            <br />
-            <br />
+            <br/>
+            <br/>
 
             <div className="record">
               <h2>Insect information</h2>
@@ -252,6 +227,7 @@ function EntryForm() {
                   e.preventDefault();
                   setEntry({ ...entry, common_name: e.target.value });
                 }}
+                required
               />
               <br />
               <label htmlFor="insect-description">Insect description:</label>
@@ -264,6 +240,7 @@ function EntryForm() {
                   e.preventDefault();
                   setEntry({ ...entry, insect_description: e.target.value });
                 }}
+                required
               />
               <br />
               <label htmlFor="date-of-collection">Date of Collection:</label>
@@ -276,6 +253,7 @@ function EntryForm() {
                   e.preventDefault();
                   setEntry({ ...entry, collection_date: e.target.value });
                 }}
+                required
               />
               <br />
               <label htmlFor="habitat-description">Habitat description:</label>
@@ -288,6 +266,7 @@ function EntryForm() {
                   e.preventDefault();
                   setEntry({ ...entry, habitat_description: e.target.value });
                 }}
+                required
               />
               <br />
               <label htmlFor="presence-of-wolbachia">
@@ -383,6 +362,7 @@ function EntryForm() {
                     expl_of_confidence_level: e.target.value,
                   });
                 }}
+                required
               />
               <br />
               <label htmlFor="gel-image">
@@ -394,6 +374,7 @@ function EntryForm() {
                 id="gel-image"
                 name="gel-image"
                 accept="image/png, image/jpeg"
+                required
               />
               <br />
             </div>
@@ -414,6 +395,7 @@ function EntryForm() {
                   e.preventDefault();
                   setEntry({ ...entry, location_lon: e.target.value });
                 }}
+                required
               />
               <br />
               <label htmlFor="Latitude">Latitude:</label>
@@ -427,6 +409,7 @@ function EntryForm() {
                   e.preventDefault();
                   setEntry({ ...entry, location_lat: e.target.value });
                 }}
+                required
               />
               <br />
             </div>
