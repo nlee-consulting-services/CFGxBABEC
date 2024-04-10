@@ -61,3 +61,7 @@ select {
 .spinner-wrapper-label {
   margin-bottom: 20px;
 }
+
+.required-input:invalid {
+  border-color: red;
+}
