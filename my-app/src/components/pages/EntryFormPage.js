@@ -144,7 +144,7 @@ function EntryForm() {
           <form>
             <div className="student-data">
               <h2>Student Data</h2>
-              <label htmlFor="initials">Initials(e.g. John Doe → JD):</label>
+              <label htmlFor="initials">Initials(e.g. John Doe → JD):<span className="required-asterisk">*</span></label>
               <br/>
               <input
                   type="text"
@@ -156,7 +156,7 @@ function EntryForm() {
                   required
               />
               <br/>
-              <label htmlFor="lname">Teacher Last name:</label>
+              <label htmlFor="lname">Teacher Last name:<span className="required-asterisk">*</span></label>
               <br/>
               <input
                   type="text"
@@ -166,7 +166,7 @@ function EntryForm() {
                   required
               />
               <br/>
-              <label htmlFor="orgname">School / Organization Name:</label> <br/>
+              <label htmlFor="orgname">School / Organization Name:<span className="required-asterisk">*</span></label> <br/>
               <input
                   type="text"
                   id="orgname"
@@ -181,7 +181,7 @@ function EntryForm() {
 
             <div className="record">
               <h2>Insect information</h2>
-              <label htmlFor="ordername">Order name:</label> <br />
+              <label htmlFor="ordername">Order name:<span className="required-asterisk">*</span></label> <br />
               <select
                 name="ordername"
                 id="ordername"
@@ -217,7 +217,7 @@ function EntryForm() {
                   })}
               </select>
               <br />
-              <label htmlFor="commonname">Common name:</label>
+              <label htmlFor="commonname">Common name:<span className="required-asterisk">*</span></label>
               <br />
               <input
                 type="text"
@@ -230,7 +230,7 @@ function EntryForm() {
                 required
               />
               <br />
-              <label htmlFor="insect-description">Insect description:</label>
+              <label htmlFor="insect-description">Insect description:<span className="required-asterisk">*</span></label>
               <br />
               <input
                 type="text"
@@ -243,7 +243,7 @@ function EntryForm() {
                 required
               />
               <br />
-              <label htmlFor="date-of-collection">Date of Collection:</label>
+              <label htmlFor="date-of-collection">Date of Collection:<span className="required-asterisk">*</span></label>
               <br />
               <input
                 type="date"
@@ -256,7 +256,7 @@ function EntryForm() {
                 required
               />
               <br />
-              <label htmlFor="habitat-description">Habitat description:</label>
+              <label htmlFor="habitat-description">Habitat description:<span className="required-asterisk">*</span></label>
               <br />
               <input
                 type="text"
@@ -270,7 +270,7 @@ function EntryForm() {
               />
               <br />
               <label htmlFor="presence-of-wolbachia">
-                Presence of Wolbachia:
+                Presence of Wolbachia:<span className="required-asterisk">*</span>
               </label>
               <br />
               <select
@@ -327,7 +327,7 @@ function EntryForm() {
                 }}
               />
               <br />
-              <label htmlFor="confidence-levek">Confidence level:</label> <br />
+              <label htmlFor="confidence-levek">Confidence level:<span className="required-asterisk">*</span></label> <br />
               <select
                 name="presence-of-wolbachia"
                 id="presence-of-wolbachia"
@@ -348,7 +348,7 @@ function EntryForm() {
               </select>
               <br />
               <label htmlFor="explanantion-of-confidence-level">
-                Explanantion of confidence level:
+                Explanantion of confidence level:<span className="required-asterisk">*</span>
               </label>
               <br />
               <input
@@ -366,7 +366,7 @@ function EntryForm() {
               />
               <br />
               <label htmlFor="gel-image">
-                Gel image (Please use JPG or PNG format):
+                Gel image (Please use JPG or PNG format):<span className="required-asterisk">*</span>
               </label>
               <br />
               <input
@@ -384,7 +384,7 @@ function EntryForm() {
             <div className="location">
               <h2>Location</h2>
 
-              <label htmlFor="Longitude">Longitude:</label>
+              <label htmlFor="Longitude">Longitude:<span className="required-asterisk">*</span></label>
               <br />
               <input
                 type="number"
@@ -398,7 +398,7 @@ function EntryForm() {
                 required
               />
               <br />
-              <label htmlFor="Latitude">Latitude:</label>
+              <label htmlFor="Latitude">Latitude:<span className="required-asterisk">*</span></label>
               <br />
               <input
                 type="number"
