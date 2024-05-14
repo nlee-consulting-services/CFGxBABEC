@@ -108,3 +108,16 @@ p {
   width: 30%; /* Make the image take the full width of its container */
   height: auto; /* Maintain the aspect ratio of the original image */
 }
+
+.babec-link {
+    color: white; /* Normal state */
+    text-decoration: none; /* Optional: Remove underline */
+}
+
+.babec-link:hover {
+    color: rgb(85, 26, 139); /* Hover state */
+}
+
+.babec-link:active {
+    color: red; /* Active (onclick) state */
+}
