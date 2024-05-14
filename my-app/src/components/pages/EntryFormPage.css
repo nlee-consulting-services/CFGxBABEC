@@ -65,3 +65,8 @@ select {
 .required-input:invalid {
   border-color: red;
 }
+
+.required-asterisk {
+    color: red; /* Red color for the asterisk */
+    margin-left: 5px; /* Optional: Add some space between the label text and the asterisk */
+}
