@@ -50,7 +50,7 @@ function HomePage() {
             <h1>Get Involved</h1>
             <div className="flexcontainer">
               <div className="contact">
-                <Link to="https://babec.org/contact" onClick={handleContactClick} class="babec-link">
+                <Link to="https://babec.org/contact" onClick={handleContactClick} class="babec-link" target="_blank">
                 <img src="./website.png"
                      onClick={handleContactClick}
                 />
@@ -61,7 +61,7 @@ function HomePage() {
                 </Link>
               </div>
               <div className="lab">
-                <Link to="https://babec.org/curricula" onClick={handleLabClick} class="babec-link">
+                <Link to="https://babec.org/curricula" onClick={handleLabClick} class="babec-link" target="_blank">
                 <img src="./lab.png"
                      onClick={handleLabClick}
                 />
@@ -73,7 +73,7 @@ function HomePage() {
                 </Link>
               </div>
               <div className="form">
-                <Link to="https://wolbachia.babec.org/entryform" onClick={handleInsectClick} class="babec-link">
+                <Link to="https://wolbachia.babec.org/entryform" onClick={handleInsectClick} class="babec-link" target="_blank">
                 <img src="./form.png"
                      onClick={handleInsectClick}
                 />
