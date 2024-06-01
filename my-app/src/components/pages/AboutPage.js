@@ -1,6 +1,4 @@
 import "./AboutPage.css";
-import Navbar from "../navbar.js";
-import Footer from "../footer.js";
 import coverImage from "../images/cover_about.png";
 
 function reveal() {
@@ -56,11 +54,11 @@ function About() {
             Wolbachia has spread throughout the country.
           </p>
           <p>
-            Learn more about BABEC <a href="https://babec.org/">here.</a>
+            Learn more about BABEC <a href="https://babec.org/" target={"_blank"}>here.</a>
           </p>
           <p>
             View the curriculum for this project{" "}
-            <a href="https://babec.org/curricula/wolbachia-pcr-discover-the-microbes-within/">
+            <a href="https://babec.org/curricula/wolbachia-pcr-discover-the-microbes-within/" target={"_blank"}>
               here.
             </a>
           </p>
@@ -83,6 +81,7 @@ function About() {
               <a
                 href="https://babec.org/what-we-do/"
                 style={{ color: "white" }}
+                target={"_blank"}
               >
                 here
               </a>
@@ -102,7 +101,7 @@ function About() {
             </p>
             <p>
               Find out more:{" "}
-              <a href="https://codeforgoodberkeley.github.io/">here</a>.
+              <a href="https://codeforgoodberkeley.github.io/" target={"_blank"}>here</a>.
             </p>
           </div>
         </div>
