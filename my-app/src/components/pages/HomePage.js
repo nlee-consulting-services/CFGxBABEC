@@ -1,6 +1,4 @@
 import "./HomePage.css";
-import Navbar from "../navbar.js";
-import Footer from "../footer.js";
 import {Link, useNavigate} from "react-router-dom";
 
 import React, { useState } from "react";
@@ -12,7 +10,7 @@ function HomePage() {
   const openInNewTab = (url) => {
     window.open(url, '_blank');
   };
-  
+
   const handleContactClick = () => {
     openInNewTab("https://babec.org/contact");
   };
@@ -22,7 +20,7 @@ function HomePage() {
   };
 
   const handleInsectClick = () => {
-    openInNewTab("https://wolbachia.babec.org/entryform");
+    window.location.href = "https://wolbachia.babec.org/entryform";
   };
   return (
     <div className="wrapper">
@@ -54,7 +52,7 @@ function HomePage() {
             <h1>Get Involved</h1>
             <div className="flexcontainer">
               <div className="contact">
-                <Link onClick={handleContactClick} class="babec-link">
+                <Link onClick={handleContactClick}>
                 <img src="./website.png"
                      onClick={handleContactClick}
                 />
@@ -65,7 +63,7 @@ function HomePage() {
                 </Link>
               </div>
               <div className="lab">
-                <Link onClick={handleLabClick} class="babec-link">
+                <Link onClick={handleLabClick}>
                 <img src="./lab.png"
                      onClick={handleLabClick}
                 />
@@ -77,7 +75,7 @@ function HomePage() {
                 </Link>
               </div>
               <div className="form">
-                <Link onClick={handleInsectClick} class="babec-link">
+                <Link onClick={handleInsectClick}>
                 <img src="./form.png"
                      onClick={handleInsectClick}
                 />
