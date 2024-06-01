@@ -9,16 +9,20 @@ function HomePage() {
   const navigate = useNavigate();
   const [isHovered, setHovered] = useState(true);
 
+  const openInNewTab = (url) => {
+    window.open(url, '_blank');
+  };
+  
   const handleContactClick = () => {
-    window.location.href = "https://babec.org/contact";
+    openInNewTab("https://babec.org/contact");
   };
 
   const handleLabClick = () => {
-    window.location.href = "https://babec.org/curricula";
+    openInNewTab("https://babec.org/curricula");
   };
 
   const handleInsectClick = () => {
-    window.location.href = "https://wolbachia.babec.org/entryform";
+    openInNewTab("https://wolbachia.babec.org/entryform");
   };
   return (
     <div className="wrapper">
@@ -50,7 +54,7 @@ function HomePage() {
             <h1>Get Involved</h1>
             <div className="flexcontainer">
               <div className="contact">
-                <Link to="https://babec.org/contact" onClick={handleContactClick} class="babec-link" target="_blank">
+                <Link onClick={handleContactClick} class="babec-link">
                 <img src="./website.png"
                      onClick={handleContactClick}
                 />
@@ -61,7 +65,7 @@ function HomePage() {
                 </Link>
               </div>
               <div className="lab">
-                <Link to="https://babec.org/curricula" onClick={handleLabClick} class="babec-link" target="_blank">
+                <Link onClick={handleLabClick} class="babec-link">
                 <img src="./lab.png"
                      onClick={handleLabClick}
                 />
@@ -73,7 +77,7 @@ function HomePage() {
                 </Link>
               </div>
               <div className="form">
-                <Link to="https://wolbachia.babec.org/entryform" onClick={handleInsectClick} class="babec-link" target="_blank">
+                <Link onClick={handleInsectClick} class="babec-link">
                 <img src="./form.png"
                      onClick={handleInsectClick}
                 />
