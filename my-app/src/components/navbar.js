@@ -5,9 +5,9 @@ import "./navbar.css";
 const Navbar = forwardRef(function Navbar(props, navbarRef) {
   const navigate = useNavigate();
 
-  const handleClick = () => {
-    toggleDropdown();
-    navigate("https://babec.org/");
+  const handleLinkClick = (e, url) => {
+      e.preventDefault();
+      window.open(url, '_blank');
   };
 
   const [isDropdownVisible, setIsDropdownVisible] = useState(false);
@@ -18,12 +18,11 @@ const Navbar = forwardRef(function Navbar(props, navbarRef) {
 
   return (
     <nav className="navbar" ref={navbarRef}>
-        <Link to="https://babec.org" onClick={toggleDropdown}>
+        <Link to="https://babec.org" onClick={(e) => handleLinkClick(e, "https://babec.org")}>
         <img
           className="logo"
           src="./logo.png"
           alt="Logo"
-          onClick={handleClick}
         />
       </Link>
       <h1>
