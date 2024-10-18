@@ -22,9 +22,9 @@ const checkValidity = async (
     return { status: -1, errmsg: "Please enter your teacher's last name" };
   }
   // check existence of org_id
-  if (!org_id) {
-    return { status: -1, errmsg: "Please select a valid organization" };
-  }
+  //if (!org_id) {
+  //  return { status: -1, errmsg: "Please select a valid organization" };
+  //}
   // check existence of order_id
   if (!entry.order_id) {
     return { status: -1, errmsg: "Please select your sample's insect order" };
